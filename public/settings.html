@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sozlamalar — West Print</title>
+<script>
+(function () {
+  try {
+    var saved = localStorage.getItem('wp_theme');
+    if (saved) document.documentElement.setAttribute('data-theme', saved);
+  } catch (e) {}
+})();
+</script>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="settings">
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="index.html" class="brand">
+      <img src="images/logo.png" alt="West Print" class="brand-logo">
+    </a>
+  </div>
+</header>
+
+<nav class="bottom-nav" id="bottomNav">
+  <a href="index.html" class="bottom-nav-item" data-page="index">
+    <span data-icon="home"></span>
+    <span data-i18n="nav_home">Bosh sahifa</span>
+  </a>
+  <a href="services.html" class="bottom-nav-item" data-page="services">
+    <span data-icon="printer"></span>
+    <span data-i18n="nav_services">Xizmatlar</span>
+  </a>
+  <a href="gallery.html" class="bottom-nav-item" data-page="gallery">
+    <span data-icon="image"></span>
+    <span data-i18n="nav_gallery">Ishlarimiz</span>
+  </a>
+  <a href="contact.html" class="bottom-nav-item" data-page="contact">
+    <span data-icon="phone"></span>
+    <span data-i18n="nav_contact">Aloqa</span>
+  </a>
+  <a href="settings.html" class="bottom-nav-item" data-page="settings">
+    <span data-icon="settings"></span>
+    <span data-i18n="nav_settings">Sozlamalar</span>
+  </a>
+</nav>
+
+<main>
+
+  <section class="settings-page">
+    <div class="container">
+      <h2 data-i18n="nav_settings">Sozlamalar</h2>
+      <div class="settings-card">
+        <div class="settings-row">
+          <span data-i18n="settings_theme">Mavzu</span>
+          <button type="button" class="theme-toggle" id="themeToggle" aria-label="Mavzuni almashtirish" title="Mavzuni almashtirish"></button>
+        </div>
+        <div class="settings-row">
+          <span data-i18n="settings_language">Til</span>
+          <div class="lang-switch" id="langSwitch">
+            <button type="button" data-lang-btn="uz">UZ</button>
+            <button type="button" data-lang-btn="ru">RU</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <span>West Print &copy; <span id="year"></span> — <span data-i18n="footer_rights">Barcha huquqlar himoyalangan.</span></span>
+  </div>
+</footer>
+
+<script src="js/icons.js"></script>
+<script src="js/catalog.js"></script>
+<script src="js/i18n.js"></script>
+<script src="js/theme.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
