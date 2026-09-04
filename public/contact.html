@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bog'lanish — West Print</title>
+<script>
+(function () {
+  try {
+    var saved = localStorage.getItem('wp_theme');
+    if (saved) document.documentElement.setAttribute('data-theme', saved);
+  } catch (e) {}
+})();
+</script>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="contact">
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="index.html" class="brand">
+      <img src="images/logo.png" alt="West Print" class="brand-logo">
+    </a>
+  </div>
+</header>
+
+<nav class="bottom-nav" id="bottomNav">
+  <a href="index.html" class="bottom-nav-item" data-page="index">
+    <span data-icon="home"></span>
+    <span data-i18n="nav_home">Bosh sahifa</span>
+  </a>
+  <a href="services.html" class="bottom-nav-item" data-page="services">
+    <span data-icon="printer"></span>
+    <span data-i18n="nav_services">Xizmatlar</span>
+  </a>
+  <a href="gallery.html" class="bottom-nav-item" data-page="gallery">
+    <span data-icon="image"></span>
+    <span data-i18n="nav_gallery">Ishlarimiz</span>
+  </a>
+  <a href="contact.html" class="bottom-nav-item" data-page="contact">
+    <span data-icon="phone"></span>
+    <span data-i18n="nav_contact">Aloqa</span>
+  </a>
+  <a href="settings.html" class="bottom-nav-item" data-page="settings">
+    <span data-icon="settings"></span>
+    <span data-i18n="nav_settings">Sozlamalar</span>
+  </a>
+</nav>
+
+<main>
+
+  <section class="contact">
+    <div class="container">
+      <h2 data-i18n="contact_title">Bog'lanish</h2>
+      <p class="section-subtitle" data-i18n="contact_subtitle">Savollaringiz bo'lsa, biz bilan bog'laning</p>
+      <div class="contact-grid">
+        <div class="contact-card">
+          <span class="contact-icon" data-icon="phone"></span>
+          <a href="tel:+998901234567">+998 90 123 45 67</a>
+        </div>
+        <div class="contact-card">
+          <span class="contact-icon" data-icon="mail"></span>
+          <a href="mailto:info@westprint.uz">info@westprint.uz</a>
+        </div>
+        <div class="contact-card">
+          <span class="contact-icon" data-icon="mapPin"></span>
+          <span>Toshkent shahri</span>
+        </div>
+        <div class="contact-card">
+          <span class="contact-icon" data-icon="clock"></span>
+          <span>09:00 — 18:00</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="faq">
+    <div class="container">
+      <h2 data-i18n="faq_title">Savollar va javoblar</h2>
+      <p class="section-subtitle" data-i18n="faq_subtitle">Ko'p so'raladigan savollarga javoblar</p>
+      <div class="faq-list" id="faqList"></div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <span>West Print &copy; <span id="year"></span> — <span data-i18n="footer_rights">Barcha huquqlar himoyalangan.</span></span>
+  </div>
+</footer>
+
+<script src="js/icons.js"></script>
+<script src="js/catalog.js"></script>
+<script src="js/i18n.js"></script>
+<script src="js/theme.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
