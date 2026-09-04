@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bizning ishlarimiz — West Print</title>
+<script>
+(function () {
+  try {
+    var saved = localStorage.getItem('wp_theme');
+    if (saved) document.documentElement.setAttribute('data-theme', saved);
+  } catch (e) {}
+})();
+</script>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="gallery">
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="index.html" class="brand">
+      <img src="images/logo.png" alt="West Print" class="brand-logo">
+    </a>
+  </div>
+</header>
+
+<nav class="bottom-nav" id="bottomNav">
+  <a href="index.html" class="bottom-nav-item" data-page="index">
+    <span data-icon="home"></span>
+    <span data-i18n="nav_home">Bosh sahifa</span>
+  </a>
+  <a href="services.html" class="bottom-nav-item" data-page="services">
+    <span data-icon="printer"></span>
+    <span data-i18n="nav_services">Xizmatlar</span>
+  </a>
+  <a href="gallery.html" class="bottom-nav-item" data-page="gallery">
+    <span data-icon="image"></span>
+    <span data-i18n="nav_gallery">Ishlarimiz</span>
+  </a>
+  <a href="contact.html" class="bottom-nav-item" data-page="contact">
+    <span data-icon="phone"></span>
+    <span data-i18n="nav_contact">Aloqa</span>
+  </a>
+  <a href="settings.html" class="bottom-nav-item" data-page="settings">
+    <span data-icon="settings"></span>
+    <span data-i18n="nav_settings">Sozlamalar</span>
+  </a>
+</nav>
+
+<main>
+
+  <section class="gallery">
+    <div class="container">
+      <h2 data-i18n="gallery_title">Bizning ishlarimiz</h2>
+      <p class="section-subtitle" data-i18n="gallery_subtitle">So'nggi bajarilgan buyurtmalardan namunalar</p>
+      <div class="gallery-grid">
+        <img src="https://images.unsplash.com/photo-1581079289196-67865ea83118?w=500&q=80&auto=format&fit=crop" alt="Rang namunalari" loading="lazy">
+        <img src="https://images.unsplash.com/photo-1693031630146-568e2f72db0e?w=500&q=80&auto=format&fit=crop" alt="Qog'oz kesish jarayoni" loading="lazy">
+        <img src="https://images.unsplash.com/photo-1503694978374-8a2fa686963a?w=500&q=80&auto=format&fit=crop" alt="Bosma mashinasi" loading="lazy">
+        <img src="https://images.unsplash.com/photo-1693031630369-bd429a57f115?w=500&q=80&auto=format&fit=crop" alt="Banner bosib chiqarish" loading="lazy">
+        <img src="https://images.unsplash.com/photo-1633415565464-e1d69c3fd906?w=500&q=80&auto=format&fit=crop" alt="Tayyor vizitkalar" loading="lazy">
+        <img src="https://images.unsplash.com/photo-1436918898788-ebce04d38e46?w=500&q=80&auto=format&fit=crop" alt="Bosma jarayoni" loading="lazy">
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <span>West Print &copy; <span id="year"></span> — <span data-i18n="footer_rights">Barcha huquqlar himoyalangan.</span></span>
+  </div>
+</footer>
+
+<script src="js/icons.js"></script>
+<script src="js/catalog.js"></script>
+<script src="js/i18n.js"></script>
+<script src="js/theme.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
