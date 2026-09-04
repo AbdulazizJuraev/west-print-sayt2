@@ -1,0 +1,14 @@
+{
+  "name": "west-print-sayt",
+  "version": "1.0.0",
+  "description": "West Print - poligrafiya xizmatlari uchun buyurtma sayti",
+  "main": "server/index.js",
+  "scripts": {
+    "start": "node server/index.js",
+    "dev": "node server/index.js"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2"
+  }
+}
