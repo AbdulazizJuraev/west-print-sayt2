@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>West Print — Poligrafiya xizmatlari</title>
+<script>
+(function () {
+  try {
+    var saved = localStorage.getItem('wp_theme');
+    if (saved) document.documentElement.setAttribute('data-theme', saved);
+  } catch (e) {}
+})();
+</script>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="index">
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="index.html" class="brand">
+      <img src="images/logo.png" alt="West Print" class="brand-logo">
+    </a>
+  </div>
+</header>
+
+<nav class="bottom-nav" id="bottomNav">
+  <a href="index.html" class="bottom-nav-item" data-page="index">
+    <span data-icon="home"></span>
+    <span data-i18n="nav_home">Bosh sahifa</span>
+  </a>
+  <a href="services.html" class="bottom-nav-item" data-page="services">
+    <span data-icon="printer"></span>
+    <span data-i18n="nav_services">Xizmatlar</span>
+  </a>
+  <a href="gallery.html" class="bottom-nav-item" data-page="gallery">
+    <span data-icon="image"></span>
+    <span data-i18n="nav_gallery">Ishlarimiz</span>
+  </a>
+  <a href="contact.html" class="bottom-nav-item" data-page="contact">
+    <span data-icon="phone"></span>
+    <span data-i18n="nav_contact">Aloqa</span>
+  </a>
+  <a href="settings.html" class="bottom-nav-item" data-page="settings">
+    <span data-icon="settings"></span>
+    <span data-i18n="nav_settings">Sozlamalar</span>
+  </a>
+</nav>
+
+<main>
+
+  <section class="poster-banner">
+    <div class="poster-track" id="posterTrack">
+      <div class="poster-slide"><img src="images/posterlar/slide-1.jpg" alt=""></div>
+      <div class="poster-slide"><img src="images/posterlar/slide-2.jpg" alt=""></div>
+      <div class="poster-slide"><img src="images/posterlar/slide-3.jpg" alt=""></div>
+      <div class="poster-slide"><img src="images/posterlar/slide-4.jpg" alt=""></div>
+      <div class="poster-slide"><img src="images/posterlar/slide-5.jpg" alt=""></div>
+    </div>
+    <div class="poster-dots" id="posterDots"></div>
+  </section>
+
+  <section class="hero" id="top">
+    <div class="hero-bg">
+      <video autoplay muted loop playsinline poster="https://images.unsplash.com/photo-1758183961426-88d64eb5f787?w=1600&q=80&auto=format&fit=crop">
+        <source src="https://videos.pexels.com/video-files/29906414/12837347_1280_720_24fps.mp4" type="video/mp4">
+      </video>
+    </div>
+    <div class="hero-overlay"></div>
+    <div class="container hero-inner">
+      <span class="hero-badge" data-i18n="hero_badge">Zamonaviy poligrafiya xizmati</span>
+      <h1 data-i18n="hero_title">Poligrafiya xizmatlari — tez, sifatli, qulay narxda</h1>
+      <p data-i18n="hero_subtitle">Vizitka, buklet, flayer, banner va reklama taxtalarini buyurtma qiling.</p>
+    </div>
+  </section>
+
+  <section class="why-us" id="why-us">
+    <div class="container why-grid">
+      <div class="why-card">
+        <span class="why-icon" data-icon="lightning"></span>
+        <h3 data-i18n="why_fast_title">Tezkor bajarish</h3>
+        <p data-i18n="why_fast_text">Buyurtmalar qisqa muddatda tayyor bo'ladi</p>
+      </div>
+      <div class="why-card">
+        <span class="why-icon" data-icon="target"></span>
+        <h3 data-i18n="why_quality_title">Yuqori sifat</h3>
+        <p data-i18n="why_quality_text">Zamonaviy uskunalar va sifatli materiallar</p>
+      </div>
+      <div class="why-card">
+        <span class="why-icon" data-icon="shieldCheck"></span>
+        <h3 data-i18n="why_price_title">Halol shartlar</h3>
+        <p data-i18n="why_price_text">Narx va muddat oldindan aniq kelishiladi, yashirin to'lovlarsiz</p>
+      </div>
+      <div class="why-card">
+        <span class="why-icon" data-icon="palette"></span>
+        <h3 data-i18n="why_design_title">Professional dizayn</h3>
+        <p data-i18n="why_design_text">Kerak bo'lsa dizayn bo'yicha ham yordam beramiz</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="how-it-works" id="how">
+    <div class="container">
+      <h2 data-i18n="how_title">Bu qanday ishlaydi</h2>
+      <p class="section-subtitle" data-i18n="how_subtitle">Murojaatdan tayyor mahsulotgacha — 4 bosqich</p>
+      <div class="steps">
+        <div class="step">
+          <span class="step-num">1</span>
+          <h3 data-i18n="how_step1_title">Murojaat</h3>
+          <p data-i18n="how_step1_text">Telefon yoki Telegram orqali bog'laning, kerakli mahsulotni ayting</p>
+        </div>
+        <div class="step">
+          <span class="step-num">2</span>
+          <h3 data-i18n="how_step2_title">Kelishuv</h3>
+          <p data-i18n="how_step2_text">Narx va muddatni birga kelishamiz</p>
+        </div>
+        <div class="step">
+          <span class="step-num">3</span>
+          <h3 data-i18n="how_step3_title">Bosib chiqarish</h3>
+          <p data-i18n="how_step3_text">Buyurtmangiz ishlab chiqarishga yuboriladi</p>
+        </div>
+        <div class="step">
+          <span class="step-num">4</span>
+          <h3 data-i18n="how_step4_title">Yetkazib berish</h3>
+          <p data-i18n="how_step4_text">Tayyor mahsulotni oling yoki yetkazib beramiz</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <span>West Print &copy; <span id="year"></span> — <span data-i18n="footer_rights">Barcha huquqlar himoyalangan.</span></span>
+  </div>
+</footer>
+
+<script src="js/icons.js"></script>
+<script src="js/catalog.js"></script>
+<script src="js/i18n.js"></script>
+<script src="js/theme.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
