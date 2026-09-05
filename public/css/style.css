@@ -589,3 +589,31 @@ section h2 { font-size: 2rem; text-align: center; }
   .service-badge { font-size: 0.62rem; padding: 3px 8px; }
   .service-card h3 { font-size: 0.88rem; margin: 22px 10px 16px; }
 }
+
+/* Very narrow screens (250px+): the mobile pill's icon+label items don't
+   fit 5 across, so drop back to icon-only circles (same sr-only label
+   technique as the desktop nav) and shrink the pill accordingly. */
+@media (max-width: 360px) {
+  .bottom-nav { gap: 2px; padding: 5px; }
+  .bottom-nav-item {
+    flex-direction: row;
+    width: 34px;
+    height: 34px;
+    padding: 0;
+  }
+  .bottom-nav-item span:last-child {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+  .bottom-nav-item svg { width: 16px; height: 16px; }
+
+  .why-grid { grid-template-columns: 1fr; }
+  .services-grid { grid-template-columns: 1fr; }
+}
