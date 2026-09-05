@@ -90,10 +90,10 @@ a { color: inherit; text-decoration: none; }
   width: auto;
   display: block;
 }
-:root[data-theme="dark"] .brand {
-  background: #fff;
-  border-radius: 8px;
-  padding: 5px 10px;
+/* Logo PNG has navy/dark wordmark colors baked in — invert it to solid
+   white on dark theme instead of boxing it in a white pill. */
+:root[data-theme="dark"] .brand-logo {
+  filter: brightness(0) invert(1);
 }
 
 /* Buttons */
