@@ -582,6 +582,11 @@ section h2 { font-size: 2rem; text-align: center; }
   .why-card h3 { font-size: 0.9rem; }
   .why-card p { font-size: 0.78rem; }
 
+  .steps { grid-template-columns: repeat(2, 1fr); gap: 20px 12px; }
+  .step-num { width: 36px; height: 36px; font-size: 0.95rem; margin-bottom: 10px; }
+  .step h3 { font-size: 0.9rem; }
+  .step p { font-size: 0.78rem; }
+
   .services-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
   .service-image { height: 110px; }
   .service-icon { width: 32px; height: 32px; bottom: -14px; right: 10px; }
@@ -616,4 +621,5 @@ section h2 { font-size: 2rem; text-align: center; }
 
   .why-grid { grid-template-columns: 1fr; }
   .services-grid { grid-template-columns: 1fr; }
+  .steps { grid-template-columns: 1fr; }
 }
