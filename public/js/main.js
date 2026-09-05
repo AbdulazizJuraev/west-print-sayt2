@@ -135,6 +135,24 @@
     });
   }
 
+  function initSettingsDropdown() {
+    const toggle = document.getElementById('settingsToggle');
+    const dropdown = document.getElementById('settingsDropdown');
+    if (!toggle || !dropdown) return;
+
+    toggle.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isOpen = dropdown.classList.toggle('open');
+      toggle.classList.toggle('open', isOpen);
+    });
+
+    document.addEventListener('click', (e) => {
+      if (dropdown.contains(e.target) || e.target === toggle) return;
+      dropdown.classList.remove('open');
+      toggle.classList.remove('open');
+    });
+  }
+
   function init() {
     document.getElementById('year').textContent = new Date().getFullYear();
     I18n.applyStaticText();
@@ -145,6 +163,7 @@
     updateNavTooltips();
     markActiveNav();
     initPosterCarousel();
+    initSettingsDropdown();
 
     document.querySelectorAll('[data-lang-btn]').forEach((btn) => {
       btn.addEventListener('click', () => I18n.setLanguage(btn.getAttribute('data-lang-btn')));

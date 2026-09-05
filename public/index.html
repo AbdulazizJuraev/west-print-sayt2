@@ -18,7 +18,6 @@
 <link rel="prefetch" href="services.html">
 <link rel="prefetch" href="gallery.html">
 <link rel="prefetch" href="contact.html">
-<link rel="prefetch" href="settings.html">
 </head>
 <body data-page="index">
 
@@ -62,6 +61,24 @@
     <a href="index.html" class="brand">
       <img src="images/logo.png" alt="West Print" class="brand-logo">
     </a>
+    <div class="header-settings">
+      <button type="button" class="settings-toggle" id="settingsToggle" aria-label="Sozlamalar" title="Sozlamalar">
+        <span data-icon="settings"></span>
+      </button>
+      <div class="settings-dropdown" id="settingsDropdown">
+        <div class="settings-row">
+          <span data-i18n="settings_theme">Mavzu</span>
+          <button type="button" class="theme-toggle" id="themeToggle" aria-label="Mavzuni almashtirish" title="Mavzuni almashtirish"></button>
+        </div>
+        <div class="settings-row">
+          <span data-i18n="settings_language">Til</span>
+          <div class="lang-switch" id="langSwitch">
+            <button type="button" data-lang-btn="uz">UZ</button>
+            <button type="button" data-lang-btn="ru">RU</button>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </header>
 
@@ -81,10 +98,6 @@
   <a href="contact.html" class="bottom-nav-item" data-page="contact">
     <span data-icon="phone"></span>
     <span data-i18n="nav_contact">Aloqa</span>
-  </a>
-  <a href="settings.html" class="bottom-nav-item" data-page="settings">
-    <span data-icon="settings"></span>
-    <span data-i18n="nav_settings">Sozlamalar</span>
   </a>
 </nav>
 

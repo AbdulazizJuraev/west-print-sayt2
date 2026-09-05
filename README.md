@@ -5,7 +5,7 @@ xizmatlarini taqdim etuvchi ko'p sahifali (multi-page) sayt. Narx
 kalkulyatori va onlayn buyurtma formasi yo'q — mijozlar telefon yoki
 Telegram orqali to'g'ridan-to'g'ri bog'lanadi ("Aloqa" sahifasi). Sayt
 oq/qora (light/dark) mavzularini va o'zbek/rus tillarini qo'llab-quvvatlaydi
-("Sozlamalar" sahifasi orqali).
+(header'dagi sozlamalar ikonkasi ostidagi dropdown orqali).
 
 ## Talablar
 
@@ -31,11 +31,13 @@ buyurtma yoki narx hisoblash bilan bog'liq API yo'llari yo'q.
 | Xizmatlar | `public/services.html` | Mahsulotlar ro'yxati (rasm + nom + yorliq) |
 | Ishlarimiz | `public/gallery.html` | Namunalar galereyasi |
 | Aloqa | `public/contact.html` | Kontakt ma'lumotlari + Savol-javob (FAQ) |
-| Sozlamalar | `public/settings.html` | Mavzu (oq/qora) va til (UZ/RU) almashtirish |
 
-Har bir sahifada bir xil header (logotip) va navigatsiya panyeli bor —
-kompyuterda headerning o'ng tomonida ixcham ikonkalar qatorida, mobil
-qurilmada ekranning pastida suzuvchi panel sifatida.
+Har bir sahifada bir xil header (logotip + o'ng tarafda sozlamalar
+ikonkasi) va navigatsiya panyeli bor — kompyuterda headerning o'ng
+tomonida ixcham ikonkalar qatorida, mobil qurilmada ekranning pastida
+suzuvchi panel sifatida. Sozlamalar ikonkasini bosish orqali mavzu
+(oq/qora) va til (UZ/RU) tanlash uchun dropdown ochiladi (alohida
+sahifa emas).
 
 ## Kontent va rasmlarni o'zgartirish
 
@@ -53,10 +55,11 @@ rasmlarini qo'yish uchun shu `<img src="...">` manzillarini almashtiring.
 
 ## Mavzu (Dark/Light)
 
-"Sozlamalar" sahifasidagi tugma orqali foydalanuvchi qora yoki oq mavzuni
-tanlaydi, tanlovi brauzerda saqlanib qoladi va barcha sahifalarda amal
-qiladi. Ranglar `public/css/style.css` faylidagi `:root` (oq mavzu) va
-`:root[data-theme="dark"]` (qora mavzu) bloklarida.
+Header'dagi sozlamalar ikonkasini bosganda ochiladigan dropdown orqali
+foydalanuvchi qora yoki oq mavzuni tanlaydi, tanlovi brauzerda saqlanib
+qoladi va barcha sahifalarda amal qiladi. Ranglar `public/css/style.css`
+faylidagi `:root` (oq mavzu) va `:root[data-theme="dark"]` (qora mavzu)
+bloklarida.
 
 ## Loyiha tuzilishi
 
@@ -66,7 +69,6 @@ public/index.html        — Bosh sahifa
 public/services.html     — Xizmatlar sahifasi
 public/gallery.html      — Ishlarimiz sahifasi
 public/contact.html      — Aloqa + FAQ sahifasi
-public/settings.html     — Sozlamalar sahifasi
 public/css/style.css     — dizayn
 public/js/icons.js       — SVG ikonkalar to'plami
 public/js/catalog.js     — mahsulotlar ro'yxati
