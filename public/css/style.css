@@ -94,7 +94,7 @@ html.splash-active, html.splash-active body { overflow: hidden; }
   inset: 0;
   width: 100%;
   height: 100%;
-  animation: splashSpin 8s linear infinite;
+  animation: splashSpin 10s linear infinite;
   transform-origin: 50% 50%;
 }
 .orbit-text {
