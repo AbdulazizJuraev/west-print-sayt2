@@ -22,6 +22,41 @@
 </head>
 <body data-page="index">
 
+<div id="splashScreen" class="splash-screen">
+  <div class="splash-stage">
+    <svg class="orbit-svg" viewBox="0 0 240 240" width="240" height="240" aria-hidden="true">
+      <defs>
+        <path id="orbitPath" d="M120,120 m-95,0 a95,95 0 1,1 190,0 a95,95 0 1,1 -190,0" fill="none"></path>
+      </defs>
+      <text class="orbit-text">
+        <textPath href="#orbitPath" startOffset="0%">POLIGRAFIYA &#8226; REKLAMA AGENTLIGI &#8226; </textPath>
+      </text>
+    </svg>
+    <div class="splash-wordmark" aria-hidden="true">
+      <span class="sw" style="--i:0">w</span><span class="sw" style="--i:1">e</span><span class="sw" style="--i:2">s</span><span class="sw" style="--i:3">t</span><span class="sw sw-star" style="--i:4">*</span><span class="sw" style="--i:5">p</span><span class="sw" style="--i:6">r</span><span class="sw" style="--i:7">i</span><span class="sw" style="--i:8">n</span><span class="sw" style="--i:9">t</span>
+    </div>
+  </div>
+</div>
+<script>
+(function () {
+  var el = document.getElementById('splashScreen');
+  try {
+    if (sessionStorage.getItem('wp_splash_shown')) {
+      if (el) el.remove();
+      return;
+    }
+    sessionStorage.setItem('wp_splash_shown', '1');
+  } catch (e) {}
+  document.documentElement.classList.add('splash-active');
+  setTimeout(function () {
+    if (!el) return;
+    el.classList.add('splash-hide');
+    document.documentElement.classList.remove('splash-active');
+    setTimeout(function () { el.remove(); }, 350);
+  }, 1650);
+})();
+</script>
+
 <header class="site-header">
   <div class="container header-inner">
     <a href="index.html" class="brand">
