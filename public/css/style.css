@@ -500,8 +500,8 @@ a.contact-card:hover, a.contact-card:focus-visible {
   align-items: center;
   justify-content: center;
   gap: 7px;
-  width: 40px;
-  height: 40px;
+  width: 46px;
+  height: 46px;
   padding: 0;
   border-radius: 50%;
   color: var(--color-text);
@@ -710,8 +710,8 @@ a.contact-card:hover, a.contact-card:focus-visible {
   .bottom-nav { gap: 18px; padding: 16px; }
   .bottom-nav-item {
     flex-direction: row;
-    width: 34px;
-    height: 34px;
+    width: 40px;
+    height: 40px;
     padding: 0;
   }
   .bottom-nav-item span:last-child {
