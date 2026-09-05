@@ -699,7 +699,7 @@ a.contact-card:hover, a.contact-card:focus-visible {
    fit 5 across, so drop back to icon-only circles (same sr-only label
    technique as the desktop nav) and shrink the pill accordingly. */
 @media (max-width: 380px) {
-  .bottom-nav { gap: 2px; padding: 5px; }
+  .bottom-nav { gap: 18px; padding: 16px; }
   .bottom-nav-item {
     flex-direction: row;
     width: 34px;
