@@ -574,4 +574,18 @@ section h2 { font-size: 2rem; text-align: center; }
   .site-footer { padding-bottom: 90px; }
 
   .settings-card { padding: 4px 18px; }
+
+  .why-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .why-card { padding: 18px 10px; }
+  .why-icon { width: 44px; height: 44px; margin-bottom: 10px; }
+  .why-icon svg { width: 20px; height: 20px; }
+  .why-card h3 { font-size: 0.9rem; }
+  .why-card p { font-size: 0.78rem; }
+
+  .services-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .service-image { height: 110px; }
+  .service-icon { width: 32px; height: 32px; bottom: -14px; right: 10px; }
+  .service-icon svg { width: 15px; height: 15px; }
+  .service-badge { font-size: 0.62rem; padding: 3px 8px; }
+  .service-card h3 { font-size: 0.88rem; margin: 22px 10px 16px; }
 }
