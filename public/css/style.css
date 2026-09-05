@@ -401,12 +401,6 @@ section h2 { font-size: 2rem; text-align: center; }
   from { opacity: 0; transform: translate(-50%, 14px); }
   to { opacity: 1; transform: translate(-50%, 0); }
 }
-@keyframes iconPop {
-  0% { transform: scale(1); }
-  45% { transform: scale(1.14); }
-  100% { transform: scale(1); }
-}
-
 /* "Liquid glass" pill — translucent, blurred, with a soft inner-top
    highlight to read as a curved glass surface rather than a flat tint. */
 .bottom-nav {
@@ -465,9 +459,7 @@ section h2 { font-size: 2rem; text-align: center; }
 .bottom-nav-item span[data-icon="phone"] svg { width: 19px; height: 19px; }
 .bottom-nav-item:hover { color: var(--color-primary); transform: translateY(-1px); }
 .bottom-nav-item:hover svg { transform: scale(1.06); }
-.bottom-nav-item:active { transform: scale(0.94); }
 .bottom-nav-item.active { background: var(--color-tint); color: var(--color-primary); }
-.bottom-nav-item.active svg { animation: iconPop 0.35s ease-out; }
 
 /* Settings page */
 .settings-card {
