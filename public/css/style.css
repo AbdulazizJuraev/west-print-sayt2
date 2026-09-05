@@ -148,57 +148,10 @@ html.splash-active, html.splash-active body { overflow: hidden; }
   align-items: center;
   justify-content: center;
   height: 68px;
-  position: relative;
 }
 .brand {
   display: flex;
   align-items: center;
-}
-.header-settings {
-  position: absolute;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
-}
-.settings-toggle {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 38px;
-  height: 38px;
-  border-radius: 50%;
-  border: 1px solid var(--color-border);
-  background: none;
-  color: var(--color-text);
-  cursor: pointer;
-  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
-}
-.settings-toggle svg { width: 18px; height: 18px; }
-.settings-toggle:hover,
-.settings-toggle.open {
-  color: var(--color-primary);
-  border-color: var(--color-primary);
-  background: var(--color-tint);
-}
-.settings-dropdown {
-  position: absolute;
-  top: calc(100% + 12px);
-  right: 0;
-  min-width: 220px;
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
-  padding: 4px 20px;
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(-8px);
-  transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s ease;
-}
-.settings-dropdown.open {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0);
 }
 .brand-logo {
   height: 38px;
@@ -582,6 +535,33 @@ a.contact-card:hover, a.contact-card:focus-visible {
 .bottom-nav-item:hover svg { transform: scale(1.06); }
 .bottom-nav-item.active { background: var(--color-tint); color: var(--color-primary); }
 
+/* Settings toggle lives inside the nav pill itself (same slot the old
+   "Sozlamalar" page link used) so it always shares the pill's position —
+   desktop top-right or the mobile floating dock — instead of competing
+   with it for space. */
+.nav-settings { position: relative; display: flex; }
+.settings-toggle.open { background: var(--color-tint); color: var(--color-primary); }
+.settings-dropdown {
+  position: absolute;
+  top: calc(100% + 12px);
+  right: 0;
+  min-width: 220px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 4px 20px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-8px);
+  transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s ease;
+}
+.settings-dropdown.open {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
 .settings-row {
   display: flex;
   align-items: center;
@@ -675,6 +655,15 @@ a.contact-card:hover, a.contact-card:focus-visible {
   .bottom-nav-item span[data-icon="phone"] svg { width: 19px; height: 19px; }
   .bottom-nav-item:hover { color: #fff; }
   .bottom-nav-item.active { background: var(--color-primary); color: #fff; }
+  .settings-toggle.open { background: var(--color-primary); color: #fff; }
+
+  /* Nav pill floats at the bottom of the screen here, so the dropdown
+     has to open upward instead of downward off-screen. */
+  .settings-dropdown {
+    top: auto;
+    bottom: calc(100% + 14px);
+    right: -8px;
+  }
 
   .site-footer { padding-bottom: 90px; }
 
