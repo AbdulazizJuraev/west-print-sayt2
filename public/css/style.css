@@ -194,7 +194,7 @@ html.splash-active, html.splash-active body { overflow: hidden; }
 .hero-slide {
   grid-area: 1 / 1;
   position: relative;
-  padding: 80px 0;
+  padding: 90px 0;
   opacity: 0;
   visibility: hidden;
   transition: opacity 1s ease;
@@ -209,7 +209,17 @@ html.splash-active, html.splash-active body { overflow: hidden; }
   z-index: 1;
   background: linear-gradient(135deg, rgba(10, 15, 30, 0.88), rgba(29, 78, 216, 0.72));
 }
-.hero-inner { position: relative; z-index: 2; max-width: 460px; }
+/* Text and visual sit side by side instead of overlapping, so nothing
+   ever has to fight for legibility against the product mockup. */
+.hero-flex {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+}
+.hero-inner { flex: 1 1 420px; max-width: 460px; }
 .hero-badge {
   display: inline-block;
   background: rgba(255, 255, 255, 0.14);
@@ -223,16 +233,13 @@ html.splash-active, html.splash-active body { overflow: hidden; }
 .hero h1 { font-size: 2.4rem; color: #fff; }
 .hero p { color: rgba(255,255,255,0.88); font-size: 1.1rem; margin-bottom: 0; }
 @keyframes heroVisualIn {
-  from { opacity: 0; transform: translate(70px, 50px) scale(0.88); }
-  to { opacity: 1; transform: translate(0, 0) scale(1); }
+  from { opacity: 0; transform: translateX(40px) scale(0.92); }
+  to { opacity: 1; transform: translateX(0) scale(1); }
 }
 .hero-visual {
-  position: absolute;
-  right: -30px;
-  bottom: -10px;
-  z-index: 1;
-  width: 68%;
-  max-width: 811px;
+  flex: 0 0 auto;
+  width: 38%;
+  max-width: 420px;
   pointer-events: none;
   filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.4));
   opacity: 0;
@@ -664,10 +671,11 @@ a.contact-card:hover, a.contact-card:focus-visible {
   .splash-stage { width: 190px; height: 190px; }
   .splash-wordmark { font-size: 1.6rem; }
   .orbit-text { font-size: 10px; letter-spacing: 2px; }
-  .hero-slide { padding: 60px 0 150px; }
-  .hero-inner { max-width: 50%; }
+  .hero-slide { padding: 60px 0; }
+  .hero-flex { flex-direction: column; gap: 28px; }
+  .hero-inner { max-width: 100%; }
   .hero h1 { font-size: 1.8rem; }
-  .hero-visual { width: 58%; max-width: 235px; right: -6px; bottom: -10px; }
+  .hero-visual { width: 60%; max-width: 240px; align-self: center; }
   section { padding: 52px 0; }
 
   /* Bottom nav becomes a floating liquid-glass pill fixed to the viewport
