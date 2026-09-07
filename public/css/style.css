@@ -656,7 +656,7 @@ a.contact-card:hover, a.contact-card:focus-visible {
   .splash-wordmark { font-size: 1.6rem; }
   .orbit-text { font-size: 10px; letter-spacing: 2px; }
   .hero-slide { padding: 60px 0; }
-  .hero-inner { max-width: 58%; }
+  .hero-inner { max-width: 100%; }
   .hero h1 { font-size: 1.8rem; }
   .hero-visual { width: 52%; max-width: 215px; right: -6px; bottom: -14px; opacity: 0.85; }
   section { padding: 52px 0; }
