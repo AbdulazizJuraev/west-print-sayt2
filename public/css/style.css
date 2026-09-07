@@ -188,6 +188,7 @@ html.splash-active, html.splash-active body { overflow: hidden; }
   display: grid;
   color: #fff;
   overflow: hidden;
+  padding: 0;
 }
 .hero-slide {
   grid-area: 1 / 1;
