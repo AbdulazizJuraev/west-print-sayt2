@@ -137,7 +137,7 @@ html.splash-active, html.splash-active body { overflow: hidden; }
   position: sticky;
   top: 0;
   z-index: 50;
-  background: #1d4ed8;
+  background: #0f172a;
   backdrop-filter: blur(8px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.14);
   transition: background 0.2s, border-color 0.2s;
