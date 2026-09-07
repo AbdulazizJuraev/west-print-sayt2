@@ -216,7 +216,7 @@ html.splash-active, html.splash-active body { overflow: hidden; }
 .hero-caption {
   align-self: center;
   margin: 0;
-  font-size: 2.4rem;
+  font-size: 3.1rem;
   line-height: 1.15;
   color: #fff;
   text-align: left;
@@ -226,8 +226,8 @@ html.splash-active, html.splash-active body { overflow: hidden; }
   to { opacity: 1; transform: translateX(0) scale(1); }
 }
 .hero-visual {
-  width: 50%;
-  max-width: 550px;
+  width: 70%;
+  max-width: 770px;
   pointer-events: none;
   filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.4));
   opacity: 0;
@@ -660,8 +660,9 @@ a.contact-card:hover, a.contact-card:focus-visible {
   .splash-wordmark { font-size: 1.6rem; }
   .orbit-text { font-size: 10px; letter-spacing: 2px; }
   .hero-slide { padding: 60px 0; }
-  .hero-caption { font-size: 1.5rem; }
-  .hero-visual { width: 50%; max-width: 300px; }
+  .hero-flex { flex-direction: column; align-items: stretch; gap: 18px; }
+  .hero-caption { align-self: flex-start; font-size: 1.95rem; }
+  .hero-visual { align-self: flex-end; width: 70%; max-width: 420px; }
   section { padding: 52px 0; }
 
   /* Bottom nav becomes a floating liquid-glass pill fixed to the viewport
