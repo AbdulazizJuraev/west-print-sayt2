@@ -137,7 +137,7 @@ html.splash-active, html.splash-active body { overflow: hidden; }
   position: sticky;
   top: 0;
   z-index: 50;
-  background: linear-gradient(135deg, #1d4ed8, #1e3a8a);
+  background: #1d4ed8;
   backdrop-filter: blur(8px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.14);
   transition: background 0.2s, border-color 0.2s;
@@ -147,6 +147,18 @@ html.splash-active, html.splash-active body { overflow: hidden; }
   align-items: center;
   justify-content: center;
   height: 68px;
+}
+.brand {
+  display: flex;
+  align-items: center;
+}
+/* Logo PNG has navy/dark wordmark colors baked in — invert it to solid
+   white since the header is always blue. */
+.brand-logo {
+  height: 38px;
+  width: auto;
+  display: block;
+  filter: brightness(0) invert(1);
 }
 
 /* Buttons */
@@ -634,6 +646,7 @@ a.contact-card:hover, a.contact-card:focus-visible {
 /* Responsive */
 @media (max-width: 820px) {
   .poster-banner { display: block; }
+  .brand-logo { height: 32px; }
   .splash-stage { width: 190px; height: 190px; }
   .splash-wordmark { font-size: 1.6rem; }
   .orbit-text { font-size: 10px; letter-spacing: 2px; }
