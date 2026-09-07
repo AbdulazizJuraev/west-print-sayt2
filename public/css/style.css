@@ -660,9 +660,9 @@ a.contact-card:hover, a.contact-card:focus-visible {
   .splash-wordmark { font-size: 1.6rem; }
   .orbit-text { font-size: 10px; letter-spacing: 2px; }
   .hero-slide { padding: 60px 0; }
-  .hero-flex { flex-direction: column; align-items: stretch; gap: 18px; }
-  .hero-caption { align-self: flex-start; font-size: 1.95rem; }
-  .hero-visual { align-self: flex-end; width: 70%; max-width: 420px; }
+  .hero-flex { gap: 14px; }
+  .hero-caption { font-size: 1.4rem; }
+  .hero-visual { width: 58%; max-width: 280px; }
   section { padding: 52px 0; }
 
   /* Bottom nav becomes a floating liquid-glass pill fixed to the viewport
