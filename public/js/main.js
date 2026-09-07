@@ -135,6 +135,37 @@
     });
   }
 
+  function initHeroSlider() {
+    const hero = document.querySelector('.hero');
+    const dotsWrap = document.getElementById('heroDots');
+    if (!hero || !dotsWrap) return;
+    const slides = hero.querySelectorAll('.hero-slide');
+    if (slides.length < 2) return;
+
+    dotsWrap.innerHTML = Array.from(slides).map((_, i) =>
+      `<button type="button" class="hero-dot${i === 0 ? ' active' : ''}" aria-label="${i + 1}"></button>`
+    ).join('');
+    const dots = dotsWrap.querySelectorAll('.hero-dot');
+
+    let current = 0;
+
+    function goTo(index) {
+      current = (index + slides.length) % slides.length;
+      slides.forEach((slide, i) => {
+        slide.classList.toggle('active', i === current);
+        const video = slide.querySelector('video');
+        if (!video) return;
+        if (i === current) video.play().catch(() => {});
+        else video.pause();
+      });
+      dots.forEach((d, i) => d.classList.toggle('active', i === current));
+    }
+
+    dots.forEach((dot, i) => dot.addEventListener('click', () => goTo(i)));
+
+    setInterval(() => goTo(current + 1), 6000);
+  }
+
   function initSettingsDropdown() {
     const toggle = document.getElementById('settingsToggle');
     const dropdown = document.getElementById('settingsDropdown');
@@ -163,6 +194,7 @@
     updateNavTooltips();
     markActiveNav();
     initPosterCarousel();
+    initHeroSlider();
     initSettingsDropdown();
 
     document.querySelectorAll('[data-lang-btn]').forEach((btn) => {
