@@ -131,6 +131,7 @@ html.splash-active, html.splash-active body { overflow: hidden; }
 @media (prefers-reduced-motion: reduce) {
   .orbit-svg { animation: none; }
   .splash-wordmark .sw { animation: none; opacity: 1; transform: none; }
+  .hero-slide.active .hero-visual { animation: none; opacity: 1; transform: none; }
 }
 
 /* Header */
@@ -221,15 +222,23 @@ html.splash-active, html.splash-active body { overflow: hidden; }
 }
 .hero h1 { font-size: 2.4rem; color: #fff; }
 .hero p { color: rgba(255,255,255,0.88); font-size: 1.1rem; margin-bottom: 0; }
+@keyframes heroVisualIn {
+  from { opacity: 0; transform: translate(70px, 50px) scale(0.88); }
+  to { opacity: 1; transform: translate(0, 0) scale(1); }
+}
 .hero-visual {
   position: absolute;
   right: -30px;
   bottom: -10px;
-  z-index: 2;
-  width: 52%;
-  max-width: 624px;
+  z-index: 1;
+  width: 68%;
+  max-width: 811px;
   pointer-events: none;
   filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.4));
+  opacity: 0;
+}
+.hero-slide.active .hero-visual {
+  animation: heroVisualIn 2s ease forwards;
 }
 .hero-dots {
   grid-area: 1 / 1;
@@ -658,7 +667,7 @@ a.contact-card:hover, a.contact-card:focus-visible {
   .hero-slide { padding: 60px 0; }
   .hero-inner { max-width: 100%; }
   .hero h1 { font-size: 1.8rem; }
-  .hero-visual { width: 52%; max-width: 215px; right: -6px; bottom: -14px; opacity: 0.85; }
+  .hero-visual { width: 68%; max-width: 280px; right: -6px; bottom: -14px; }
   section { padding: 52px 0; }
 
   /* Bottom nav becomes a floating liquid-glass pill fixed to the viewport
