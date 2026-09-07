@@ -220,6 +220,7 @@ html.splash-active, html.splash-active body { overflow: hidden; }
   line-height: 1.15;
   color: #fff;
   text-align: left;
+  text-transform: uppercase;
 }
 @keyframes heroVisualIn {
   from { opacity: 0; transform: translateX(40px) scale(0.92); }
