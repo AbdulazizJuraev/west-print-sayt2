@@ -238,8 +238,8 @@ html.splash-active, html.splash-active body { overflow: hidden; }
 }
 .hero-visual {
   flex: 0 0 auto;
-  width: 38%;
-  max-width: 420px;
+  width: 40%;
+  max-width: 440px;
   pointer-events: none;
   filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.4));
   opacity: 0;
@@ -675,7 +675,7 @@ a.contact-card:hover, a.contact-card:focus-visible {
   .hero-flex { flex-direction: column; gap: 28px; }
   .hero-inner { max-width: 100%; }
   .hero h1 { font-size: 1.8rem; }
-  .hero-visual { width: 60%; max-width: 240px; align-self: center; }
+  .hero-visual { width: 40%; max-width: 240px; align-self: center; }
   section { padding: 52px 0; }
 
   /* Bottom nav becomes a floating liquid-glass pill fixed to the viewport
