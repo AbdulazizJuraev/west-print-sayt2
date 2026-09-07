@@ -210,7 +210,16 @@ html.splash-active, html.splash-active body { overflow: hidden; }
   z-index: 2;
   display: flex;
   align-items: flex-end;
-  justify-content: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+}
+.hero-caption {
+  align-self: center;
+  margin: 0;
+  font-size: 2.4rem;
+  line-height: 1.15;
+  color: #fff;
+  text-align: left;
 }
 @keyframes heroVisualIn {
   from { opacity: 0; transform: translateX(40px) scale(0.92); }
@@ -651,6 +660,7 @@ a.contact-card:hover, a.contact-card:focus-visible {
   .splash-wordmark { font-size: 1.6rem; }
   .orbit-text { font-size: 10px; letter-spacing: 2px; }
   .hero-slide { padding: 60px 0; }
+  .hero-caption { font-size: 1.5rem; }
   .hero-visual { width: 50%; max-width: 300px; }
   section { padding: 52px 0; }
 
