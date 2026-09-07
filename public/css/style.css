@@ -9,7 +9,6 @@
   --color-text: #1e293b;
   --color-text-muted: #64748b;
   --color-border: #e2e8f0;
-  --color-header-bg: rgba(255, 255, 255, 0.92);
   --glass-bg: rgba(255, 255, 255, 0.55);
   --glass-border: rgba(255, 255, 255, 0.7);
   --glass-highlight: rgba(255, 255, 255, 0.9);
@@ -28,7 +27,6 @@
   --color-text: #e2e8f0;
   --color-text-muted: #94a3b8;
   --color-border: #334155;
-  --color-header-bg: rgba(15, 23, 42, 0.85);
   --glass-bg: rgba(30, 41, 59, 0.45);
   --glass-border: rgba(255, 255, 255, 0.14);
   --glass-highlight: rgba(255, 255, 255, 0.18);
@@ -139,9 +137,9 @@ html.splash-active, html.splash-active body { overflow: hidden; }
   position: sticky;
   top: 0;
   z-index: 50;
-  background: var(--color-header-bg);
+  background: linear-gradient(135deg, #1d4ed8, #1e3a8a);
   backdrop-filter: blur(8px);
-  border-bottom: 1px solid var(--color-border);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.14);
   transition: background 0.2s, border-color 0.2s;
 }
 .header-inner {
@@ -154,14 +152,12 @@ html.splash-active, html.splash-active body { overflow: hidden; }
   display: flex;
   align-items: center;
 }
+/* Logo PNG has navy/dark wordmark colors baked in — invert it to solid
+   white since the header is always on a blue gradient now. */
 .brand-logo {
   height: 38px;
   width: auto;
   display: block;
-}
-/* Logo PNG has navy/dark wordmark colors baked in — invert it to solid
-   white on dark theme instead of boxing it in a white pill. */
-:root[data-theme="dark"] .brand-logo {
   filter: brightness(0) invert(1);
 }
 
