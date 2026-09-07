@@ -74,7 +74,7 @@ html.splash-active, html.splash-active body { overflow: hidden; }
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--color-primary-dark);
+  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
   opacity: 1;
   transition: opacity 0.35s ease;
 }
