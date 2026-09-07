@@ -74,7 +74,7 @@ html.splash-active, html.splash-active body { overflow: hidden; }
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
+  background: linear-gradient(160deg, #60a5fa 0%, #2563eb 40%, #0b1a4d 100%);
   opacity: 1;
   transition: opacity 0.35s ease;
 }
@@ -147,18 +147,6 @@ html.splash-active, html.splash-active body { overflow: hidden; }
   align-items: center;
   justify-content: center;
   height: 68px;
-}
-.brand {
-  display: flex;
-  align-items: center;
-}
-/* Logo PNG has navy/dark wordmark colors baked in — invert it to solid
-   white since the header is always on a blue gradient now. */
-.brand-logo {
-  height: 38px;
-  width: auto;
-  display: block;
-  filter: brightness(0) invert(1);
 }
 
 /* Buttons */
@@ -646,7 +634,6 @@ a.contact-card:hover, a.contact-card:focus-visible {
 /* Responsive */
 @media (max-width: 820px) {
   .poster-banner { display: block; }
-  .brand-logo { height: 32px; }
   .splash-stage { width: 190px; height: 190px; }
   .splash-wordmark { font-size: 1.6rem; }
   .orbit-text { font-size: 10px; letter-spacing: 2px; }
