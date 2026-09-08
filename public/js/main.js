@@ -137,15 +137,9 @@
 
   function initHeroSlider() {
     const hero = document.querySelector('.hero');
-    const dotsWrap = document.getElementById('heroDots');
-    if (!hero || !dotsWrap) return;
+    if (!hero) return;
     const slides = hero.querySelectorAll('.hero-slide');
     if (slides.length < 2) return;
-
-    dotsWrap.innerHTML = Array.from(slides).map((_, i) =>
-      `<button type="button" class="hero-dot${i === 0 ? ' active' : ''}" aria-label="${i + 1}"></button>`
-    ).join('');
-    const dots = dotsWrap.querySelectorAll('.hero-dot');
 
     let current = 0;
 
@@ -158,10 +152,7 @@
         if (i === current) video.play().catch(() => {});
         else video.pause();
       });
-      dots.forEach((d, i) => d.classList.toggle('active', i === current));
     }
-
-    dots.forEach((dot, i) => dot.addEventListener('click', () => goTo(i)));
 
     setInterval(() => goTo(current + 1), 6000);
   }
