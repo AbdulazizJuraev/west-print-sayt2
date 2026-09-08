@@ -307,14 +307,60 @@ section h2 { font-size: 2rem; text-align: center; }
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 20px;
+  /* Cards expand on click — without this they'd stretch to the tallest
+     card in the row and leave the collapsed ones full of empty space. */
+  align-items: start;
 }
+/* Each card is a button: clicking it opens its detail panel. */
 .why-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
   background: var(--color-surface);
   border: 1px solid var(--color-border);
   border-radius: var(--radius);
   padding: 24px 20px;
   text-align: center;
-  transition: background 0.2s, border-color 0.2s;
+  font-family: inherit;
+  color: var(--color-text);
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s, box-shadow 0.2s;
+}
+.why-card:hover { border-color: var(--color-primary); box-shadow: var(--shadow); }
+.why-toggle {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--color-tint);
+  color: var(--color-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.95rem;
+  font-weight: 700;
+  line-height: 1;
+  transition: transform 0.2s;
+}
+.why-card.open .why-toggle { transform: rotate(45deg); }
+.why-detail {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+.why-card.open .why-detail { max-height: 340px; }
+.why-detail-inner {
+  display: block;
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px solid var(--color-border);
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: var(--color-text-muted);
 }
 .why-icon {
   display: flex;
@@ -328,8 +374,13 @@ section h2 { font-size: 2rem; text-align: center; }
   color: var(--color-primary);
 }
 .why-icon svg { width: 24px; height: 24px; }
-.why-card h3 { font-size: 1.05rem; }
-.why-card p { font-size: 0.9rem; margin: 0; }
+.why-card-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  line-height: 1.25;
+  margin-bottom: 0.5em;
+}
+.why-card-text { font-size: 0.9rem; color: var(--color-text-muted); }
 
 /* How it works */
 .how-it-works { background: var(--color-surface); }
@@ -719,8 +770,10 @@ a.contact-card:hover, a.contact-card:focus-visible {
   .why-card { padding: 18px 10px; }
   .why-icon { width: 44px; height: 44px; margin-bottom: 10px; }
   .why-icon svg { width: 20px; height: 20px; }
-  .why-card h3 { font-size: 0.9rem; }
-  .why-card p { font-size: 0.78rem; }
+  .why-card-title { font-size: 0.9rem; }
+  .why-card-text { font-size: 0.78rem; }
+  .why-detail-inner { font-size: 0.75rem; margin-top: 10px; padding-top: 10px; }
+  .why-toggle { top: 8px; right: 8px; width: 19px; height: 19px; font-size: 0.8rem; }
 
   .steps { grid-template-columns: repeat(2, 1fr); gap: 20px 12px; }
   .step-num { width: 36px; height: 36px; font-size: 0.95rem; margin-bottom: 10px; }

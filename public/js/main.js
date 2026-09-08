@@ -157,6 +157,16 @@
     setInterval(() => goTo(current + 1), 6000);
   }
 
+  /* "Nega biz" kartochkalari: bosilganda batafsil ma'lumot ochiladi. */
+  function initWhyCards() {
+    document.querySelectorAll('.why-card').forEach((card) => {
+      card.addEventListener('click', () => {
+        const isOpen = card.classList.toggle('open');
+        card.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      });
+    });
+  }
+
   function initSettingsDropdown() {
     const toggle = document.getElementById('settingsToggle');
     const dropdown = document.getElementById('settingsDropdown');
@@ -186,6 +196,7 @@
     markActiveNav();
     initPosterCarousel();
     initHeroSlider();
+    initWhyCards();
     initSettingsDropdown();
 
     document.querySelectorAll('[data-lang-btn]').forEach((btn) => {
