@@ -130,6 +130,8 @@ html.splash-active, html.splash-active body { overflow: hidden; }
   .orbit-svg { animation: none; }
   .splash-wordmark .sw { animation: none; opacity: 1; transform: none; }
   .hero-slide.active .hero-content { animation: none; opacity: 1; transform: none; }
+  .modal-panel { transition: none; transform: none; }
+  .modal-backdrop.open .modal-panel { transform: none; }
 }
 
 /* Header */
@@ -307,11 +309,8 @@ section h2 { font-size: 2rem; text-align: center; }
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 20px;
-  /* Cards expand on click — without this they'd stretch to the tallest
-     card in the row and leave the collapsed ones full of empty space. */
-  align-items: start;
 }
-/* Each card is a button: clicking it opens its detail panel. */
+/* Each card is a button: clicking it opens its details in a modal. */
 .why-card {
   position: relative;
   display: flex;
@@ -346,22 +345,9 @@ section h2 { font-size: 2rem; text-align: center; }
   line-height: 1;
   transition: transform 0.2s;
 }
-.why-card.open .why-toggle { transform: rotate(45deg); }
-.why-detail {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.3s ease;
-}
-.why-card.open .why-detail { max-height: 340px; }
-.why-detail-inner {
-  display: block;
-  margin-top: 14px;
-  padding-top: 14px;
-  border-top: 1px solid var(--color-border);
-  font-size: 0.85rem;
-  line-height: 1.5;
-  color: var(--color-text-muted);
-}
+/* Kept in the DOM (not just in JS) so I18n keeps it translated — the
+   modal reads its text when the card is clicked. */
+.why-detail-text { display: none; }
 .why-icon {
   display: flex;
   align-items: center;
@@ -381,6 +367,75 @@ section h2 { font-size: 2rem; text-align: center; }
   margin-bottom: 0.5em;
 }
 .why-card-text { font-size: 0.9rem; color: var(--color-text-muted); }
+
+/* Modal — opens when a "why us" card is clicked. */
+body.modal-open { overflow: hidden; }
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: rgba(15, 23, 42, 0.55);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  opacity: 0;
+  transition: opacity 0.22s ease;
+}
+/* `display: flex` above would otherwise beat the hidden attribute. Closing
+   via `hidden` (not a transitioned `visibility`) keeps the close button
+   focusable the moment the modal opens. */
+.modal-backdrop[hidden] { display: none; }
+.modal-backdrop.open { opacity: 1; }
+.modal-panel {
+  position: relative;
+  width: 100%;
+  max-width: 420px;
+  max-height: calc(100vh - 40px);
+  overflow-y: auto;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  box-shadow: 0 24px 60px rgba(15, 23, 42, 0.35);
+  padding: 34px 26px 30px;
+  text-align: center;
+  transform: translateY(14px) scale(0.97);
+  transition: transform 0.22s ease;
+}
+.modal-backdrop.open .modal-panel { transform: translateY(0) scale(1); }
+.modal-close {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  width: 32px;
+  height: 32px;
+  border: none;
+  background: none;
+  border-radius: 50%;
+  font-family: inherit;
+  font-size: 1.5rem;
+  line-height: 1;
+  color: var(--color-text-muted);
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+.modal-close:hover { background: var(--color-tint); color: var(--color-primary); }
+.modal-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  margin: 0 auto 16px;
+  border-radius: 50%;
+  background: var(--color-tint);
+  color: var(--color-primary);
+}
+.modal-icon svg { width: 26px; height: 26px; }
+.modal-title { font-size: 1.15rem; margin: 0 0 10px; }
+.modal-text { margin: 0; font-size: 0.95rem; line-height: 1.6; }
 
 /* How it works */
 .how-it-works { background: var(--color-surface); }
@@ -772,8 +827,12 @@ a.contact-card:hover, a.contact-card:focus-visible {
   .why-icon svg { width: 20px; height: 20px; }
   .why-card-title { font-size: 0.9rem; }
   .why-card-text { font-size: 0.78rem; }
-  .why-detail-inner { font-size: 0.75rem; margin-top: 10px; padding-top: 10px; }
   .why-toggle { top: 8px; right: 8px; width: 19px; height: 19px; font-size: 0.8rem; }
+  .modal-panel { padding: 30px 20px 26px; }
+  .modal-icon { width: 48px; height: 48px; margin-bottom: 12px; }
+  .modal-icon svg { width: 22px; height: 22px; }
+  .modal-title { font-size: 1.05rem; }
+  .modal-text { font-size: 0.88rem; }
 
   .steps { grid-template-columns: repeat(2, 1fr); gap: 20px 12px; }
   .step-num { width: 36px; height: 36px; font-size: 0.95rem; margin-bottom: 10px; }

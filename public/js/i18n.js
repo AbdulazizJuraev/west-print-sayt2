@@ -59,6 +59,7 @@ const I18N = {
     services_subtitle: 'Har qanday poligrafik mahsulot uchun murojaat qiling',
     contact_title: "Bog'lanish",
     contact_subtitle: "Savollaringiz bo'lsa, biz bilan bog'laning",
+    modal_close: 'Yopish',
     footer_rights: 'Barcha huquqlar himoyalangan.'
   },
   ru: {
@@ -119,6 +120,7 @@ const I18N = {
     services_subtitle: 'Обращайтесь за любой полиграфической продукцией',
     contact_title: 'Контакты',
     contact_subtitle: 'Если у вас есть вопросы, свяжитесь с нами',
+    modal_close: 'Закрыть',
     footer_rights: 'Все права защищены.'
   }
 };

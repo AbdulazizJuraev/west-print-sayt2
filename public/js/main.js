@@ -157,14 +157,50 @@
     setInterval(() => goTo(current + 1), 6000);
   }
 
-  /* "Nega biz" kartochkalari: bosilganda batafsil ma'lumot ochiladi. */
+  /* "Nega biz" kartochkalari: bosilganda batafsil ma'lumot qalqib
+     chiquvchi oynada (modal) ochiladi. */
   function initWhyCards() {
-    document.querySelectorAll('.why-card').forEach((card) => {
-      card.addEventListener('click', () => {
-        const isOpen = card.classList.toggle('open');
-        card.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-      });
-    });
+    const modal = document.getElementById('whyModal');
+    const cards = document.querySelectorAll('.why-card');
+    if (!modal || !cards.length) return;
+
+    const iconEl = document.getElementById('whyModalIcon');
+    const titleEl = document.getElementById('whyModalTitle');
+    const textEl = document.getElementById('whyModalText');
+    const closeBtn = document.getElementById('whyModalClose');
+    let lastFocused = null;
+
+    function openModal(card) {
+      lastFocused = card;
+      iconEl.innerHTML = card.querySelector('.why-icon').innerHTML;
+      titleEl.textContent = card.querySelector('.why-card-title').textContent;
+      textEl.textContent = card.querySelector('.why-detail-text').textContent;
+      closeBtn.setAttribute('aria-label', I18n.t('modal_close'));
+      modal.hidden = false;
+      // Flush layout so the fade-in has a start state to animate from.
+      void modal.offsetHeight;
+      modal.classList.add('open');
+      document.body.classList.add('modal-open');
+      closeBtn.focus();
+    }
+
+    function closeModal() {
+      if (!modal.classList.contains('open')) return;
+      modal.classList.remove('open');
+      document.body.classList.remove('modal-open');
+      if (lastFocused) lastFocused.focus();
+      // Hide only after the fade-out; the guard keeps a quick re-open
+      // from being hidden by this stale timer.
+      setTimeout(() => {
+        if (!modal.classList.contains('open')) modal.hidden = true;
+      }, 220);
+    }
+
+    cards.forEach((card) => card.addEventListener('click', () => openModal(card)));
+    closeBtn.addEventListener('click', closeModal);
+    // Only a click on the backdrop itself closes — not one inside the panel.
+    modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
   }
 
   function initSettingsDropdown() {
