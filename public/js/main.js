@@ -164,6 +164,8 @@
     const cards = document.querySelectorAll('.why-card');
     if (!modal || !cards.length) return;
 
+    const panel = modal.querySelector('.modal-panel');
+    const imageEl = document.getElementById('whyModalImage');
     const iconEl = document.getElementById('whyModalIcon');
     const titleEl = document.getElementById('whyModalTitle');
     const textEl = document.getElementById('whyModalText');
@@ -172,6 +174,12 @@
 
     function openModal(card) {
       lastFocused = card;
+      // The photo is only fetched when a card is actually opened, so it
+      // costs nothing on page load.
+      const src = card.getAttribute('data-image');
+      imageEl.hidden = !src;
+      panel.classList.toggle('no-image', !src);
+      if (src) imageEl.src = src;
       iconEl.innerHTML = card.querySelector('.why-icon').innerHTML;
       titleEl.textContent = card.querySelector('.why-card-title').textContent;
       textEl.textContent = card.querySelector('.why-detail-text').textContent;
@@ -195,6 +203,12 @@
         if (!modal.classList.contains('open')) modal.hidden = true;
       }, 220);
     }
+
+    // Offline or a dead URL: drop the photo rather than showing a broken one.
+    imageEl.addEventListener('error', () => {
+      imageEl.hidden = true;
+      panel.classList.add('no-image');
+    });
 
     cards.forEach((card) => card.addEventListener('click', () => openModal(card)));
     closeBtn.addEventListener('click', closeModal);
