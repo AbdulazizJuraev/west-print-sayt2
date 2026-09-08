@@ -445,8 +445,83 @@ body.modal-open { overflow: hidden; }
 .modal-title { font-size: 1.15rem; margin: 0 0 10px; }
 .modal-text { margin: 0; font-size: 0.95rem; line-height: 1.6; }
 
+/* Clients — which kinds of business order what from us. */
+.clients { background: var(--color-surface); }
+/* Fixed 3 columns: with 6 tiles an auto-fit grid leaves a lone tile on
+   the second row at mid widths. */
+.clients-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+.client-tile {
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 22px 16px;
+  text-align: center;
+  transition: border-color 0.2s, transform 0.2s;
+}
+.client-tile:hover { border-color: var(--color-primary); transform: translateY(-2px); }
+.client-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  height: 46px;
+  margin: 0 auto 12px;
+  border-radius: 50%;
+  background: var(--color-tint);
+  color: var(--color-primary);
+}
+.client-icon svg { width: 21px; height: 21px; }
+.client-tile h3 { font-size: 0.98rem; margin-bottom: 4px; }
+.client-tile p { font-size: 0.82rem; margin: 0; }
+
+/* Artwork requirements — what a print-ready file has to look like. */
+.specs { background: var(--color-surface); }
+.specs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+}
+.spec-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 18px;
+  text-align: left;
+}
+.spec-icon {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 10px;
+  background: var(--color-tint);
+  color: var(--color-primary);
+}
+.spec-icon svg { width: 20px; height: 20px; }
+.spec-card h3 { font-size: 0.98rem; margin-bottom: 2px; }
+.spec-card p { font-size: 0.87rem; margin: 0; }
+.specs-note {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 30px;
+  text-align: center;
+  font-weight: 600;
+}
+
 /* How it works */
-.how-it-works { background: var(--color-surface); }
+.how-it-works { background: var(--color-bg); }
 .steps {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -830,6 +905,13 @@ a.contact-card:hover, a.contact-card:focus-visible {
   .site-footer { padding-bottom: 90px; }
 
   .why-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .clients-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .client-tile { padding: 16px 10px; }
+  .client-tile h3 { font-size: 0.88rem; }
+  .client-tile p { font-size: 0.75rem; }
+  .spec-card { padding: 14px; gap: 12px; }
+  .spec-card h3 { font-size: 0.9rem; }
+  .spec-card p { font-size: 0.8rem; }
   .why-card { padding: 18px 10px; }
   .why-icon { width: 44px; height: 44px; margin-bottom: 10px; }
   .why-icon svg { width: 20px; height: 20px; }
@@ -885,6 +967,7 @@ a.contact-card:hover, a.contact-card:focus-visible {
   .bottom-nav-item svg { width: 12px; height: 12px; }
 
   .why-grid { grid-template-columns: 1fr; }
+  .clients-grid { grid-template-columns: 1fr; }
   .services-grid { grid-template-columns: 1fr; }
   .steps { grid-template-columns: 1fr; }
   .contact-grid { grid-template-columns: 1fr; }
