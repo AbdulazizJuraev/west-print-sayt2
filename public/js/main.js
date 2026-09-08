@@ -64,6 +64,46 @@
     }).join('');
   }
 
+  /* Portfolio kartochkalari kesib ko'rsatiladi — bosilganda ishni
+     to'liq ko'rish uchun katta oynada ochamiz. */
+  function initLightbox() {
+    const grid = document.getElementById('portfolioGrid');
+    const box = document.getElementById('lightbox');
+    if (!grid || !box) return;
+
+    const image = document.getElementById('lightboxImage');
+    const closeBtn = document.getElementById('lightboxClose');
+    let lastFocused = null;
+
+    function close() {
+      if (!box.classList.contains('open')) return;
+      box.classList.remove('open');
+      document.body.classList.remove('modal-open');
+      if (lastFocused) lastFocused.focus();
+      setTimeout(() => {
+        if (!box.classList.contains('open')) box.hidden = true;
+      }, 220);
+    }
+
+    // Delegated: the grid is re-rendered whenever the language changes.
+    grid.addEventListener('click', (e) => {
+      const img = e.target.closest('img');
+      if (!img) return;
+      lastFocused = img;
+      image.src = img.getAttribute('src');
+      image.alt = img.getAttribute('alt') || '';
+      box.hidden = false;
+      void box.offsetHeight;
+      box.classList.add('open');
+      document.body.classList.add('modal-open');
+      closeBtn.focus();
+    });
+
+    closeBtn.addEventListener('click', close);
+    box.addEventListener('click', (e) => { if (e.target === box) close(); });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') close(); });
+  }
+
   const FAQ_IDS = [1, 2, 3, 4, 5];
 
   function renderFaq() {
@@ -267,6 +307,7 @@
     initPosterCarousel();
     initHeroSlider();
     initWhyCards();
+    initLightbox();
     initSettingsDropdown();
 
     document.querySelectorAll('[data-lang-btn]').forEach((btn) => {

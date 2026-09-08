@@ -610,6 +610,22 @@ body.modal-open { overflow: hidden; }
   transition: transform 0.25s;
 }
 .gallery-grid img:hover { transform: scale(1.04); }
+/* Portfolio images open full size on click. */
+#portfolioGrid img { cursor: zoom-in; }
+.lightbox-panel { position: relative; }
+.lightbox-panel img {
+  display: block;
+  max-width: 92vw;
+  max-height: 86vh;
+  border-radius: 10px;
+}
+/* The close button sits just outside the image's top-right corner. */
+.lightbox-panel .modal-close {
+  top: -14px;
+  right: -14px;
+  background: var(--color-surface);
+}
+
 /* Empty portfolio: one message instead of a grid of images. */
 .gallery-grid.is-empty { display: block; }
 .empty-state {
