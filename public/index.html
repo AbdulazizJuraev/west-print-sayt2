@@ -23,13 +23,21 @@
 
 <div id="splashScreen" class="splash-screen">
   <div class="splash-stage">
-    <svg class="orbit-svg" viewBox="0 0 240 240" width="240" height="240" aria-hidden="true">
+    <svg class="orbit-svg" viewBox="0 0 280 280" width="280" height="280" aria-hidden="true">
       <defs>
-        <path id="orbitPath" d="M120,120 m-95,0 a95,95 0 1,1 190,0 a95,95 0 1,1 -190,0" fill="none"></path>
+        <path id="orbitPathOuter" d="M140,140 m-122,0 a122,122 0 1,1 244,0 a122,122 0 1,1 -244,0" fill="none"></path>
+        <path id="orbitPathInner" d="M140,140 m-100,0 a100,100 0 1,1 200,0 a100,100 0 1,1 -200,0" fill="none"></path>
       </defs>
-      <text class="orbit-text">
-        <textPath href="#orbitPath" startOffset="0%">POLIGRAFIYA &#8226; REKLAMA AGENTLIGI &#8226; </textPath>
-      </text>
+      <g class="orbit-ring orbit-ring-outer">
+        <text class="orbit-text">
+          <textPath href="#orbitPathOuter" startOffset="0%">POLIGRAFIYA &#8226; REKLAMA AGENTLIGI &#8226; POLIGRAFIYA &#8226; REKLAMA AGENTLIGI &#8226; </textPath>
+        </text>
+      </g>
+      <g class="orbit-ring orbit-ring-inner">
+        <text class="orbit-text orbit-text-inner">
+          <textPath href="#orbitPathInner" startOffset="0%">VIZITKA &#8226; FLAYER &#8226; BANNER &#8226; BUKLET &#8226; VIZITKA &#8226; FLAYER &#8226; BANNER &#8226; BUKLET &#8226; </textPath>
+        </text>
+      </g>
     </svg>
     <div class="splash-wordmark" aria-hidden="true">
       <span class="sw" style="--i:0">w</span><span class="sw" style="--i:1">e</span><span class="sw" style="--i:2">s</span><span class="sw" style="--i:3">t</span><span class="sw sw-star" style="--i:4">*</span><span class="sw" style="--i:5">p</span><span class="sw" style="--i:6">r</span><span class="sw" style="--i:7">i</span><span class="sw" style="--i:8">n</span><span class="sw" style="--i:9">t</span>
