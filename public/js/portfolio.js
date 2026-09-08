@@ -14,8 +14,11 @@
 const PORTFOLIO = [
   { src: 'images/portfolio/yorliq-1.jpg', titleUz: "Mahsulot yorlig'i", titleRu: 'Этикетка продукции' },
   { src: 'images/portfolio/katalog-1.jpg', titleUz: 'Katalog', titleRu: 'Каталог' },
+  { src: 'images/portfolio/vizitka-6.jpg', titleUz: 'Vizitka', titleRu: 'Визитка' },
+  { src: 'images/portfolio/poster-2.jpg', titleUz: 'Dizayn posteri', titleRu: 'Дизайн-постер' },
   { src: 'images/portfolio/vizitka-1.jpg', titleUz: 'Vizitka', titleRu: 'Визитка' },
   { src: 'images/portfolio/poster-1.jpg', titleUz: 'Reklama posteri', titleRu: 'Рекламный постер' },
+  { src: 'images/portfolio/smm-1.jpg', titleUz: 'Ijtimoiy tarmoq posti', titleRu: 'Пост для соцсетей' },
   { src: 'images/portfolio/menyu-1.jpg', titleUz: 'Menyu flayer', titleRu: 'Меню-флаер' },
   { src: 'images/portfolio/yorliq-4.jpg', titleUz: "Mahsulot yorlig'i", titleRu: 'Этикетка продукции' },
   { src: 'images/portfolio/katalog-2.jpg', titleUz: 'Katalog', titleRu: 'Каталог' },
