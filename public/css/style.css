@@ -739,9 +739,17 @@ body.modal-open { overflow: hidden; }
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 18px;
+  /* All rows match the tallest card — otherwise the row holding the
+     three-line address ends up taller than the rest. */
+  grid-auto-rows: 1fr;
 }
 .contact-card {
-  display: block;
+  /* Centred as a column so a one-line card doesn't leave its text
+     stranded at the top of a stretched box. */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   background: var(--color-surface);
   border: 1px solid var(--color-border);
   border-radius: var(--radius);
