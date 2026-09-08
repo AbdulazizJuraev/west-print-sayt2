@@ -610,6 +610,67 @@ body.modal-open { overflow: hidden; }
   transition: transform 0.25s;
 }
 .gallery-grid img:hover { transform: scale(1.04); }
+/* Empty portfolio: one message instead of a grid of images. */
+.gallery-grid.is-empty { display: block; }
+.empty-state {
+  text-align: center;
+  padding: 40px 20px;
+  margin: 0;
+  border: 1px dashed var(--color-border);
+  border-radius: var(--radius);
+}
+
+/* Portfolio entry — the wide clickable card under the gallery grid. */
+.portfolio-link {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 28px;
+  padding: 20px 22px;
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+}
+.portfolio-link:hover {
+  border-color: var(--color-primary);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow);
+}
+.portfolio-link-icon {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: var(--color-tint);
+  color: var(--color-primary);
+}
+.portfolio-link-icon svg { width: 22px; height: 22px; }
+.portfolio-link-text { display: flex; flex-direction: column; gap: 2px; }
+.portfolio-link-text strong { font-size: 1.1rem; }
+.portfolio-link-text span { font-size: 0.88rem; color: var(--color-text-muted); }
+.portfolio-link-arrow {
+  margin-left: auto;
+  flex-shrink: 0;
+  display: flex;
+  color: var(--color-primary);
+  transition: transform 0.2s;
+}
+.portfolio-link:hover .portfolio-link-arrow { transform: translateX(4px); }
+
+/* Back to the gallery from the portfolio page. */
+.back-link {
+  display: inline-block;
+  margin-bottom: 14px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  transition: color 0.2s;
+}
+.back-link:hover { color: var(--color-primary); }
 
 /* FAQ */
 .faq-list {

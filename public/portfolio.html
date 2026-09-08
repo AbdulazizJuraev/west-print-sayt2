@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Bizning ishlarimiz — West Print</title>
+<title>Portfolio — West Print</title>
 <script>
 (function () {
   try {
@@ -13,9 +13,8 @@
 })();
 </script>
 <link rel="stylesheet" href="css/style.css">
-<link rel="preconnect" href="https://images.unsplash.com">
 <link rel="prefetch" href="index.html">
-<link rel="prefetch" href="services.html">
+<link rel="prefetch" href="gallery.html">
 <link rel="prefetch" href="contact.html">
 </head>
 <body data-page="gallery">
@@ -70,27 +69,12 @@
 
   <section class="gallery">
     <div class="container">
-      <h2 data-i18n="gallery_title">Bizning ishlarimiz</h2>
-      <p class="section-subtitle" data-i18n="gallery_subtitle">So'nggi bajarilgan buyurtmalardan namunalar</p>
-      <div class="gallery-grid">
-        <img src="https://images.unsplash.com/photo-1581079289196-67865ea83118?w=500&q=80&auto=format&fit=crop" alt="Rang namunalari" loading="lazy">
-        <img src="https://images.unsplash.com/photo-1693031630146-568e2f72db0e?w=500&q=80&auto=format&fit=crop" alt="Qog'oz kesish jarayoni" loading="lazy">
-        <img src="https://images.unsplash.com/photo-1503694978374-8a2fa686963a?w=500&q=80&auto=format&fit=crop" alt="Bosma mashinasi" loading="lazy">
-        <img src="https://images.unsplash.com/photo-1693031630369-bd429a57f115?w=500&q=80&auto=format&fit=crop" alt="Banner bosib chiqarish" loading="lazy">
-        <img src="https://images.unsplash.com/photo-1633415565464-e1d69c3fd906?w=500&q=80&auto=format&fit=crop" alt="Tayyor vizitkalar" loading="lazy">
-        <img src="https://images.unsplash.com/photo-1436918898788-ebce04d38e46?w=500&q=80&auto=format&fit=crop" alt="Bosma jarayoni" loading="lazy">
-      </div>
-
-      <a class="portfolio-link" href="portfolio.html">
-        <span class="portfolio-link-icon" data-icon="bookOpen"></span>
-        <span class="portfolio-link-text">
-          <strong data-i18n="portfolio_title">Portfolio</strong>
-          <span data-i18n="portfolio_link_text">Bajarilgan ishlarimizning to'liq to'plamini ko'ring</span>
-        </span>
-        <span class="portfolio-link-arrow" aria-hidden="true">
-          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"></path></svg>
-        </span>
+      <a class="back-link" href="gallery.html">
+        <span data-i18n="portfolio_back">← Ishlarimizga qaytish</span>
       </a>
+      <h2 data-i18n="portfolio_title">Portfolio</h2>
+      <p class="section-subtitle" data-i18n="portfolio_subtitle">Bajarilgan ishlarimiz to'plami</p>
+      <div class="gallery-grid" id="portfolioGrid"></div>
     </div>
   </section>
 
@@ -104,6 +88,7 @@
 
 <script src="js/icons.js"></script>
 <script src="js/catalog.js"></script>
+<script src="js/portfolio.js"></script>
 <script src="js/i18n.js"></script>
 <script src="js/theme.js"></script>
 <script src="js/main.js"></script>

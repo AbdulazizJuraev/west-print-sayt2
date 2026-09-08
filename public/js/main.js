@@ -45,6 +45,25 @@
     `).join('');
   }
 
+  /* Portfolio sahifasi: ishlar ro'yxati js/portfolio.js dan olinadi.
+     Ro'yxat bo'sh bo'lsa "tez orada" yozuvi ko'rsatiladi. */
+  function renderPortfolio() {
+    const grid = document.getElementById('portfolioGrid');
+    if (!grid || typeof PORTFOLIO === 'undefined') return;
+
+    if (!PORTFOLIO.length) {
+      grid.classList.add('is-empty');
+      grid.innerHTML = `<p class="empty-state">${I18n.t('portfolio_empty')}</p>`;
+      return;
+    }
+
+    grid.classList.remove('is-empty');
+    grid.innerHTML = PORTFOLIO.map((item) => {
+      const title = I18n.getLang() === 'ru' ? (item.titleRu || '') : (item.titleUz || '');
+      return `<img src="${item.src}" alt="${title}" title="${title}" loading="lazy">`;
+    }).join('');
+  }
+
   const FAQ_IDS = [1, 2, 3, 4, 5];
 
   function renderFaq() {
@@ -241,6 +260,7 @@
 
     renderStaticIcons();
     renderServiceCards();
+    renderPortfolio();
     renderFaq();
     updateNavTooltips();
     markActiveNav();
@@ -255,6 +275,7 @@
 
     document.addEventListener('languagechange', () => {
       renderServiceCards();
+      renderPortfolio();
       renderFaq();
       updateNavTooltips();
     });
