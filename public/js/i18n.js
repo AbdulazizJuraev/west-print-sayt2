@@ -88,6 +88,7 @@ const I18N = {
     contact_title: "Bog'lanish",
     contact_subtitle: "Savollaringiz bo'lsa, biz bilan bog'laning",
     contact_address: "Toshkent sh., Muqimiy ko'chasi, 100-uy",
+    map_route: 'Manzilga kelish',
     modal_close: 'Yopish',
     footer_rights: 'Barcha huquqlar himoyalangan.'
   },
@@ -178,6 +179,7 @@ const I18N = {
     contact_title: 'Контакты',
     contact_subtitle: 'Если у вас есть вопросы, свяжитесь с нами',
     contact_address: 'г. Ташкент, ул. Мукими, 100',
+    map_route: 'Построить маршрут',
     modal_close: 'Закрыть',
     footer_rights: 'Все права защищены.'
   }

@@ -53,7 +53,7 @@
       <div class="faq-item">
         <button type="button" class="faq-question">
           <span>${I18n.t('faq_q' + n)}</span>
-          <span class="faq-toggle-icon">+</span>
+          <span class="faq-toggle-icon"><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg></span>
         </button>
         <div class="faq-answer"><p>${I18n.t('faq_a' + n)}</p></div>
       </div>
