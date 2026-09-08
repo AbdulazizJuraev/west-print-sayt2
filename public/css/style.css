@@ -74,9 +74,20 @@ html.splash-active, html.splash-active body { overflow: hidden; }
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(160deg, #60a5fa 0%, #2563eb 40%, #0b1a4d 100%);
+  /* Two layers that drift at different speeds: a soft glow over the base
+     gradient, so the background keeps moving while the splash is up.
+     Both are oversized so there's room to pan without showing an edge. */
+  background:
+    radial-gradient(55% 40% at 50% 38%, rgba(147, 197, 253, 0.5), transparent 70%),
+    linear-gradient(160deg, #60a5fa 0%, #2563eb 40%, #0b1a4d 100%);
+  background-size: 170% 170%, 220% 220%;
+  background-position: 25% 35%, 0% 0%;
+  animation: splashGradient 6s ease-in-out infinite alternate;
   opacity: 1;
   transition: opacity 0.35s ease;
+}
+@keyframes splashGradient {
+  to { background-position: 75% 65%, 100% 100%; }
 }
 .splash-screen.splash-hide { opacity: 0; pointer-events: none; }
 .splash-stage {
@@ -127,6 +138,7 @@ html.splash-active, html.splash-active body { overflow: hidden; }
   to { opacity: 1; transform: translateY(0); }
 }
 @media (prefers-reduced-motion: reduce) {
+  .splash-screen { animation: none; }
   .orbit-svg { animation: none; }
   .splash-wordmark .sw { animation: none; opacity: 1; transform: none; }
   .hero-slide.active .hero-content { animation: none; opacity: 1; transform: none; }
