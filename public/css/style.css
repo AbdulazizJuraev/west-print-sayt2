@@ -735,9 +735,11 @@ body.modal-open { overflow: hidden; }
 .faq-answer p { padding: 0 4px 18px; margin: 0; }
 
 /* Contact */
+/* Fixed 3 columns: with 6 cards an auto-fit grid squeezes five into the
+   first row and leaves the sixth stranded on its own. */
 .contact-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 18px;
   /* All rows match the tallest card — otherwise the row holding the
      three-line address ends up taller than the rest. */
