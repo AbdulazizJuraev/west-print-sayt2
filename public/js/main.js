@@ -45,6 +45,68 @@
     `).join('');
   }
 
+  function productDesc(product) {
+    return I18n.getLang() === 'ru' ? product.descRu : product.descUz;
+  }
+
+  /* Bosh sahifadagi mahsulotlar karuseli (print.uz uslubida). */
+  function renderProductTrack() {
+    const track = document.getElementById('productTrack');
+    if (!track) return;
+    track.innerHTML = ProductCatalog.listProducts().map((p) => `
+      <button type="button" class="product-card" data-id="${p.id}" aria-haspopup="dialog">
+        <span class="product-image">
+          <img src="${productImages[p.id] || ''}" alt="" loading="lazy">
+          <span class="product-badge">${productBadge(p)}</span>
+        </span>
+        <span class="product-name">${productName(p)}</span>
+      </button>
+    `).join('');
+  }
+
+  /* Mahsulot kartochkasi bosilsa — katta surat, tavsif va buyurtma tugmasi. */
+  function initProductModal() {
+    const track = document.getElementById('productTrack');
+    const modal = document.getElementById('productModal');
+    if (!track || !modal) return;
+
+    const closeBtn = document.getElementById('productModalClose');
+    let lastFocused = null;
+
+    function close() {
+      if (!modal.classList.contains('open')) return;
+      modal.classList.remove('open');
+      document.body.classList.remove('modal-open');
+      if (lastFocused) lastFocused.focus();
+      setTimeout(() => {
+        if (!modal.classList.contains('open')) modal.hidden = true;
+      }, 220);
+    }
+
+    // Delegated: the track is re-rendered whenever the language changes.
+    track.addEventListener('click', (e) => {
+      const card = e.target.closest('.product-card');
+      if (!card) return;
+      const p = ProductCatalog.getProduct(card.getAttribute('data-id'));
+      if (!p) return;
+      lastFocused = card;
+      document.getElementById('productModalImage').src = productImages[p.id] || '';
+      document.getElementById('productModalBadge').textContent = productBadge(p);
+      document.getElementById('productModalTitle').textContent = productName(p);
+      document.getElementById('productModalText').textContent = productDesc(p);
+      closeBtn.setAttribute('aria-label', I18n.t('modal_close'));
+      modal.hidden = false;
+      void modal.offsetHeight;
+      modal.classList.add('open');
+      document.body.classList.add('modal-open');
+      closeBtn.focus();
+    });
+
+    closeBtn.addEventListener('click', close);
+    modal.addEventListener('click', (e) => { if (e.target === modal) close(); });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') close(); });
+  }
+
   /* Portfolio sahifasi: ishlar ro'yxati js/portfolio.js dan olinadi.
      Ro'yxat bo'sh bo'lsa "tez orada" yozuvi ko'rsatiladi. */
   function renderPortfolio() {
@@ -295,6 +357,7 @@
 
     renderStaticIcons();
     renderServiceCards();
+    renderProductTrack();
     renderPortfolio();
     renderFaq();
     updateNavTooltips();
@@ -303,6 +366,7 @@
     initHeroSlider();
     initWhyCards();
     initLightbox();
+    initProductModal();
     initSettingsDropdown();
 
     document.querySelectorAll('[data-lang-btn]').forEach((btn) => {
@@ -311,6 +375,7 @@
 
     document.addEventListener('languagechange', () => {
       renderServiceCards();
+      renderProductTrack();
       renderPortfolio();
       renderFaq();
       updateNavTooltips();

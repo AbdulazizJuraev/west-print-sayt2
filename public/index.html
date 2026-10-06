@@ -192,6 +192,44 @@
     </div>
   </section>
 
+  <section class="products" id="products">
+    <div class="container">
+      <span class="section-eyebrow" data-i18n="products_eyebrow">Biz nima qilamiz</span>
+      <h2 data-i18n="products_title">Mahsulotlarimiz</h2>
+      <p class="section-subtitle" data-i18n="products_subtitle">Mahsulotni bosing — batafsil ko'ring va buyurtma bering</p>
+    </div>
+    <div class="product-track" id="productTrack"></div>
+    <div class="container section-cta">
+      <a href="services.html" class="btn btn-primary" data-i18n="products_all">Barcha mahsulotlar →</a>
+    </div>
+  </section>
+
+  <section class="partners">
+    <div class="container">
+      <span class="section-eyebrow" data-i18n="partners_eyebrow">Mijozlarimiz</span>
+      <h2 data-i18n="partners_title">Bizga ishongan brendlar</h2>
+      <p class="section-subtitle" data-i18n="partners_subtitle">Ular uchun tayyorlagan ishlarimizdan namunalar</p>
+      <div class="partners-grid">
+        <a class="partner-card" href="portfolio.html">
+          <img src="images/portfolio/yorliq-1.jpg" alt="Lafier" loading="lazy">
+          <span class="partner-info"><strong>LAFIER</strong><span data-i18n="partner_lafier">Mahsulot yorliqlari va poster</span></span>
+        </a>
+        <a class="partner-card" href="portfolio.html">
+          <img src="images/portfolio/yorliq-4.jpg" alt="Zimax" loading="lazy">
+          <span class="partner-info"><strong>ZIMAX</strong><span data-i18n="partner_zimax">Antifriz yorlig'i</span></span>
+        </a>
+        <a class="partner-card" href="portfolio.html">
+          <img src="images/portfolio/katalog-1.jpg" alt="Sifat Agro" loading="lazy">
+          <span class="partner-info"><strong>SIFAT AGRO</strong><span data-i18n="partner_sifat">Mahsulotlar katalogi</span></span>
+        </a>
+        <a class="partner-card" href="portfolio.html">
+          <img src="images/portfolio/vizitka-3.jpg" alt="Billur" loading="lazy">
+          <span class="partner-info"><strong>BILLUR</strong><span data-i18n="partner_billur">Vizitka</span></span>
+        </a>
+      </div>
+    </div>
+  </section>
+
   <section class="clients">
     <div class="container">
       <h2 data-i18n="clients_title">Kimlar uchun ishlaymiz</h2>
@@ -309,6 +347,19 @@
   </section>
 
 </main>
+
+<div class="modal-backdrop" id="productModal" hidden>
+  <div class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="productModalTitle">
+    <button type="button" class="modal-close" id="productModalClose" aria-label="Yopish">
+      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M6 6 18 18M18 6 6 18"></path></svg>
+    </button>
+    <img class="modal-image modal-image-tall" id="productModalImage" alt="">
+    <span class="product-modal-badge" id="productModalBadge"></span>
+    <h3 class="modal-title" id="productModalTitle"></h3>
+    <p class="modal-text" id="productModalText"></p>
+    <a class="btn btn-primary product-modal-cta" href="https://t.me/westprintstar" target="_blank" rel="noopener" data-i18n="hero_cta">Buyurtma berish</a>
+  </div>
+</div>
 
 <div class="modal-backdrop" id="whyModal" hidden>
   <div class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="whyModalTitle">
