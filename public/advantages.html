@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Afzalliklarimiz — West Print</title>
+<script>
+(function () {
+  try {
+    var saved = localStorage.getItem('wp_theme');
+    if (saved) document.documentElement.setAttribute('data-theme', saved);
+  } catch (e) {}
+})();
+</script>
+<link rel="stylesheet" href="css/style.css">
+<link rel="prefetch" href="index.html">
+<link rel="prefetch" href="services.html">
+<link rel="prefetch" href="gallery.html">
+</head>
+<body data-page="advantages">
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="index.html" class="brand">
+      <img src="images/logo.png" alt="West Print" class="brand-logo">
+    </a>
+  </div>
+</header>
+
+<nav class="bottom-nav" id="bottomNav">
+  <a href="index.html" class="bottom-nav-item" data-page="index">
+    <span data-icon="home"></span>
+    <span data-i18n="nav_home">Bosh sahifa</span>
+  </a>
+  <a href="services.html" class="bottom-nav-item" data-page="services">
+    <span data-icon="printer"></span>
+    <span data-i18n="nav_services">Xizmatlar</span>
+  </a>
+  <a href="advantages.html" class="bottom-nav-item" data-page="advantages">
+    <span data-icon="shieldCheck"></span>
+    <span data-i18n="nav_advantages">Afzalliklar</span>
+  </a>
+  <a href="contact.html" class="bottom-nav-item" data-page="contact">
+    <span data-icon="phone"></span>
+    <span data-i18n="nav_contact">Aloqa</span>
+  </a>
+  <div class="nav-settings">
+    <button type="button" class="bottom-nav-item settings-toggle" id="settingsToggle">
+      <span data-icon="settings"></span>
+      <span data-i18n="nav_settings">Sozlamalar</span>
+    </button>
+    <div class="settings-dropdown" id="settingsDropdown">
+      <div class="settings-row">
+        <span data-i18n="settings_theme">Mavzu</span>
+        <button type="button" class="theme-toggle" id="themeToggle" aria-label="Mavzuni almashtirish" title="Mavzuni almashtirish"></button>
+      </div>
+      <div class="settings-row">
+        <span data-i18n="settings_language">Til</span>
+        <div class="lang-switch" id="langSwitch">
+          <button type="button" data-lang-btn="uz">UZ</button>
+          <button type="button" data-lang-btn="ru">RU</button>
+        </div>
+        <button type="button" class="lang-flag" id="langFlag" aria-label="Tilni o'zgartirish">
+          <span class="flag flag-uz" data-icon="flagUz"></span>
+          <span class="flag flag-ru" data-icon="flagRu"></span>
+        </button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<main>
+
+  <section class="why-us" id="why-us">
+    <div class="container">
+      <span class="section-eyebrow" data-i18n="why_eyebrow">Afzalliklarimiz</span>
+      <h2 data-i18n="why_title">Nega aynan West Print?</h2>
+      <p class="section-subtitle" data-i18n="why_subtitle">Kartochkani bosing — batafsil o'qing</p>
+      <div class="why-grid">
+      <button type="button" class="why-card" aria-haspopup="dialog"
+              data-image="https://images.unsplash.com/photo-1503694978374-8a2fa686963a?w=600&q=75&auto=format&fit=crop">
+        <span class="why-icon" data-icon="lightning"></span>
+        <span class="why-card-title" data-i18n="why_fast_title">Tezkor bajarish</span>
+        <span class="why-card-text" data-i18n="why_fast_text">Buyurtmalar qisqa muddatda tayyor bo'ladi</span>
+        <span class="why-detail-text" data-i18n="why_fast_detail">Buyurtmangiz kelishilgandan so'ng darhol ishlab chiqarishga o'tadi. Aniq muddat mahsulot turi va tirajga qarab oldindan belgilanadi va o'sha muddatda topshiriladi.</span>
+      </button>
+      <button type="button" class="why-card" aria-haspopup="dialog"
+              data-image="https://images.unsplash.com/photo-1581079289196-67865ea83118?w=600&q=75&auto=format&fit=crop">
+        <span class="why-icon" data-icon="target"></span>
+        <span class="why-card-title" data-i18n="why_quality_title">Yuqori sifat</span>
+        <span class="why-card-text" data-i18n="why_quality_text">Zamonaviy uskunalar va sifatli materiallar</span>
+        <span class="why-detail-text" data-i18n="why_quality_detail">Zamonaviy uskunalarda, sifatli qog'oz va bo'yoqlar bilan chop etamiz. Ranglar aniqligi va bosma sifati butun tiraj bo'ylab bir xil bo'lishiga alohida e'tibor beriladi.</span>
+      </button>
+      <button type="button" class="why-card" aria-haspopup="dialog"
+              data-image="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=600&q=75&auto=format&fit=crop">
+        <span class="why-icon" data-icon="shieldCheck"></span>
+        <span class="why-card-title" data-i18n="why_price_title">Halol shartlar</span>
+        <span class="why-card-text" data-i18n="why_price_text">Narx va muddat oldindan aniq kelishiladi, yashirin to'lovlarsiz</span>
+        <span class="why-detail-text" data-i18n="why_price_detail">Narx va muddat ish boshlanishidan oldin aniq aytiladi. Kelishilgan summadan tashqari yashirin to'lovlar yo'q — biror o'zgarish bo'lsa, albatta oldindan xabar beramiz.</span>
+      </button>
+      <button type="button" class="why-card" aria-haspopup="dialog"
+              data-image="https://images.unsplash.com/photo-1586717791821-3f44a563fa4c?w=600&q=75&auto=format&fit=crop">
+        <span class="why-icon" data-icon="palette"></span>
+        <span class="why-card-title" data-i18n="why_design_title">Professional dizayn</span>
+        <span class="why-card-text" data-i18n="why_design_text">Kerak bo'lsa dizayn bo'yicha ham yordam beramiz</span>
+        <span class="why-detail-text" data-i18n="why_design_detail">Tayyor maketingiz bo'lmasa, dizaynerlarimiz uni tayyorlab beradi. Tayyor faylingizni ham chop etishdan oldin tekshirib, bosmaga moslab beramiz.</span>
+      </button>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<div class="modal-backdrop" id="whyModal" hidden>
+  <div class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="whyModalTitle">
+    <button type="button" class="modal-close" id="whyModalClose" aria-label="Yopish">
+      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M6 6 18 18M18 6 6 18"></path></svg>
+    </button>
+    <img class="modal-image" id="whyModalImage" alt="">
+    <span class="modal-icon" id="whyModalIcon" aria-hidden="true"></span>
+    <h3 class="modal-title" id="whyModalTitle"></h3>
+    <p class="modal-text" id="whyModalText"></p>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="container">
+    <span>West Print &copy; <span id="year"></span> — <span data-i18n="footer_rights">Barcha huquqlar himoyalangan.</span></span>
+  </div>
+</footer>
+
+<script src="js/icons.js"></script>
+<script src="js/catalog.js"></script>
+<script src="js/i18n.js"></script>
+<script src="js/theme.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

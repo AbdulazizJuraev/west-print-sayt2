@@ -16,6 +16,7 @@
 <link rel="preconnect" href="https://images.unsplash.com">
 <link rel="prefetch" href="services.html">
 <link rel="prefetch" href="gallery.html">
+<link rel="prefetch" href="advantages.html">
 <link rel="prefetch" href="contact.html">
 </head>
 <body data-page="index">
@@ -80,7 +81,7 @@
     <span data-icon="printer"></span>
     <span data-i18n="nav_services">Xizmatlar</span>
   </a>
-  <a href="#why-us" class="bottom-nav-item">
+  <a href="advantages.html" class="bottom-nav-item" data-page="advantages">
     <span data-icon="shieldCheck"></span>
     <span data-i18n="nav_advantages">Afzalliklar</span>
   </a>
@@ -121,6 +122,12 @@
         <h1 class="intro-title">West Print</h1>
         <p class="intro-tagline" data-i18n="intro_tagline">Poligrafiya va reklama agentligi</p>
         <p class="intro-desc" data-i18n="intro_desc">Vizitkadan katta formatli bannergacha — dizayn, bosma va tayyor mahsulot bir joyda. West Print bilan brendingiz ko'zga tashlanadi.</p>
+        <div class="intro-stats">
+          <div class="intro-stat"><strong>10+</strong><span data-i18n="stat_staff">Xodimlar</span></div>
+          <div class="intro-stat"><strong>5000+</strong><span data-i18n="stat_clients">Mijozlar</span></div>
+          <div class="intro-stat"><strong>30+</strong><span data-i18n="stat_products">Mahsulot/Xizmat</span></div>
+          <div class="intro-stat"><strong>5+</strong><span data-i18n="stat_years">yillik tajriba</span></div>
+        </div>
         <div class="intro-tiles">
           <a class="intro-tile" href="tel:+998959803037">
             <strong>95 980 30 37</strong>
@@ -154,43 +161,6 @@
     <div class="poster-dots" id="posterDots"></div>
   </section>
 
-  <section class="why-us" id="why-us">
-    <div class="container">
-      <span class="section-eyebrow" data-i18n="why_eyebrow">Afzalliklarimiz</span>
-      <h2 data-i18n="why_title">Nega aynan West Print?</h2>
-      <p class="section-subtitle" data-i18n="why_subtitle">Kartochkani bosing — batafsil o'qing</p>
-      <div class="why-grid">
-      <button type="button" class="why-card" aria-haspopup="dialog"
-              data-image="https://images.unsplash.com/photo-1503694978374-8a2fa686963a?w=600&q=75&auto=format&fit=crop">
-        <span class="why-icon" data-icon="lightning"></span>
-        <span class="why-card-title" data-i18n="why_fast_title">Tezkor bajarish</span>
-        <span class="why-card-text" data-i18n="why_fast_text">Buyurtmalar qisqa muddatda tayyor bo'ladi</span>
-        <span class="why-detail-text" data-i18n="why_fast_detail">Buyurtmangiz kelishilgandan so'ng darhol ishlab chiqarishga o'tadi. Aniq muddat mahsulot turi va tirajga qarab oldindan belgilanadi va o'sha muddatda topshiriladi.</span>
-      </button>
-      <button type="button" class="why-card" aria-haspopup="dialog"
-              data-image="https://images.unsplash.com/photo-1581079289196-67865ea83118?w=600&q=75&auto=format&fit=crop">
-        <span class="why-icon" data-icon="target"></span>
-        <span class="why-card-title" data-i18n="why_quality_title">Yuqori sifat</span>
-        <span class="why-card-text" data-i18n="why_quality_text">Zamonaviy uskunalar va sifatli materiallar</span>
-        <span class="why-detail-text" data-i18n="why_quality_detail">Zamonaviy uskunalarda, sifatli qog'oz va bo'yoqlar bilan chop etamiz. Ranglar aniqligi va bosma sifati butun tiraj bo'ylab bir xil bo'lishiga alohida e'tibor beriladi.</span>
-      </button>
-      <button type="button" class="why-card" aria-haspopup="dialog"
-              data-image="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=600&q=75&auto=format&fit=crop">
-        <span class="why-icon" data-icon="shieldCheck"></span>
-        <span class="why-card-title" data-i18n="why_price_title">Halol shartlar</span>
-        <span class="why-card-text" data-i18n="why_price_text">Narx va muddat oldindan aniq kelishiladi, yashirin to'lovlarsiz</span>
-        <span class="why-detail-text" data-i18n="why_price_detail">Narx va muddat ish boshlanishidan oldin aniq aytiladi. Kelishilgan summadan tashqari yashirin to'lovlar yo'q — biror o'zgarish bo'lsa, albatta oldindan xabar beramiz.</span>
-      </button>
-      <button type="button" class="why-card" aria-haspopup="dialog"
-              data-image="https://images.unsplash.com/photo-1586717791821-3f44a563fa4c?w=600&q=75&auto=format&fit=crop">
-        <span class="why-icon" data-icon="palette"></span>
-        <span class="why-card-title" data-i18n="why_design_title">Professional dizayn</span>
-        <span class="why-card-text" data-i18n="why_design_text">Kerak bo'lsa dizayn bo'yicha ham yordam beramiz</span>
-        <span class="why-detail-text" data-i18n="why_design_detail">Tayyor maketingiz bo'lmasa, dizaynerlarimiz uni tayyorlab beradi. Tayyor faylingizni ham chop etishdan oldin tekshirib, bosmaga moslab beramiz.</span>
-      </button>
-      </div>
-    </div>
-  </section>
 
   <section class="products" id="products">
     <div class="container">
@@ -361,17 +331,6 @@
   </div>
 </div>
 
-<div class="modal-backdrop" id="whyModal" hidden>
-  <div class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="whyModalTitle">
-    <button type="button" class="modal-close" id="whyModalClose" aria-label="Yopish">
-      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M6 6 18 18M18 6 6 18"></path></svg>
-    </button>
-    <img class="modal-image" id="whyModalImage" alt="">
-    <span class="modal-icon" id="whyModalIcon" aria-hidden="true"></span>
-    <h3 class="modal-title" id="whyModalTitle"></h3>
-    <p class="modal-text" id="whyModalText"></p>
-  </div>
-</div>
 
 <footer class="site-footer">
   <div class="container">
