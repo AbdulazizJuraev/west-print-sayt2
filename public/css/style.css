@@ -1557,3 +1557,7 @@ section[id] { scroll-margin-top: 76px; }
 .price-table th:first-child { background: var(--color-primary); }
 .price-table td:first-child { background: var(--color-surface); box-shadow: 1px 0 0 var(--color-border); }
 .price-table tbody tr:nth-child(even) td:first-child { background: var(--color-bg); }
+
+/* Works card is now a one-image slider (was a 3×3 mosaic). */
+.mosaic-page { grid-template-columns: 1fr; }
+.mosaic-page a { border-radius: 14px; }

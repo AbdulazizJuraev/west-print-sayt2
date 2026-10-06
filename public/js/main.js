@@ -366,26 +366,22 @@
     return src.replace('images/portfolio/', 'images/portfolio/thumbs/');
   }
 
-  /* Bosh sahifadagi ishlar mozaikasi: 3x3 sahifalar, avtomatik almashadi,
-     pastidagi nuqtalar bilan boshqariladi. Oxirgi sahifa bo'sh qolmasligi
-     uchun ro'yxat boshidan to'ldiriladi. */
+  /* Bosh sahifadagi ishlar slayderi: bittadan katta surat, avtomatik
+     almashadi, pastidagi nuqtalar bilan boshqariladi. portfolio.js da
+     `featured: true` belgilangan ishlar ko'rsatiladi (bo'lmasa hammasi). */
   function initIntroMosaic() {
     const wrap = document.getElementById('introMosaic');
     const dotsWrap = document.getElementById('introDots');
     if (!wrap || !dotsWrap || typeof PORTFOLIO === 'undefined' || !PORTFOLIO.length) return;
 
-    const PER_PAGE = 9;
-    const pageCount = Math.ceil(PORTFOLIO.length / PER_PAGE);
-    const pages = [];
-    for (let p = 0; p < pageCount; p++) {
-      const items = [];
-      for (let i = 0; i < PER_PAGE; i++) items.push(PORTFOLIO[(p * PER_PAGE + i) % PORTFOLIO.length]);
-      pages.push(items);
-    }
+    const featured = PORTFOLIO.filter((it) => it.featured);
+    const pages = (featured.length ? featured : PORTFOLIO).map((it) => [it]);
+    const pageCount = pages.length;
 
+    // Full-size image: a 360px thumbnail would look soft at card size.
     wrap.innerHTML = `<div class="mosaic-track">${pages.map((items, p) => `
       <div class="mosaic-page${p === 0 ? ' active' : ''}">
-        ${items.map((it) => `<a href="portfolio.html" tabindex="${p === 0 ? 0 : -1}"><img src="${thumbOf(it.src)}" data-full="${it.src}" alt="" loading="lazy" onerror="this.onerror=null;this.src=this.dataset.full"></a>`).join('')}
+        ${items.map((it) => `<a href="portfolio.html" tabindex="${p === 0 ? 0 : -1}"><img src="${it.src}" alt="${tr({ uz: it.titleUz, ru: it.titleRu })}" ${p === 0 ? '' : 'loading="lazy"'}></a>`).join('')}
       </div>
     `).join('')}</div>`;
     if (pageCount < 2) return;

@@ -8,17 +8,18 @@
  *      thumbs/ ichida bo'lsa sahifa tezroq ochiladi; bo'lmasa to'liq rasm ko'rsatiladi)
  *   2. Shu ro'yxatga bitta satr qo'shing, masalan:
  *      { src: 'images/portfolio/vizitka-6.jpg', titleUz: 'Vizitka', titleRu: 'Визитка' }
+ *   3. Bosh sahifadagi slayderda chiqishi uchun featured: true qo'shing
  *
  * Ro'yxat bo'sh bo'lsa, sahifada "tez orada" degan yozuv chiqadi.
  * Ishlar turlari aralash tursin deb ataylab navbatma-navbat terilgan.
  */
 const PORTFOLIO = [
-  { src: 'images/portfolio/offset-pechat.jpg', titleUz: 'Ofset pechat', titleRu: 'Офсетная печать' },
-  { src: 'images/portfolio/paket-pont.jpg', titleUz: 'Brendli paket — Pont', titleRu: 'Брендированный пакет — Pont' },
-  { src: 'images/portfolio/qadoq-vitrina.jpg', titleUz: 'Qadoq va poligrafiya mahsulotlari', titleRu: 'Упаковка и полиграфия' },
-  { src: 'images/portfolio/paket-airlab.jpg', titleUz: 'Brendli paket — Airlab', titleRu: 'Брендированный пакет — Airlab' },
-  { src: 'images/portfolio/paket-madam-muzi.jpg', titleUz: 'Brendli paket — Madam Muzi', titleRu: 'Брендированный пакет — Madam Muzi' },
-  { src: 'images/portfolio/tashqi-reklama.jpg', titleUz: 'Tashqi reklama', titleRu: 'Наружная реклама' },
+  { src: 'images/portfolio/offset-pechat.jpg', featured: true, titleUz: 'Ofset pechat', titleRu: 'Офсетная печать' },
+  { src: 'images/portfolio/paket-pont.jpg', featured: true, titleUz: 'Brendli paket — Pont', titleRu: 'Брендированный пакет — Pont' },
+  { src: 'images/portfolio/qadoq-vitrina.jpg', featured: true, titleUz: 'Qadoq va poligrafiya mahsulotlari', titleRu: 'Упаковка и полиграфия' },
+  { src: 'images/portfolio/paket-airlab.jpg', featured: true, titleUz: 'Brendli paket — Airlab', titleRu: 'Брендированный пакет — Airlab' },
+  { src: 'images/portfolio/paket-madam-muzi.jpg', featured: true, titleUz: 'Brendli paket — Madam Muzi', titleRu: 'Брендированный пакет — Madam Muzi' },
+  { src: 'images/portfolio/tashqi-reklama.jpg', featured: true, titleUz: 'Tashqi reklama', titleRu: 'Наружная реклама' },
   { src: 'images/portfolio/yorliq-1.jpg', titleUz: "Mahsulot yorlig'i", titleRu: 'Этикетка продукции' },
   { src: 'images/portfolio/katalog-1.jpg', titleUz: 'Katalog', titleRu: 'Каталог' },
   { src: 'images/portfolio/vizitka-6.jpg', titleUz: 'Vizitka', titleRu: 'Визитка' },
