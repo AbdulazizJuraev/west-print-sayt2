@@ -122,7 +122,7 @@
     grid.classList.remove('is-empty');
     grid.innerHTML = PORTFOLIO.map((item) => {
       const title = I18n.getLang() === 'ru' ? (item.titleRu || '') : (item.titleUz || '');
-      return `<img src="${thumbOf(item.src)}" data-full="${item.src}" alt="${title}" title="${title}" loading="lazy">`;
+      return `<img src="${thumbOf(item.src)}" data-full="${item.src}" alt="${title}" title="${title}" loading="lazy" onerror="this.onerror=null;this.src=this.dataset.full">`;
     }).join('');
   }
 
@@ -282,7 +282,7 @@
 
     wrap.innerHTML = `<div class="mosaic-track">${pages.map((items, p) => `
       <div class="mosaic-page${p === 0 ? ' active' : ''}">
-        ${items.map((it) => `<a href="portfolio.html" tabindex="${p === 0 ? 0 : -1}"><img src="${thumbOf(it.src)}" alt="" loading="lazy"></a>`).join('')}
+        ${items.map((it) => `<a href="portfolio.html" tabindex="${p === 0 ? 0 : -1}"><img src="${thumbOf(it.src)}" data-full="${it.src}" alt="" loading="lazy" onerror="this.onerror=null;this.src=this.dataset.full"></a>`).join('')}
       </div>
     `).join('')}</div>`;
     if (pageCount < 2) return;

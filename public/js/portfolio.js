@@ -4,7 +4,8 @@
  * Portfolio ishlari ro'yxati.
  *
  * Yangi ish qo'shish uchun:
- *   1. Rasmni public/images/portfolio/ papkasiga tashlang
+ *   1. Rasmni public/images/portfolio/ papkasiga tashlang (kichik nusxasi
+ *      thumbs/ ichida bo'lsa sahifa tezroq ochiladi; bo'lmasa to'liq rasm ko'rsatiladi)
  *   2. Shu ro'yxatga bitta satr qo'shing, masalan:
  *      { src: 'images/portfolio/vizitka-6.jpg', titleUz: 'Vizitka', titleRu: 'Визитка' }
  *
