@@ -992,10 +992,11 @@ a.contact-card:hover, a.contact-card:focus-visible {
     flex-direction: column;
     justify-content: center;
     flex-shrink: 0;
-    width: 68px;
+    width: auto;
+    min-width: 64px;
     height: auto;
     gap: 4px;
-    padding: 9px 4px;
+    padding: 9px 8px;
     border-radius: 999px;
     color: rgba(255, 255, 255, 0.65);
     font-size: 0.62rem;
@@ -1070,8 +1071,9 @@ a.contact-card:hover, a.contact-card:focus-visible {
    fit 5 across, so drop back to icon-only circles (same sr-only label
    technique as the desktop nav) and shrink the pill accordingly. */
 @media (max-width: 380px) {
-  /* Only three items now, so labels fit even on the narrowest phones. */
-  .bottom-nav-item { width: 62px; padding: 8px 2px; font-size: 0.58rem; }
+  /* Width follows the label (min-width keeps short ones even) so the
+     longest label, e.g. "Преимущества", still fits on narrow phones. */
+  .bottom-nav-item { width: auto; min-width: 56px; padding: 8px 6px; font-size: 0.56rem; }
   .bottom-nav-item svg { width: 20px; height: 20px; }
 
   .why-grid { grid-template-columns: 1fr; }
@@ -1242,4 +1244,12 @@ a.contact-card:hover, a.contact-card:focus-visible {
     bottom: auto;
     right: 0;
   }
+}
+
+/* Nav links jump to sections on the home page (e.g. #why-us): scroll
+   smoothly, and stop below the sticky 68px header instead of under it. */
+html { scroll-behavior: smooth; }
+section[id] { scroll-margin-top: 76px; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
 }

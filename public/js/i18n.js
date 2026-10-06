@@ -4,6 +4,10 @@ const I18N = {
   uz: {
     nav_home: 'Bosh sahifa',
     nav_services: 'Xizmatlar',
+    nav_advantages: 'Afzalliklar',
+    why_eyebrow: 'Afzalliklarimiz',
+    why_title: 'Nega aynan West Print?',
+    why_subtitle: "Kartochkani bosing — batafsil o'qing",
     nav_gallery: 'Ishlarimiz',
     nav_contact: 'Aloqa',
     nav_settings: 'Sozlamalar',
@@ -111,6 +115,10 @@ const I18N = {
   ru: {
     nav_home: 'Главная',
     nav_services: 'Услуги',
+    nav_advantages: 'Преимущества',
+    why_eyebrow: 'Наши преимущества',
+    why_title: 'Почему West Print?',
+    why_subtitle: 'Нажмите на карточку, чтобы узнать подробнее',
     nav_gallery: 'Наши работы',
     nav_contact: 'Контакты',
     nav_settings: 'Настройки',
