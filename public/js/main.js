@@ -202,15 +202,10 @@
 
     let current = 0;
 
+    // Faqat matn almashadi — fon videosi bitta va to'xtamasdan ishlaydi.
     function goTo(index) {
       current = (index + slides.length) % slides.length;
-      slides.forEach((slide, i) => {
-        slide.classList.toggle('active', i === current);
-        const video = slide.querySelector('video');
-        if (!video) return;
-        if (i === current) video.play().catch(() => {});
-        else video.pause();
-      });
+      slides.forEach((slide, i) => slide.classList.toggle('active', i === current));
     }
 
     setInterval(() => goTo(current + 1), 6000);
