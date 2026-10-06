@@ -1432,3 +1432,128 @@ section[id] { scroll-margin-top: 76px; }
   .intro-stat span { font-size: 0.74rem; }
   .intro-tile strong { font-size: 1.1rem; }
 }
+
+/* ===== Narxlar sahifasi ===== */
+.prices { background: var(--color-bg); }
+/* Search + category chips stay reachable while scrolling a long list. */
+.price-tools {
+  position: sticky;
+  top: 68px;
+  z-index: 5;
+  margin: 0 -20px 18px;
+  padding: 12px 20px;
+  background: var(--color-bg);
+  border-bottom: 1px solid var(--color-border);
+}
+.price-search {
+  display: block;
+  width: 100%;
+  max-width: 520px;
+  margin: 0 auto 12px;
+  padding: 12px 18px;
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  background: var(--color-surface);
+  color: var(--color-text);
+  font: inherit;
+  font-size: 0.95rem;
+}
+.price-search:focus { outline: none; border-color: var(--color-primary); box-shadow: 0 0 0 3px var(--color-tint); }
+.price-chips {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding-bottom: 2px;
+  scrollbar-width: none;
+}
+.price-chips::-webkit-scrollbar { display: none; }
+.price-chip {
+  flex-shrink: 0;
+  padding: 8px 14px;
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  background: var(--color-surface);
+  color: var(--color-text);
+  font: inherit;
+  font-size: 0.85rem;
+  font-weight: 600;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+.price-chip:hover { border-color: var(--color-primary); }
+.price-chip.active { background: var(--color-primary); border-color: var(--color-primary); color: #fff; }
+
+/* Nested <section>: drop the page-level section padding. */
+.price-cat { margin-bottom: 26px; padding: 0; }
+.price-cat-title { margin: 0 0 10px; font-size: 1.1rem; color: var(--color-heading-accent); }
+.price-card {
+  margin-bottom: 8px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: border-color 0.2s;
+}
+.price-card.open { border-color: var(--color-primary); }
+.price-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 14px 16px;
+  border: 0;
+  background: none;
+  color: var(--color-text);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+.price-name { flex: 1; font-weight: 700; font-size: 0.98rem; }
+.price-from { flex-shrink: 0; font-size: 0.88rem; font-weight: 700; color: var(--color-primary); white-space: nowrap; }
+.price-chevron { display: flex; flex-shrink: 0; color: var(--color-text-muted); transition: transform 0.2s; }
+.price-card.open .price-chevron { transform: rotate(180deg); }
+.price-body { padding: 0 16px 16px; }
+.price-notes { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+.price-note {
+  padding: 4px 10px;
+  border-radius: 8px;
+  background: var(--color-tint);
+  color: var(--color-primary);
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+/* Wide multi-variant tables scroll inside the card, never the page. */
+.price-table-wrap { overflow-x: auto; border: 1px solid var(--color-border); border-radius: 10px; }
+.price-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; white-space: nowrap; }
+.price-table th {
+  padding: 10px 12px;
+  background: var(--color-primary);
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.8rem;
+  text-align: right;
+}
+.price-table td { padding: 8px 12px; border-top: 1px solid var(--color-border); text-align: right; font-variant-numeric: tabular-nums; }
+.price-table th:first-child,
+.price-table td:first-child { text-align: left; font-weight: 600; }
+.price-table tbody tr:nth-child(even) td { background: var(--color-bg); }
+.price-order { margin-top: 14px; }
+.price-empty { text-align: center; padding: 30px 0; }
+.price-disclaimer { margin: 24px auto 0; max-width: 640px; text-align: center; font-size: 0.85rem; }
+
+@media (max-width: 820px) {
+  .price-tools { top: 68px; }
+  .price-head { padding: 12px 14px; gap: 8px; }
+  .price-name { font-size: 0.9rem; }
+  .price-from { font-size: 0.8rem; }
+  .price-body { padding: 0 12px 14px; }
+  .price-table { font-size: 0.8rem; }
+  .price-table th, .price-table td { padding: 7px 9px; }
+}
+/* Quantity column stays put while a wide table is scrolled sideways. */
+.price-table th:first-child,
+.price-table td:first-child { position: sticky; left: 0; z-index: 1; }
+.price-table th:first-child { background: var(--color-primary); }
+.price-table td:first-child { background: var(--color-surface); box-shadow: 1px 0 0 var(--color-border); }
+.price-table tbody tr:nth-child(even) td:first-child { background: var(--color-bg); }

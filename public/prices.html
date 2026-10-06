@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Xizmatlar — West Print</title>
+<title>Narxlar — West Print</title>
 <script>
 (function () {
   try {
@@ -13,12 +13,11 @@
 })();
 </script>
 <link rel="stylesheet" href="css/style.css">
-<link rel="preconnect" href="https://images.unsplash.com">
 <link rel="prefetch" href="index.html">
+<link rel="prefetch" href="services.html">
 <link rel="prefetch" href="gallery.html">
-<link rel="prefetch" href="contact.html">
 </head>
-<body data-page="services">
+<body data-page="prices">
 
 <header class="site-header">
   <div class="container header-inner">
@@ -76,11 +75,18 @@
 
 <main>
 
-  <section class="services">
+  <section class="prices">
     <div class="container">
-      <h2 data-i18n="services_title">Xizmatlarimiz</h2>
-      <p class="section-subtitle" data-i18n="services_subtitle">Har qanday poligrafik mahsulot uchun murojaat qiling</p>
-      <div class="services-grid" id="servicesGrid"></div>
+      <span class="section-eyebrow" data-i18n="prices_eyebrow">Narxlar</span>
+      <h2 data-i18n="prices_title">Mahsulot va xizmatlar narxlari</h2>
+      <p class="section-subtitle" data-i18n="prices_subtitle">Narxlar so'mda, 1 dona uchun. Tiraj qancha ko'p bo'lsa, narx shuncha arzon.</p>
+      <div class="price-tools">
+        <input type="search" id="priceSearch" class="price-search" data-i18n-placeholder="prices_search" placeholder="Mahsulotni qidiring…" autocomplete="off">
+        <div class="price-chips" id="priceChips"></div>
+      </div>
+      <div id="priceList"></div>
+      <p class="price-empty" id="priceEmpty" hidden data-i18n="prices_empty">Hech narsa topilmadi.</p>
+      <p class="price-disclaimer" data-i18n="prices_note">Narxlar ma'lumot uchun. Aniq narx dizayn, material va tirajga qarab buyurtmada kelishiladi.</p>
     </div>
   </section>
 
@@ -94,6 +100,7 @@
 
 <script src="js/icons.js"></script>
 <script src="js/catalog.js"></script>
+<script src="js/prices.js"></script>
 <script src="js/i18n.js"></script>
 <script src="js/theme.js"></script>
 <script src="js/main.js"></script>

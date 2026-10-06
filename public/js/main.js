@@ -166,6 +166,109 @@
     document.addEventListener('keydown', (e) => { if (e.key === 'Escape') close(); });
   }
 
+  /* Narxlar sahifasi: js/prices.js dagi jadvallar — bo'limlar, qidiruv va
+     ochiladigan kartochkalar. */
+  const fmtNum = (n) => String(n).replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
+  const tr = (v) => (v && typeof v === 'object' ? v[I18n.getLang()] || v.uz : v);
+  let priceFilter = 'all';
+
+  function priceTable(item) {
+    const head = item.head || 'qty';
+    const unit = item.unit || 'dona';
+    const numericQty = head === 'qty' || head === 'meter';
+    const qtyLabel = (q) => (typeof q === 'number' && numericQty ? `${fmtNum(q)} ${I18n.t('prices_u_' + unit)}` : tr(q));
+    const cell = (p) => (p === null ? '—' : fmtNum(p));
+    const firstCol = I18n.t(head === 'size' ? 'prices_col_size' : head === 'meter' ? 'prices_col_meter' : 'prices_col_qty');
+
+    if (item.cols) {
+      return `<table class="price-table"><thead><tr><th>${firstCol}</th>${item.cols.map((c) => `<th>${tr(c)}</th>`).join('')}</tr></thead>
+        <tbody>${item.rows.map((r) => `<tr><td>${qtyLabel(r[0])}</td>${r.slice(1).map((p) => `<td>${cell(p)}</td>`).join('')}</tr>`).join('')}</tbody></table>`;
+    }
+    const priceCol = head === 'size' ? I18n.t('prices_col_price') : I18n.t('prices_col_per_' + unit);
+    const withTotal = numericQty && item.rows.every((r) => typeof r[0] === 'number');
+    return `<table class="price-table"><thead><tr><th>${firstCol}</th><th>${priceCol}</th>${withTotal ? `<th>${I18n.t('prices_col_total')}</th>` : ''}</tr></thead>
+      <tbody>${item.rows.map((r) => `<tr><td>${qtyLabel(r[0])}</td><td>${cell(r[1])}</td>${withTotal ? `<td>${fmtNum(r[0] * r[1])}</td>` : ''}</tr>`).join('')}</tbody></table>`;
+  }
+
+  function renderPrices() {
+    const list = document.getElementById('priceList');
+    const chips = document.getElementById('priceChips');
+    if (!list || !chips || typeof PRICE_DATA === 'undefined') return;
+
+    chips.innerHTML = [{ id: 'all', name: I18n.t('prices_all') }]
+      .concat(PRICE_DATA.map((c) => ({ id: c.id, name: tr(c) })))
+      .map((c) => `<button type="button" class="price-chip${c.id === priceFilter ? ' active' : ''}" data-cat="${c.id}">${c.name}</button>`)
+      .join('');
+
+    const chevron = '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg>';
+    list.innerHTML = PRICE_DATA.map((cat) => `
+      <section class="price-cat" data-cat="${cat.id}">
+        <h3 class="price-cat-title">${tr(cat)}</h3>
+        ${cat.items.map((it) => {
+          const all = it.rows.flatMap((r) => r.slice(1)).filter((p) => p !== null);
+          const from = I18n.t('prices_from').replace('{p}', fmtNum(Math.min(...all)));
+          const search = `${it.uz} ${it.ru} ${cat.uz} ${cat.ru}`.toLowerCase();
+          const notes = (it.notes || []).map((n) => `<span class="price-note">${tr(n)}</span>`).join('');
+          return `<article class="price-card" data-search="${search.replace(/"/g, '&quot;')}">
+            <button type="button" class="price-head" aria-expanded="false">
+              <span class="price-name">${tr(it)}</span>
+              <span class="price-from">${from}</span>
+              <span class="price-chevron">${chevron}</span>
+            </button>
+            <div class="price-body" hidden>
+              ${notes ? `<div class="price-notes">${notes}</div>` : ''}
+              <div class="price-table-wrap">${priceTable(it)}</div>
+              <a class="btn btn-primary price-order" href="https://t.me/wpmaxuz" target="_blank" rel="noopener">${I18n.t('hero_cta')}</a>
+            </div>
+          </article>`;
+        }).join('')}
+      </section>
+    `).join('');
+    filterPrices();
+  }
+
+  function filterPrices() {
+    const list = document.getElementById('priceList');
+    if (!list) return;
+    const term = (document.getElementById('priceSearch').value || '').trim().toLowerCase();
+    let shown = 0;
+    list.querySelectorAll('.price-cat').forEach((cat) => {
+      const catOk = priceFilter === 'all' || cat.dataset.cat === priceFilter;
+      let visible = 0;
+      cat.querySelectorAll('.price-card').forEach((card) => {
+        const ok = catOk && (!term || card.dataset.search.includes(term));
+        card.hidden = !ok;
+        if (ok) visible++;
+      });
+      cat.hidden = visible === 0;
+      shown += visible;
+    });
+    document.getElementById('priceEmpty').hidden = shown > 0;
+  }
+
+  function initPrices() {
+    const list = document.getElementById('priceList');
+    if (!list) return;
+    // Delegated: the list and chips are re-rendered on language change.
+    list.addEventListener('click', (e) => {
+      const head = e.target.closest('.price-head');
+      if (!head) return;
+      const card = head.parentElement;
+      const open = !card.classList.contains('open');
+      card.classList.toggle('open', open);
+      head.setAttribute('aria-expanded', open ? 'true' : 'false');
+      card.querySelector('.price-body').hidden = !open;
+    });
+    document.getElementById('priceChips').addEventListener('click', (e) => {
+      const chip = e.target.closest('.price-chip');
+      if (!chip) return;
+      priceFilter = chip.dataset.cat;
+      document.querySelectorAll('.price-chip').forEach((c) => c.classList.toggle('active', c === chip));
+      filterPrices();
+    });
+    document.getElementById('priceSearch').addEventListener('input', filterPrices);
+  }
+
   const FAQ_IDS = [1, 2, 3, 4, 5];
 
   function renderFaq() {
@@ -417,6 +520,7 @@
     renderServiceCards();
     renderProductTrack();
     renderPortfolio();
+    renderPrices();
     renderFaq();
     updateNavTooltips();
     markActiveNav();
@@ -424,6 +528,7 @@
     initIntroMosaic();
     initWhyCards();
     initLightbox();
+    initPrices();
     initProductModal();
     placeSettings();
     initSettingsDropdown();
@@ -446,6 +551,7 @@
       renderServiceCards();
       renderProductTrack();
       renderPortfolio();
+      renderPrices();
       renderFaq();
       updateNavTooltips();
     });
