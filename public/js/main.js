@@ -194,7 +194,8 @@
   }
 
   function updateNavTooltips() {
-    bottomNav.querySelectorAll('.bottom-nav-item').forEach((item) => {
+    // Document-wide: on phones the Settings button lives in the header.
+    document.querySelectorAll('.bottom-nav-item').forEach((item) => {
       const label = item.querySelector('span:last-child');
       if (label) item.title = label.textContent.trim();
     });
@@ -333,6 +334,22 @@
     document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
   }
 
+  /* Telefonda Sozlamalar pastki menyudan tepaga (header'ga) ko'chadi,
+     kompyuterda esa menyuda qoladi. Bitta element ko'chiriladi — id'lar
+     va hodisalar (click) o'zgarmay saqlanadi. */
+  function placeSettings() {
+    const settings = document.querySelector('.nav-settings');
+    const header = document.querySelector('.header-inner');
+    if (!settings || !header || !bottomNav) return;
+    const phone = window.matchMedia('(max-width: 820px)');
+    function apply() {
+      const target = phone.matches ? header : bottomNav;
+      if (settings.parentElement !== target) target.appendChild(settings);
+    }
+    apply();
+    phone.addEventListener('change', apply);
+  }
+
   function initSettingsDropdown() {
     const toggle = document.getElementById('settingsToggle');
     const dropdown = document.getElementById('settingsDropdown');
@@ -367,6 +384,7 @@
     initWhyCards();
     initLightbox();
     initProductModal();
+    placeSettings();
     initSettingsDropdown();
 
     document.querySelectorAll('[data-lang-btn]').forEach((btn) => {
