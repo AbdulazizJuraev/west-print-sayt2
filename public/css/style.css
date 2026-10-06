@@ -1216,35 +1216,6 @@ a.contact-card:hover, a.contact-card:focus-visible {
   .modal-image-tall { height: 180px; }
 }
 
-/* Phones: Settings leaves the bottom dock and sits at the header's right
-   edge (main.js moves the node there). Hidden in the dock meanwhile so it
-   never flashes there before the script runs. */
-@media (max-width: 820px) {
-  .bottom-nav .nav-settings { display: none; }
-  .header-inner { position: relative; }
-  .site-header .nav-settings {
-    position: absolute;
-    right: 16px;
-    top: 50%;
-    transform: translateY(-50%);
-  }
-  .site-header .settings-toggle {
-    width: 40px;
-    height: 40px;
-    padding: 0;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.1);
-    color: #fff;
-  }
-  .site-header .settings-toggle span:last-child { display: none; }
-  .site-header .settings-toggle svg { width: 20px; height: 20px; }
-  /* In the header the dropdown opens downward, not up off the dock. */
-  .site-header .settings-dropdown {
-    top: calc(100% + 12px);
-    bottom: auto;
-    right: 0;
-  }
-}
 
 /* Nav links jump to sections on the home page (e.g. #why-us): scroll
    smoothly, and stop below the sticky 68px header instead of under it. */
@@ -1252,4 +1223,66 @@ html { scroll-behavior: smooth; }
 section[id] { scroll-margin-top: 76px; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
+}
+
+/* Phones: the Settings dropdown leaves the bottom dock (main.js moves the
+   node into the header) and is laid open as two separate controls — theme
+   at the header's left edge, language at its right — with the logo
+   centred between them. Hidden in the dock meanwhile so it never flashes
+   there before the script runs. */
+@media (max-width: 820px) {
+  .bottom-nav .nav-settings { display: none; }
+  .header-inner { position: relative; }
+  /* Static, so the two rows below position against .header-inner. */
+  .site-header .nav-settings { position: static; }
+  .site-header .settings-toggle { display: none; }
+  .site-header .settings-dropdown {
+    position: static;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    transition: none;
+    min-width: 0;
+    padding: 0;
+    background: none;
+    border: 0;
+    box-shadow: none;
+  }
+  .site-header .settings-row {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 0;
+    border-top: 0;
+  }
+  .site-header .settings-row:first-child { left: 14px; }
+  .site-header .settings-row:last-child { right: 14px; }
+  .site-header .settings-row > span:first-child { display: none; }
+
+  /* Controls restyled for the always-dark header. */
+  .site-header .theme-toggle {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    border-color: rgba(255, 255, 255, 0.18);
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+  }
+  .site-header .lang-switch {
+    border-color: rgba(255, 255, 255, 0.18);
+    border-radius: 999px;
+  }
+  .site-header .lang-switch button {
+    padding: 7px 11px;
+    background: rgba(255, 255, 255, 0.06);
+    color: rgba(255, 255, 255, 0.7);
+  }
+  .site-header .lang-switch button.active { background: var(--color-primary); color: #fff; }
+}
+/* Narrowest phones: shrink the logo and the language pill a touch so the
+   pill clears the centred logo. */
+@media (max-width: 380px) {
+  .brand-logo { height: 28px; }
+  .site-header .lang-switch button { padding: 6px 8px; font-size: 0.75rem; }
+  .site-header .theme-toggle { width: 34px; height: 34px; }
 }
