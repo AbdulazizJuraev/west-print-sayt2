@@ -14,7 +14,6 @@
 </script>
 <link rel="stylesheet" href="css/style.css">
 <link rel="preconnect" href="https://images.unsplash.com">
-<link rel="preconnect" href="https://videos.pexels.com">
 <link rel="prefetch" href="services.html">
 <link rel="prefetch" href="gallery.html">
 <link rel="prefetch" href="contact.html">
@@ -105,6 +104,10 @@
           <button type="button" data-lang-btn="uz">UZ</button>
           <button type="button" data-lang-btn="ru">RU</button>
         </div>
+        <button type="button" class="lang-flag" id="langFlag" aria-label="Tilni o'zgartirish">
+          <span class="flag flag-uz" data-icon="flagUz"></span>
+          <span class="flag flag-ru" data-icon="flagRu"></span>
+        </button>
       </div>
     </div>
   </div>
@@ -112,38 +115,30 @@
 
 <main>
 
-  <section class="hero" id="top">
-    <!-- Bitta fon videosi barcha slaydlarga xizmat qiladi — uchta alohida
-         video yuklash mobil internetda juda og'ir edi. -->
-    <div class="hero-bg">
-      <video autoplay muted loop playsinline preload="metadata"
-             poster="https://images.unsplash.com/photo-1758183961426-88d64eb5f787?w=1600&q=80&auto=format&fit=crop">
-        <source src="https://videos.pexels.com/video-files/29906414/12837347_1280_720_24fps.mp4" type="video/mp4">
-      </video>
-    </div>
-    <div class="hero-overlay"></div>
-    <div class="hero-slide active" data-slide="0">
-      <div class="container hero-content">
-        <span class="hero-badge" data-i18n="hero_badge">Zamonaviy poligrafiya xizmati</span>
-        <h2 class="hero-title" data-i18n="hero_title">Poligrafiya xizmatlari — tez, sifatli, qulay narxda</h2>
-        <p class="hero-subtitle" data-i18n="hero_subtitle">Vizitka, buklet, flayer, banner va reklama taxtalarini buyurtma qiling.</p>
-        <a href="https://t.me/westprintstar" target="_blank" rel="noopener" class="btn btn-primary hero-cta" data-i18n="hero_cta">Buyurtma berish</a>
+  <section class="intro" id="top">
+    <div class="container intro-grid">
+      <div class="intro-text">
+        <h1 class="intro-title">West Print</h1>
+        <p class="intro-tagline" data-i18n="intro_tagline">Poligrafiya va reklama agentligi</p>
+        <p class="intro-desc" data-i18n="intro_desc">Vizitkadan katta formatli bannergacha — dizayn, bosma va tayyor mahsulot bir joyda. West Print bilan brendingiz ko'zga tashlanadi.</p>
+        <div class="intro-tiles">
+          <a class="intro-tile" href="tel:+998959803037">
+            <strong>95 980 30 37</strong>
+            <span data-i18n="intro_call">Qo'ng'iroq qilish</span>
+          </a>
+          <a class="intro-tile" href="https://t.me/westprintstar" target="_blank" rel="noopener">
+            <strong>@westprintstar</strong>
+            <span data-i18n="intro_telegram">Telegramda buyurtma</span>
+          </a>
+        </div>
       </div>
-    </div>
-    <div class="hero-slide" data-slide="1">
-      <div class="container hero-content">
-        <span class="hero-badge" data-i18n="hero2_badge">Raqamli chop etish</span>
-        <h2 class="hero-title" data-i18n="hero2_title">Yuqori aniqlikdagi raqamli bosma xizmati</h2>
-        <p class="hero-subtitle" data-i18n="hero2_subtitle">Zamonaviy uskunalarda yorqin va aniq ranglar bilan chop etamiz.</p>
-        <a href="https://t.me/westprintstar" target="_blank" rel="noopener" class="btn btn-primary hero-cta" data-i18n="hero_cta">Buyurtma berish</a>
-      </div>
-    </div>
-    <div class="hero-slide" data-slide="2">
-      <div class="container hero-content">
-        <span class="hero-badge" data-i18n="hero3_badge">Professional sifat</span>
-        <h2 class="hero-title" data-i18n="hero3_title">Har bir detalga alohida e'tibor</h2>
-        <p class="hero-subtitle" data-i18n="hero3_subtitle">Kichik tiraj yoki katta hajmdagi buyurtmalar — barchasini sifatli bajaramiz.</p>
-        <a href="https://t.me/westprintstar" target="_blank" rel="noopener" class="btn btn-primary hero-cta" data-i18n="hero_cta">Buyurtma berish</a>
+      <div class="intro-card">
+        <div class="intro-card-head">
+          <span data-i18n="intro_card_title">Bizning ishlarimiz</span>
+          <a href="portfolio.html" data-i18n="intro_card_all">Barchasi →</a>
+        </div>
+        <div class="mosaic" id="introMosaic"></div>
+        <div class="mosaic-dots" id="introDots"></div>
       </div>
     </div>
   </section>
@@ -386,6 +381,7 @@
 
 <script src="js/icons.js"></script>
 <script src="js/catalog.js"></script>
+<script src="js/portfolio.js"></script>
 <script src="js/i18n.js"></script>
 <script src="js/theme.js"></script>
 <script src="js/main.js"></script>

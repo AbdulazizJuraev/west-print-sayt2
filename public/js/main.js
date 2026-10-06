@@ -122,7 +122,7 @@
     grid.classList.remove('is-empty');
     grid.innerHTML = PORTFOLIO.map((item) => {
       const title = I18n.getLang() === 'ru' ? (item.titleRu || '') : (item.titleUz || '');
-      return `<img src="${item.src}" alt="${title}" title="${title}" loading="lazy">`;
+      return `<img src="${thumbOf(item.src)}" data-full="${item.src}" alt="${title}" title="${title}" loading="lazy">`;
     }).join('');
   }
 
@@ -152,7 +152,7 @@
       const img = e.target.closest('img');
       if (!img) return;
       lastFocused = img;
-      image.src = img.getAttribute('src');
+      image.src = img.getAttribute('data-full') || img.getAttribute('src');
       image.alt = img.getAttribute('alt') || '';
       box.hidden = false;
       void box.offsetHeight;
@@ -257,21 +257,62 @@
     });
   }
 
-  function initHeroSlider() {
-    const hero = document.querySelector('.hero');
-    if (!hero) return;
-    const slides = hero.querySelectorAll('.hero-slide');
-    if (slides.length < 2) return;
+  /* Portfolio rasmining kichik nusxasi (images/portfolio/thumbs/) —
+     kartochka va mozaikalarda shu, to'liq rasm faqat kattalashtirilganda. */
+  function thumbOf(src) {
+    return src.replace('images/portfolio/', 'images/portfolio/thumbs/');
+  }
 
-    let current = 0;
+  /* Bosh sahifadagi ishlar mozaikasi: 3x3 sahifalar, avtomatik almashadi,
+     pastidagi nuqtalar bilan boshqariladi. Oxirgi sahifa bo'sh qolmasligi
+     uchun ro'yxat boshidan to'ldiriladi. */
+  function initIntroMosaic() {
+    const wrap = document.getElementById('introMosaic');
+    const dotsWrap = document.getElementById('introDots');
+    if (!wrap || !dotsWrap || typeof PORTFOLIO === 'undefined' || !PORTFOLIO.length) return;
 
-    // Faqat matn almashadi — fon videosi bitta va to'xtamasdan ishlaydi.
-    function goTo(index) {
-      current = (index + slides.length) % slides.length;
-      slides.forEach((slide, i) => slide.classList.toggle('active', i === current));
+    const PER_PAGE = 9;
+    const pageCount = Math.ceil(PORTFOLIO.length / PER_PAGE);
+    const pages = [];
+    for (let p = 0; p < pageCount; p++) {
+      const items = [];
+      for (let i = 0; i < PER_PAGE; i++) items.push(PORTFOLIO[(p * PER_PAGE + i) % PORTFOLIO.length]);
+      pages.push(items);
     }
 
-    setInterval(() => goTo(current + 1), 6000);
+    wrap.innerHTML = `<div class="mosaic-track">${pages.map((items, p) => `
+      <div class="mosaic-page${p === 0 ? ' active' : ''}">
+        ${items.map((it) => `<a href="portfolio.html" tabindex="${p === 0 ? 0 : -1}"><img src="${thumbOf(it.src)}" alt="" loading="lazy"></a>`).join('')}
+      </div>
+    `).join('')}</div>`;
+    if (pageCount < 2) return;
+
+    dotsWrap.innerHTML = pages.map((_, p) =>
+      `<button type="button" class="mosaic-dot${p === 0 ? ' active' : ''}" aria-label="${p + 1}"></button>`
+    ).join('');
+
+    const track = wrap.querySelector('.mosaic-track');
+    const pageEls = wrap.querySelectorAll('.mosaic-page');
+    const dots = dotsWrap.querySelectorAll('.mosaic-dot');
+    let current = 0;
+    let timer;
+
+    function goTo(index) {
+      current = (index + pageCount) % pageCount;
+      track.style.transform = `translateX(-${current * 100}%)`;
+      pageEls.forEach((el, i) => {
+        el.classList.toggle('active', i === current);
+        el.querySelectorAll('a').forEach((a) => { a.tabIndex = i === current ? 0 : -1; });
+      });
+      dots.forEach((d, i) => d.classList.toggle('active', i === current));
+    }
+    function restart() {
+      clearInterval(timer);
+      timer = setInterval(() => goTo(current + 1), 4500);
+    }
+
+    dots.forEach((dot, i) => dot.addEventListener('click', () => { goTo(i); restart(); }));
+    restart();
   }
 
   /* "Nega biz" kartochkalari: bosilganda batafsil ma'lumot qalqib
@@ -380,7 +421,7 @@
     updateNavTooltips();
     markActiveNav();
     initPosterCarousel();
-    initHeroSlider();
+    initIntroMosaic();
     initWhyCards();
     initLightbox();
     initProductModal();
@@ -390,6 +431,16 @@
     document.querySelectorAll('[data-lang-btn]').forEach((btn) => {
       btn.addEventListener('click', () => I18n.setLanguage(btn.getAttribute('data-lang-btn')));
     });
+
+    // Telefondagi dumaloq bayroq: bosilsa til (va bayroq) almashadi.
+    const langFlag = document.getElementById('langFlag');
+    if (langFlag) {
+      const syncFlagLabel = () => langFlag.setAttribute('aria-label',
+        I18n.getLang() === 'uz' ? "Tilni o'zgartirish: ruscha" : 'Сменить язык: узбекский');
+      langFlag.addEventListener('click', () => I18n.setLanguage(I18n.getLang() === 'uz' ? 'ru' : 'uz'));
+      syncFlagLabel();
+      document.addEventListener('languagechange', syncFlagLabel);
+    }
 
     document.addEventListener('languagechange', () => {
       renderServiceCards();
