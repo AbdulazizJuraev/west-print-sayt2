@@ -409,28 +409,34 @@
       `<button type="button" class="mosaic-dot${p === 0 ? ' active' : ''}" aria-label="${p + 1}"></button>`
     ).join('');
 
-    const track = wrap.querySelector('.mosaic-track');
     const pageEls = wrap.querySelectorAll('.mosaic-page');
     const dots = dotsWrap.querySelectorAll('.mosaic-dot');
     let current = 0;
-    let timer;
 
     function goTo(index) {
       current = (index + pageCount) % pageCount;
-      track.style.transform = `translateX(-${current * 100}%)`;
       pageEls.forEach((el, i) => {
         el.classList.toggle('active', i === current);
         el.querySelectorAll('a').forEach((a) => { a.tabIndex = i === current ? 0 : -1; });
       });
       dots.forEach((d, i) => d.classList.toggle('active', i === current));
     }
-    function restart() {
-      clearInterval(timer);
-      timer = setInterval(() => goTo(current + 1), 4500);
-    }
+    // Auto-advance: the active dot's progress-bar animation (CSS) ending
+    // moves to the next photo, so pausing it on hover pauses the slider.
+    dotsWrap.addEventListener('animationend', (e) => {
+      if (e.target.classList.contains('active')) goTo(current + 1);
+    });
+    dots.forEach((dot, i) => dot.addEventListener('click', () => goTo(i)));
 
-    dots.forEach((dot, i) => dot.addEventListener('click', () => { goTo(i); restart(); }));
-    restart();
+    // Barmoq bilan surish (telefonda).
+    let startX = null;
+    wrap.addEventListener('touchstart', (e) => { startX = e.touches[0].clientX; }, { passive: true });
+    wrap.addEventListener('touchend', (e) => {
+      if (startX === null) return;
+      const dx = e.changedTouches[0].clientX - startX;
+      startX = null;
+      if (Math.abs(dx) > 40) goTo(current + (dx < 0 ? 1 : -1));
+    });
   }
 
   /* "Nega biz" kartochkalari: bosilganda batafsil ma'lumot qalqib

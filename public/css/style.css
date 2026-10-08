@@ -1477,9 +1477,64 @@ section[id] { scroll-margin-top: 76px; }
 .price-table td:first-child { background: var(--color-surface); box-shadow: 1px 0 0 var(--color-border); }
 .price-table tbody tr:nth-child(even) td:first-child { background: var(--color-bg); }
 
-/* Works card is now a one-image slider (was a 3×3 mosaic). */
-.mosaic-page { grid-template-columns: 1fr; }
+/* Works card: one image at a time. Slides are stacked in one grid cell
+   and cross-fade; the incoming photo settles from a slight zoom while the
+   outgoing one keeps its scale until it has faded (transform reset is
+   delayed), so nothing jumps. The active dot stretches into a progress
+   bar — its fill animation ending is what advances the slider. */
+.mosaic { position: relative; border-radius: 14px; }
+.mosaic-track { display: grid; transform: none !important; }
+.mosaic-page {
+  grid-area: 1 / 1;
+  grid-template-columns: 1fr;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.9s ease, visibility 0s linear 0.9s;
+}
+.mosaic-page.active {
+  z-index: 1;
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.9s ease;
+}
 .mosaic-page a { border-radius: 14px; }
+.mosaic-page img,
+.mosaic-page a:hover img {
+  transform: scale(1.12);
+  transition: transform 0s linear 0.9s;
+}
+.mosaic-page.active a img,
+.mosaic-page.active a:hover img {
+  transform: scale(1);
+  transition: transform 5s cubic-bezier(0.2, 0.6, 0.3, 1);
+}
+.mosaic-dot { position: relative; overflow: hidden; transition: width 0.35s ease, background 0.2s; }
+.mosaic-dot.active {
+  width: 28px;
+  border-radius: 999px;
+  background: rgba(29, 78, 216, 0.18);
+  transform: none;
+}
+.mosaic-dot.active::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--color-primary);
+  transform-origin: left;
+  animation: mosaicProgress 4.5s linear forwards;
+}
+.mosaic:hover ~ .mosaic-dots .mosaic-dot.active::after,
+.mosaic-dots:hover .mosaic-dot.active::after { animation-play-state: paused; }
+@keyframes mosaicProgress {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .mosaic-page, .mosaic-page.active { transition: none; }
+  .mosaic-page a img, .mosaic-page.active a img, .mosaic-page.active a:hover img { transform: none; transition: none; }
+  .mosaic-dot.active { background: var(--color-primary); }
+  .mosaic-dot.active::after { animation: none; }
+}
 
 /* Floating Telegram button (injected by main.js on every page). */
 .tg-fab {
