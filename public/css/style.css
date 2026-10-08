@@ -25,6 +25,11 @@
   --header-chip-border: rgba(15, 23, 42, 0.12);
   --header-chip-border-hover: rgba(15, 23, 42, 0.3);
   --logo-filter: none;
+  --dock-bg: rgba(255, 255, 255, 0.82);
+  --dock-border: rgba(15, 23, 42, 0.08);
+  --dock-text: #64748b;
+  --dock-text-hover: #0f172a;
+  --dock-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.9), 0 12px 32px rgba(15, 23, 42, 0.16);
 }
 
 :root[data-theme="dark"] {
@@ -50,6 +55,11 @@
   --header-chip-border: rgba(255, 255, 255, 0.18);
   --header-chip-border-hover: rgba(255, 255, 255, 0.7);
   --logo-filter: brightness(0) invert(1);
+  --dock-bg: rgba(17, 24, 39, 0.62);
+  --dock-border: rgba(255, 255, 255, 0.12);
+  --dock-text: rgba(255, 255, 255, 0.72);
+  --dock-text-hover: #fff;
+  --dock-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.14), 0 12px 32px rgba(0, 0, 0, 0.35);
 }
 
 * { box-sizing: border-box; }
@@ -824,8 +834,8 @@ a.contact-card:hover, a.contact-card:focus-visible {
   section { padding: 52px 0; }
 
   /* Bottom nav becomes a floating liquid-glass pill fixed to the viewport
-     bottom — stays a dark frosted dock regardless of page theme, like a
-     phone's dock/control center. */
+     bottom — white frosted glass in the light theme, dark in the dark one
+     (colours come from the --dock-* tokens). */
   .bottom-nav {
     top: auto;
     right: auto;
@@ -834,13 +844,13 @@ a.contact-card:hover, a.contact-card:focus-visible {
     transform: translateX(-50%);
     z-index: 100;
     gap: 2px;
-    background: rgba(17, 24, 39, 0.62);
-    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: var(--dock-bg);
+    border: 1px solid var(--dock-border);
     backdrop-filter: blur(24px) saturate(180%);
     -webkit-backdrop-filter: blur(24px) saturate(180%);
     border-radius: 24px;
     padding: 6px;
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.14), 0 12px 32px rgba(0, 0, 0, 0.35);
+    box-shadow: var(--dock-shadow);
     max-width: calc(100vw - 16px);
   }
   .bottom-nav-item {
@@ -855,7 +865,7 @@ a.contact-card:hover, a.contact-card:focus-visible {
     /* Rounded square tiles rather than circles: the active one reads as
        a solid blue key in the dock. */
     border-radius: 18px;
-    color: rgba(255, 255, 255, 0.72);
+    color: var(--dock-text);
     font-size: 0.66rem;
     font-weight: 700;
     text-align: center;
@@ -872,7 +882,7 @@ a.contact-card:hover, a.contact-card:focus-visible {
   .bottom-nav-item svg { display: block; width: 22px; height: 22px; }
   .bottom-nav-item span[data-icon="printer"] svg { width: 22px; height: 22px; }
   .bottom-nav-item span[data-icon="phone"] svg { width: 22px; height: 22px; }
-  .bottom-nav-item:hover { color: #fff; }
+  .bottom-nav-item:hover { color: var(--dock-text-hover); }
   .bottom-nav-item.active {
     background: linear-gradient(180deg, #3b9bff 0%, #1d6ff2 100%);
     color: #fff;

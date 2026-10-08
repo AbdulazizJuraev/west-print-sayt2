@@ -27,7 +27,7 @@ const SERVICE_GROUPS = [
       ['Kvitansiya kitobchasi', 'Квитанционные книжки', 'Receipt books', '1545941962-1b6654eb8072'],
       ['Sertifikat', 'Сертификаты', 'Certificates', '1589330694653-ded6df03f754'],
       ['Diplom va faxriy yorliq', 'Дипломы и грамоты', 'Diplomas and awards', '1627556704302-624286467c65'],
-      ['Beyjik', 'Бейджи', 'Name badges', '1781559877355-48eaba6a19a0'],
+      ['Beyjik', 'Бейджи', 'Name badges', '1671376354112-6de3d08b97af'],
       ['Yopishqoq qog\'ozchalar', 'Стикеры для заметок', 'Sticky notes', '1580934174026-8142803ebb5b']
     ]
   },
@@ -58,14 +58,14 @@ const SERVICE_GROUPS = [
     id: 'large', icon: 'image', hue: '#7c3aed',
     uz: 'Katta formatli bosma', ru: 'Широкоформатная печать', en: 'Large-format printing',
     items: [
-      ['Banner', 'Баннеры', 'Banners', '1559613671-dfe2fb6a7680'],
-      ['Setkali banner', 'Баннерная сетка', 'Mesh banners', '1762791952347-a2297abf582f'],
+      ['Banner', 'Баннеры', 'Banners', '1513757378314-e46255f6ed16'],
+      ['Setkali banner', 'Баннерная сетка', 'Mesh banners', '1676491394429-37341c0ef75a'],
       ['Orakal (plyonka)', 'Оракал (плёнка)', 'Self-adhesive vinyl', '1774803543112-828c3ac44cea'],
       ['Perforirlangan plyonka', 'Перфорированная плёнка', 'Perforated window film', '1775496230770-d379e89b9e7e'],
       ['Roll-up', 'Ролл-ап', 'Roll-up stands', '1712903276145-df36556f4ed0'],
       ['X-banner (pauk)', 'X-баннер (паук)', 'X-banners', '1762325393954-5300a6e35f5b'],
       ['Press-devor', 'Пресс-волл', 'Press walls', '1770274484406-09405c9c01df'],
-      ['Pop-up stend', 'Поп-ап стенд', 'Pop-up stands', '1632383380175-812d44ec112b'],
+      ['Pop-up stend', 'Поп-ап стенд', 'Pop-up stands', '1765872525902-7370d9a5a5f3'],
       ['Holstga bosma', 'Печать на холсте', 'Canvas prints', '1638430323177-8cb2d1febb0c'],
       ['Fotoboy', 'Фотообои', 'Photo wallpaper', '1642369073424-a98bf968b5d3'],
       ['Interyer bosmasi', 'Интерьерная печать', 'Interior prints', '1716703433523-4f11cc8a12dc'],
@@ -84,8 +84,8 @@ const SERVICE_GROUPS = [
       ['Tablichka', 'Таблички', 'Plaques and signs', '1580191947416-62d35a55e71d'],
       ['Yo\'l ko\'rsatkichlari', 'Навигационные указатели', 'Wayfinding signs', '1660129499804-5aa4fdbe2541'],
       ['Vitrina bezagi', 'Оформление витрин', 'Shop window graphics', '1528698827591-e19ccd7bc23d'],
-      ['Avtomobil brendlash', 'Брендирование авто', 'Vehicle branding', '1650554764451-11b3e7ba5c2d'],
-      ['Ko\'cha bannerlari', 'Уличные растяжки', 'Street banners', '1773720262448-9c764efbb178']
+      ['Avtomobil brendlash', 'Брендирование авто', 'Vehicle branding', '1641199788912-9a7385a35c82'],
+      ['Ko\'cha bannerlari', 'Уличные растяжки', 'Street banners', '1754055533962-1aa9edc37bdd']
     ]
   },
   {
@@ -116,8 +116,8 @@ const SERVICE_GROUPS = [
       ['Ko\'cha bayrog\'i', 'Уличные флаги', 'Outdoor flags', '1645705315654-019e91990d4f'],
       ['Vimpel', 'Вымпелы', 'Pennants', '1492152587635-d4eec94ee072'],
       ['Logotipli lenta', 'Лента с логотипом', 'Branded ribbon', '1777566310347-83461871d27e'],
-      ['Beyjik lentasi (lanyard)', 'Ланъярды', 'Lanyards', '1704269523788-f2bb9885e583'],
-      ['Tadbir bilaguzugi', 'Браслеты для мероприятий', 'Event wristbands', '1787586044775-137de0e3aa93'],
+      ['Beyjik lentasi (lanyard)', 'Ланъярды', 'Lanyards', '1769142726489-6f40b1c575c5'],
+      ['Tadbir bilaguzugi', 'Браслеты для мероприятий', 'Event wristbands', '1741701466663-9d2c2874fe33'],
       ['Chipta va kupon', 'Билеты и купоны', 'Tickets and coupons', '1715520928476-cd350276d96e']
     ]
   },
@@ -150,9 +150,9 @@ const SERVICE_GROUPS = [
       ['Xudi', 'Худи', 'Hoodies', '1620799140188-3b2a02fd9a77'],
       ['Svitshot', 'Свитшоты', 'Sweatshirts', '1620799140408-edc6dcb6d633'],
       ['Kepka', 'Кепки', 'Caps', '1588850561407-ed78c282e89b'],
-      ['Fartuk', 'Фартуки', 'Aprons', '1729774091725-13e0ecea95fe'],
-      ['Ish kiyimi', 'Спецодежда', 'Workwear', '1681812508281-7589b75b2e46'],
-      ['Kurtka va jilet', 'Куртки и жилеты', 'Jackets and vests', '1593032288331-711b99d4fa74']
+      ['Fartuk', 'Фартуки', 'Aprons', '1523226609443-a669cd4d067d'],
+      ['Ish kiyimi', 'Спецодежда', 'Workwear', '1662309376159-b95fb193d96b'],
+      ['Kurtka va jilet', 'Куртки и жилеты', 'Jackets and vests', '1551488831-00ddcb6c6bd3']
     ]
   },
   {
@@ -171,8 +171,8 @@ const SERVICE_GROUPS = [
     uz: 'Dizayn xizmatlari', ru: 'Дизайн-услуги', en: 'Design services',
     items: [
       ['Logotip', 'Логотип', 'Logo design', '1748326650737-33500fdfda30'],
-      ['Firma uslubi', 'Фирменный стиль', 'Corporate identity', '1633533452148-a9657d2c9a5f'],
-      ['Brendbuk', 'Брендбук', 'Brand book', '1645658043538-fc2bb1702cfe'],
+      ['Firma uslubi', 'Фирменный стиль', 'Corporate identity', '1636247499734-893da2bcfc1c'],
+      ['Brendbuk', 'Брендбук', 'Brand book', '1581079948988-537795b40f5f'],
       ['Qadoq dizayni', 'Дизайн упаковки', 'Packaging design', '1617825295690-28ae56c56135'],
       ['Yorliq dizayni', 'Дизайн этикеток', 'Label design', '1634449278077-820aacbf6aa4'],
       ['Maket tayyorlash', 'Подготовка макетов', 'Print-ready artwork', '1626785774573-4b799315345d'],
