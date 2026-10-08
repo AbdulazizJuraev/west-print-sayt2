@@ -10,13 +10,14 @@
     brand_tag: 'tag'
   };
 
+  // O'zimizning ishlarimiz (images/portfolio/) — stok suratlar o'rniga.
   const productImages = {
-    business_card: 'https://images.unsplash.com/photo-1633415565464-e1d69c3fd906?w=500&q=80&auto=format&fit=crop',
-    flyer: 'https://images.unsplash.com/photo-1562240020-ce31ccb0fa7d?w=500&q=80&auto=format&fit=crop',
-    booklet: 'https://images.unsplash.com/photo-1695634365373-642d56c01884?w=500&q=80&auto=format&fit=crop',
-    banner: 'https://images.unsplash.com/photo-1763256552751-db613582fb2c?w=500&q=80&auto=format&fit=crop',
-    signboard: 'https://images.unsplash.com/photo-1513757378314-e46255f6ed16?w=500&q=80&auto=format&fit=crop',
-    brand_tag: 'https://images.unsplash.com/photo-1763757933131-93f78c24f012?w=500&q=80&auto=format&fit=crop'
+    business_card: 'images/portfolio/vizitka-2.jpg',
+    flyer: 'images/portfolio/menyu-2.jpg',
+    booklet: 'images/portfolio/katalog-3.jpg',
+    banner: 'images/portfolio/poster-1.jpg',
+    signboard: 'images/portfolio/tashqi-reklama.jpg',
+    brand_tag: 'images/portfolio/yorliq-7.jpg'
   };
 
   const servicesGrid = document.getElementById('servicesGrid');
