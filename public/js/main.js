@@ -297,6 +297,24 @@
     });
   }
 
+  /* Har sahifada pastki o'ng burchakda turadigan Telegram tugmasi —
+     mijoz buyurtma uchun aloqa sahifasini qidirib o'tirmasin. */
+  function initTelegramFab() {
+    const fab = document.createElement('a');
+    fab.className = 'tg-fab';
+    fab.href = 'https://t.me/wpmaxuz';
+    fab.target = '_blank';
+    fab.rel = 'noopener';
+    fab.innerHTML = Icons.get('telegram');
+    const syncLabel = () => {
+      fab.setAttribute('aria-label', I18n.t('fab_telegram'));
+      fab.title = I18n.t('fab_telegram');
+    };
+    syncLabel();
+    document.addEventListener('languagechange', syncLabel);
+    document.body.appendChild(fab);
+  }
+
   function updateNavTooltips() {
     // Document-wide: on phones the Settings button lives in the header.
     document.querySelectorAll('.bottom-nav-item').forEach((item) => {
@@ -521,6 +539,7 @@
     renderFaq();
     updateNavTooltips();
     markActiveNav();
+    initTelegramFab();
     initPosterCarousel();
     initIntroMosaic();
     initWhyCards();

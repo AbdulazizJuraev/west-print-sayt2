@@ -1,0 +1,2 @@
+User-agent: *
+Sitemap: https://abdulazizjuraev.github.io/west-print-sayt2/sitemap.xml

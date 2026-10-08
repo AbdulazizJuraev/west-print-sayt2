@@ -1480,3 +1480,44 @@ section[id] { scroll-margin-top: 76px; }
 /* Works card is now a one-image slider (was a 3×3 mosaic). */
 .mosaic-page { grid-template-columns: 1fr; }
 .mosaic-page a { border-radius: 14px; }
+
+/* Floating Telegram button (injected by main.js on every page). */
+.tg-fab {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 90;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #229ed9;
+  color: #fff;
+  box-shadow: 0 8px 24px rgba(34, 158, 217, 0.45);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.tg-fab svg { width: 26px; height: 26px; margin: 2px 2px 0 0; }
+.tg-fab:hover { transform: translateY(-2px) scale(1.05); box-shadow: 0 12px 28px rgba(34, 158, 217, 0.55); }
+.tg-fab::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 2px solid #229ed9;
+  animation: tgPulse 2.4s ease-out infinite;
+}
+@keyframes tgPulse {
+  from { transform: scale(1); opacity: 0.7; }
+  to { transform: scale(1.6); opacity: 0; }
+}
+body.modal-open .tg-fab { display: none; }
+@media (max-width: 820px) {
+  /* Sits above the bottom dock on phones. */
+  .tg-fab { right: 14px; bottom: 98px; width: 50px; height: 50px; }
+  .tg-fab svg { width: 23px; height: 23px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .tg-fab::before { animation: none; display: none; }
+}
