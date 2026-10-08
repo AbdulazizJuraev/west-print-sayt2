@@ -96,7 +96,23 @@
     <div class="container">
       <h2 data-i18n="services_title">Xizmatlarimiz</h2>
       <p class="section-subtitle" data-i18n="services_subtitle">Har qanday poligrafik mahsulot uchun murojaat qiling</p>
-      <div class="services-grid" id="servicesGrid"></div>
+      <label class="svc-search">
+        <span data-icon="search"></span>
+        <input type="search" id="svcSearch" data-i18n-placeholder="svc_search" placeholder="Mahsulot yoki xizmatni qidiring…" autocomplete="off">
+      </label>
+      <div class="svc-row" data-row="featured">
+        <div class="svc-row-head">
+          <span class="svc-row-icon" data-icon="star"></span>
+          <h3 data-i18n="svc_featured">Ommabop</h3>
+          <div class="svc-arrows">
+            <button type="button" class="svc-arrow" data-dir="-1" aria-label="‹"><span data-icon="chevronLeft"></span></button>
+            <button type="button" class="svc-arrow" data-dir="1" aria-label="›"><span data-icon="chevronRight"></span></button>
+          </div>
+        </div>
+        <div class="svc-track svc-track-featured" id="servicesGrid"></div>
+      </div>
+      <div id="svcGroups"></div>
+      <p class="svc-empty" id="svcEmpty" data-i18n="svc_empty" hidden>Hech narsa topilmadi.</p>
     </div>
   </section>
 
@@ -110,6 +126,7 @@
 
 <script src="js/icons.js"></script>
 <script src="js/catalog.js"></script>
+<script src="js/services-list.js"></script>
 <script src="js/i18n.js"></script>
 <script src="js/theme.js"></script>
 <script src="js/main.js"></script>

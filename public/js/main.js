@@ -51,6 +51,93 @@
     `).join('');
   }
 
+  /* Xizmatlar sahifasi: har bir yo'nalish (js/services-list.js) alohida
+     gorizontal karusel. Plitka bosilsa — Telegramda buyurtma. */
+  const svcGroupsEl = document.getElementById('svcGroups');
+  function groupName(g) {
+    return g[I18n.getLang()] || g.uz;
+  }
+  function itemName(item) {
+    return item[{ uz: 0, ru: 1, en: 2 }[I18n.getLang()] || 0];
+  }
+  function renderServiceGroups() {
+    if (!svcGroupsEl || typeof SERVICE_GROUPS === 'undefined') return;
+    const order = I18n.t('svc_order');
+    svcGroupsEl.innerHTML = SERVICE_GROUPS.map((g) => `
+      <div class="svc-row" data-row="${g.id}" style="--hue: ${g.hue}">
+        <div class="svc-row-head">
+          <span class="svc-row-icon">${Icons.get(g.icon)}</span>
+          <h3>${groupName(g)}</h3>
+          <span class="svc-row-count">${g.items.length}</span>
+          <div class="svc-arrows">
+            <button type="button" class="svc-arrow" data-dir="-1" aria-label="‹">${Icons.get('chevronLeft')}</button>
+            <button type="button" class="svc-arrow" data-dir="1" aria-label="›">${Icons.get('chevronRight')}</button>
+          </div>
+        </div>
+        <div class="svc-track">
+          ${g.items.map((it) => `
+            <a class="svc-tile" href="https://t.me/wpmaxuz" target="_blank" rel="noopener" data-search="${it.join(' ').toLowerCase()}" title="${order}: ${itemName(it)}">
+              <span class="svc-tile-icon">${Icons.get(g.icon)}</span>
+              <span class="svc-tile-bg">${Icons.get(g.icon)}</span>
+              <span class="svc-tile-name">${itemName(it)}</span>
+            </a>`).join('')}
+        </div>
+      </div>`).join('');
+    filterServices();
+  }
+
+  function filterServices() {
+    const input = document.getElementById('svcSearch');
+    if (!input) return;
+    const q = input.value.trim().toLowerCase();
+    let any = false;
+    document.querySelectorAll('.svc-row').forEach((row) => {
+      let shown = 0;
+      row.querySelectorAll('.svc-tile, .service-card').forEach((el) => {
+        const hay = el.dataset.search || el.textContent.toLowerCase();
+        const ok = !q || hay.includes(q);
+        el.hidden = !ok;
+        if (ok) shown++;
+      });
+      row.hidden = shown === 0;
+      if (shown) any = true;
+      const count = row.querySelector('.svc-row-count');
+      if (count) count.textContent = shown;
+    });
+    const empty = document.getElementById('svcEmpty');
+    if (empty) empty.hidden = any;
+  }
+
+  function initServiceRows() {
+    const page = document.querySelector('.services');
+    const input = document.getElementById('svcSearch');
+    if (!page || !input) return;
+    input.addEventListener('input', filterServices);
+    // Delegated: rows are re-rendered when the language changes.
+    page.addEventListener('click', (e) => {
+      const btn = e.target.closest('.svc-arrow');
+      if (!btn) return;
+      const track = btn.closest('.svc-row').querySelector('.svc-track');
+      track.scrollBy({ left: Number(btn.dataset.dir) * track.clientWidth * 0.8, behavior: 'smooth' });
+    });
+
+    // "Ommabop" qatori o'zi aylanadi; sichqoncha yoki barmoq tegsa to'xtaydi.
+    const featured = document.getElementById('servicesGrid');
+    if (!featured || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    let paused = false;
+    ['mouseenter', 'touchstart', 'focusin'].forEach((ev) =>
+      featured.addEventListener(ev, () => { paused = true; }, { passive: true }));
+    featured.addEventListener('mouseleave', () => { paused = false; });
+    setInterval(() => {
+      if (paused || input.value || document.hidden) return;
+      const card = featured.querySelector('.service-card');
+      if (!card) return;
+      const step = card.getBoundingClientRect().width + 14;
+      const atEnd = featured.scrollLeft + featured.clientWidth >= featured.scrollWidth - 4;
+      featured.scrollTo({ left: atEnd ? 0 : featured.scrollLeft + step, behavior: 'smooth' });
+    }, 3200);
+  }
+
   function productDesc(product) {
     return pick(product, 'desc');
   }
@@ -544,6 +631,8 @@
 
     renderStaticIcons();
     renderServiceCards();
+    renderServiceGroups();
+    initServiceRows();
     renderProductTrack();
     renderPortfolio();
     renderPrices();
@@ -582,6 +671,7 @@
 
     document.addEventListener('languagechange', () => {
       renderServiceCards();
+      renderServiceGroups();
       renderProductTrack();
       renderPortfolio();
       renderPrices();
