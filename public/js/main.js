@@ -24,11 +24,16 @@
   const faqList = document.getElementById('faqList');
   const bottomNav = document.getElementById('bottomNav');
 
+  // Picks field + Uz/Ru/En for the current language (Uzbek as fallback).
+  function pick(obj, field) {
+    const suffix = { uz: 'Uz', ru: 'Ru', en: 'En' }[I18n.getLang()] || 'Uz';
+    return obj[field + suffix] || obj[field + 'Uz'] || '';
+  }
   function productName(product) {
-    return I18n.getLang() === 'ru' ? product.nameRu : product.nameUz;
+    return pick(product, 'name');
   }
   function productBadge(product) {
-    return I18n.getLang() === 'ru' ? product.badgeRu : product.badgeUz;
+    return pick(product, 'badge');
   }
 
   function renderServiceCards() {
@@ -47,7 +52,7 @@
   }
 
   function productDesc(product) {
-    return I18n.getLang() === 'ru' ? product.descRu : product.descUz;
+    return pick(product, 'desc');
   }
 
   /* Bosh sahifadagi mahsulotlar karuseli (print.uz uslubida). */
@@ -122,7 +127,7 @@
 
     grid.classList.remove('is-empty');
     grid.innerHTML = PORTFOLIO.map((item) => {
-      const title = I18n.getLang() === 'ru' ? (item.titleRu || '') : (item.titleUz || '');
+      const title = pick(item, 'title');
       return `<img src="${thumbOf(item.src)}" data-full="${item.src}" alt="${title}" title="${title}" loading="lazy" onerror="this.onerror=null;this.src=this.dataset.full">`;
     }).join('');
   }
@@ -400,7 +405,7 @@
     // Full-size image: a 360px thumbnail would look soft at card size.
     wrap.innerHTML = `<div class="mosaic-track">${pages.map((items, p) => `
       <div class="mosaic-page${p === 0 ? ' active' : ''}">
-        ${items.map((it) => `<a href="portfolio.html" tabindex="${p === 0 ? 0 : -1}"><img src="${it.src}" alt="${tr({ uz: it.titleUz, ru: it.titleRu })}" ${p === 0 ? '' : 'loading="lazy"'}></a>`).join('')}
+        ${items.map((it) => `<a href="portfolio.html" tabindex="${p === 0 ? 0 : -1}"><img src="${it.src}" alt="${pick(it, 'title')}" ${p === 0 ? '' : 'loading="lazy"'}></a>`).join('')}
       </div>
     `).join('')}</div>`;
     if (pageCount < 2) return;
@@ -559,12 +564,18 @@
       btn.addEventListener('click', () => I18n.setLanguage(btn.getAttribute('data-lang-btn')));
     });
 
-    // Telefondagi dumaloq bayroq: bosilsa til (va bayroq) almashadi.
+    // Telefondagi bayroq: bosilsa keyingi tilga o'tadi (UZ → RU → EN → UZ).
     const langFlag = document.getElementById('langFlag');
     if (langFlag) {
-      const syncFlagLabel = () => langFlag.setAttribute('aria-label',
-        I18n.getLang() === 'uz' ? "Tilni o'zgartirish: ruscha" : 'Сменить язык: узбекский');
-      langFlag.addEventListener('click', () => I18n.setLanguage(I18n.getLang() === 'uz' ? 'ru' : 'uz'));
+      const order = ['uz', 'ru', 'en'];
+      const nextLang = () => order[(order.indexOf(I18n.getLang()) + 1) % order.length];
+      const labels = {
+        ru: "Tilni o'zgartirish: ruscha",
+        en: 'Сменить язык: английский',
+        uz: 'Change language: Uzbek'
+      };
+      const syncFlagLabel = () => langFlag.setAttribute('aria-label', labels[nextLang()]);
+      langFlag.addEventListener('click', () => I18n.setLanguage(nextLang()));
       syncFlagLabel();
       document.addEventListener('languagechange', syncFlagLabel);
     }

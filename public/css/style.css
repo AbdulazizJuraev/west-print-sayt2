@@ -59,7 +59,7 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, Arial, sans-serif;
+  font-family: 'Montserrat', 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, Arial, sans-serif;
   color: var(--color-text);
   background: var(--color-bg);
   line-height: 1.55;
@@ -72,6 +72,9 @@ body {
 main { flex: 1 0 auto; }
 
 h1, h2, h3, h4 { margin: 0 0 0.5em; line-height: 1.25; }
+/* Montserrat: extra-bold headings, regular body text. */
+h1, h2 { font-weight: 800; letter-spacing: -0.01em; }
+h3, h4 { font-weight: 700; }
 p { margin: 0 0 1em; color: var(--color-text-muted); }
 a { color: inherit; text-decoration: none; }
 
@@ -1298,7 +1301,7 @@ section[id] { scroll-margin-top: 76px; }
   .mosaic-track { transition: none; }
 }
 
-/* Language flag — one round button showing the current language's flag;
+/* Language flag — one flag-shaped (3:2, rounded) button showing the current language's flag;
    tapping it switches language (and so the flag). Replaces the UZ | RU
    pill in the phone header; desktop keeps the pill in its Settings menu. */
 .lang-flag { display: none; }
@@ -1306,13 +1309,14 @@ section[id] { scroll-margin-top: 76px; }
   .site-header .lang-switch { display: none; }
   .site-header .lang-flag {
     display: block;
-    width: 38px;
-    height: 38px;
+    width: 42px;
+    height: 28px;
     padding: 0;
     overflow: hidden;
-    border: 2px solid var(--header-chip-border);
-    border-radius: 50%;
+    border: 1.5px solid var(--header-chip-border);
+    border-radius: 7px;
     background: none;
+    box-shadow: 0 2px 8px rgba(15, 23, 42, 0.18);
     cursor: pointer;
     transition: transform 0.2s, border-color 0.2s;
   }
@@ -1320,12 +1324,15 @@ section[id] { scroll-margin-top: 76px; }
   .site-header .lang-flag:active { transform: scale(0.9); }
   .lang-flag .flag,
   .lang-flag svg { display: block; width: 100%; height: 100%; }
-  .lang-flag .flag-ru { display: none; }
-  html[lang="ru"] .lang-flag .flag-uz { display: none; }
-  html[lang="ru"] .lang-flag .flag-ru { display: block; }
+  .lang-flag .flag-ru,
+  .lang-flag .flag-en { display: none; }
+  html[lang="ru"] .lang-flag .flag-uz,
+  html[lang="en"] .lang-flag .flag-uz { display: none; }
+  html[lang="ru"] .lang-flag .flag-ru,
+  html[lang="en"] .lang-flag .flag-en { display: block; }
 }
 @media (max-width: 380px) {
-  .site-header .lang-flag { width: 34px; height: 34px; }
+  .site-header .lang-flag { width: 39px; height: 26px; }
 }
 
 /* Intro stats — four number tiles between the pitch and the contact tiles. */
