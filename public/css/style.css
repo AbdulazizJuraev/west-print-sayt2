@@ -63,92 +63,7 @@ a { color: inherit; text-decoration: none; }
   padding: 0 20px;
 }
 
-/* Splash intro (index.html only, once per browser session) — brand
-   wordmark types itself in while "Poligrafiya / Reklama agentligi"
-   orbits the mark on a circular SVG text path. */
-html.splash-active, html.splash-active body { overflow: hidden; }
-.splash-screen {
-  position: fixed;
-  inset: 0;
-  z-index: 9999;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  /* Two layers that drift at different speeds: a soft glow over the base
-     gradient, so the background keeps moving while the splash is up.
-     Both are oversized so there's room to pan without showing an edge. */
-  background:
-    radial-gradient(55% 40% at 50% 38%, rgba(147, 197, 253, 0.5), transparent 70%),
-    linear-gradient(160deg, #60a5fa 0%, #2563eb 40%, #0b1a4d 100%);
-  background-size: 170% 170%, 220% 220%;
-  background-position: 25% 35%, 0% 0%;
-  animation: splashGradient 6s ease-in-out infinite alternate;
-  opacity: 1;
-  transition: opacity 0.35s ease;
-}
-@keyframes splashGradient {
-  to { background-position: 75% 65%, 100% 100%; }
-}
-.splash-screen.splash-hide { opacity: 0; pointer-events: none; }
-.splash-stage {
-  position: relative;
-  width: 240px;
-  height: 240px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.orbit-svg {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-}
-/* Two rings spinning opposite ways. The origin is in the SVG's own user
-   units (viewBox centre), not percentages — Safari mis-centres those. */
-.orbit-ring { transform-origin: 140px 140px; }
-.orbit-ring-outer { animation: splashSpin 14s linear infinite; }
-.orbit-ring-inner { animation: splashSpin 10s linear infinite reverse; }
-.orbit-text {
-  fill: rgba(255, 255, 255, 0.8);
-  font-family: inherit;
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 3px;
-}
-.orbit-text-inner {
-  fill: rgba(255, 255, 255, 0.5);
-  font-size: 10px;
-  letter-spacing: 2px;
-}
-.splash-wordmark {
-  position: relative;
-  z-index: 1;
-  display: flex;
-  font-family: inherit;
-  font-size: 2.2rem;
-  font-weight: 800;
-}
-.splash-wordmark .sw {
-  display: inline-block;
-  color: #fff;
-  opacity: 0;
-  transform: translateY(10px);
-  animation: splashLetter 0.4s ease forwards;
-  animation-delay: calc(var(--i) * 0.07s);
-}
-.splash-wordmark .sw-star { color: var(--color-accent); }
-@keyframes splashSpin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-@keyframes splashLetter {
-  to { opacity: 1; transform: translateY(0); }
-}
 @media (prefers-reduced-motion: reduce) {
-  .splash-screen { animation: none; }
-  .orbit-ring { animation: none; }
-  .splash-wordmark .sw { animation: none; opacity: 1; transform: none; }
   .modal-panel { transition: none; transform: none; }
   .modal-backdrop.open .modal-panel { transform: none; }
 }
@@ -887,10 +802,6 @@ a.contact-card:hover, a.contact-card:focus-visible {
   .poster-banner { display: block; }
   .header-inner { justify-content: center; }
   .brand-logo { height: 32px; }
-  .splash-stage { width: 190px; height: 190px; }
-  .splash-wordmark { font-size: 1.6rem; }
-  .orbit-text { font-size: 11px; letter-spacing: 2px; }
-  .orbit-text-inner { font-size: 9px; letter-spacing: 1.5px; }
   section { padding: 52px 0; }
 
   /* Bottom nav becomes a floating liquid-glass pill fixed to the viewport
