@@ -1710,6 +1710,13 @@ body.modal-open .tg-fab { display: none; }
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
 }
 .svc-tile-icon svg { width: 17px; height: 17px; }
+.svc-tile-text { display: flex; flex-direction: column; gap: 3px; }
+.svc-tile-note {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.85);
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+}
 .svc-tile-name {
   font-size: 0.95rem;
   font-weight: 700;
@@ -1726,6 +1733,7 @@ body.modal-open .tg-fab { display: none; }
   .svc-tile-icon { width: 30px; height: 30px; border-radius: 9px; }
   .svc-tile-icon svg { width: 15px; height: 15px; }
   .svc-tile-name { font-size: 0.86rem; }
+  .svc-tile-note { font-size: 0.66rem; }
   .svc-row { margin-bottom: 24px; }
   .svc-row-head h3 { font-size: 1.02rem; }
 }

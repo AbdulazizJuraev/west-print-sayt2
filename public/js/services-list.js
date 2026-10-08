@@ -8,6 +8,8 @@
  * Yangi mahsulot qo'shish — kerakli bo'lim ichidagi items ro'yxatiga bitta
  * satr qo'shing. Biror xizmat ko'rsatilmasa, satrini o'chiring.
  * hue — bo'lim kartochkalarining rangi, icon — js/icons.js dagi nom.
+ * noLogo: true — plitkalarda "Sizning logo bilan" yozuvi chiqmaydi
+ * (dizayn va ishlov kabi xizmatlar uchun).
  */
 const SERVICE_GROUPS = [
   {
@@ -143,7 +145,7 @@ const SERVICE_GROUPS = [
     id: 'apparel', icon: 'shirt', hue: '#0891b2',
     uz: 'Kiyimga bosma', ru: 'Печать на одежде', en: 'Apparel printing',
     items: [
-      ['Futbolka', 'Футболки', 'T-shirts', '1773525912489-9e04df48f639'],
+      ['Futbolka', 'Футболки', 'T-shirts', '1716952029045-feb119b58583'],
       ['Polo', 'Поло', 'Polo shirts', '1586363129094-d7a38564fae1'],
       ['Xudi', 'Худи', 'Hoodies', '1620799140188-3b2a02fd9a77'],
       ['Svitshot', 'Свитшоты', 'Sweatshirts', '1620799140408-edc6dcb6d633'],
@@ -165,7 +167,7 @@ const SERVICE_GROUPS = [
     ]
   },
   {
-    id: 'design', icon: 'penTool', hue: '#9333ea',
+    id: 'design', icon: 'penTool', hue: '#9333ea', noLogo: true,
     uz: 'Dizayn xizmatlari', ru: 'Дизайн-услуги', en: 'Design services',
     items: [
       ['Logotip', 'Логотип', 'Logo design', '1748326650737-33500fdfda30'],
@@ -180,7 +182,7 @@ const SERVICE_GROUPS = [
     ]
   },
   {
-    id: 'finish', icon: 'scissors', hue: '#0d9488',
+    id: 'finish', icon: 'scissors', hue: '#0d9488', noLogo: true,
     uz: 'Bosmadan keyingi ishlov', ru: 'Постпечатная обработка', en: 'Print finishing',
     items: [
       ['Laminatsiya', 'Ламинирование', 'Lamination', '1637070155805-e6fbee6ec2cf'],

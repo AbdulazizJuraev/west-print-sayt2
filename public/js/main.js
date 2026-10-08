@@ -63,6 +63,7 @@
   function renderServiceGroups() {
     if (!svcGroupsEl || typeof SERVICE_GROUPS === 'undefined') return;
     const order = I18n.t('svc_order');
+    const withLogo = I18n.t('svc_with_logo');
     svcGroupsEl.innerHTML = SERVICE_GROUPS.map((g) => `
       <div class="svc-row" data-row="${g.id}" style="--hue: ${g.hue}">
         <div class="svc-row-head">
@@ -79,7 +80,10 @@
             <a class="svc-tile" href="https://t.me/wpmaxuz" target="_blank" rel="noopener" data-search="${it.slice(0, 3).join(' ').toLowerCase()}" title="${order}: ${itemName(it)}">
               <img class="svc-tile-img" src="https://images.unsplash.com/photo-${it[3]}?w=360&h=440&fit=crop&q=70&auto=format" alt="${itemName(it)}" loading="lazy">
               <span class="svc-tile-icon">${Icons.get(g.icon)}</span>
-              <span class="svc-tile-name">${itemName(it)}</span>
+              <span class="svc-tile-text">
+                <span class="svc-tile-name">${itemName(it)}</span>
+                ${g.noLogo ? '' : `<span class="svc-tile-note">${withLogo}</span>`}
+              </span>
             </a>`).join('')}
         </div>
       </div>`).join('');
