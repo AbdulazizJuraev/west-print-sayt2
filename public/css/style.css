@@ -15,6 +15,16 @@
   --glass-shadow: 0 8px 32px rgba(15, 23, 42, 0.16);
   --radius: 14px;
   --shadow: 0 4px 20px rgba(15, 23, 42, 0.08);
+  /* Header follows the theme: white with the logo's own colours in light
+     mode, dark navy with a white logo in dark mode. */
+  --header-bg: rgba(255, 255, 255, 0.92);
+  --header-border: #e2e8f0;
+  --header-text: #475569;
+  --header-text-hover: #0f172a;
+  --header-chip-bg: rgba(15, 23, 42, 0.04);
+  --header-chip-border: rgba(15, 23, 42, 0.12);
+  --header-chip-border-hover: rgba(15, 23, 42, 0.3);
+  --logo-filter: none;
 }
 
 :root[data-theme="dark"] {
@@ -32,6 +42,14 @@
   --glass-highlight: rgba(255, 255, 255, 0.18);
   --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
   --shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
+  --header-bg: #0f172a;
+  --header-border: rgba(255, 255, 255, 0.14);
+  --header-text: rgba(255, 255, 255, 0.75);
+  --header-text-hover: #fff;
+  --header-chip-bg: rgba(255, 255, 255, 0.1);
+  --header-chip-border: rgba(255, 255, 255, 0.18);
+  --header-chip-border-hover: rgba(255, 255, 255, 0.7);
+  --logo-filter: brightness(0) invert(1);
 }
 
 * { box-sizing: border-box; }
@@ -73,9 +91,9 @@ a { color: inherit; text-decoration: none; }
   position: sticky;
   top: 0;
   z-index: 50;
-  background: #0f172a;
+  background: var(--header-bg);
   backdrop-filter: blur(8px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+  border-bottom: 1px solid var(--header-border);
   transition: background 0.2s, border-color 0.2s;
 }
 /* Logo sits left on desktop so the text nav pinned to the right can't
@@ -91,13 +109,13 @@ a { color: inherit; text-decoration: none; }
   display: flex;
   align-items: center;
 }
-/* Logo PNG has navy/dark wordmark colors baked in — invert it to solid
-   white since the header is always blue. */
+/* Logo PNG has blue/dark wordmark colours baked in — shown as-is on the
+   light header, turned solid white on the dark one. */
 .brand-logo {
   height: 38px;
   width: auto;
   display: block;
-  filter: brightness(0) invert(1);
+  filter: var(--logo-filter);
 }
 
 /* Buttons */
@@ -701,9 +719,7 @@ a.contact-card:hover, a.contact-card:focus-visible {
   height: 40px;
   padding: 0 16px;
   border-radius: 999px;
-  /* The header behind the nav is always dark navy, in both themes, so
-     these stay light instead of following --color-text. */
-  color: rgba(255, 255, 255, 0.75);
+  color: var(--header-text);
   font-size: 0.88rem;
   font-weight: 600;
   white-space: nowrap;
@@ -726,7 +742,7 @@ a.contact-card:hover, a.contact-card:focus-visible {
   clip: auto;
   white-space: nowrap;
 }
-.bottom-nav-item:hover { color: #fff; transform: translateY(-1px); }
+.bottom-nav-item:hover { color: var(--header-text-hover); transform: translateY(-1px); }
 .bottom-nav-item.active { background: var(--color-primary); color: #fff; }
 
 /* Settings toggle lives inside the nav pill itself (same slot the old
@@ -737,7 +753,7 @@ a.contact-card:hover, a.contact-card:focus-visible {
 /* Deliberately NOT the same look as .active (solid/tinted fill) — the
    open dropdown isn't "the current page", so a ring keeps it from
    reading as a second active nav item next to the real one. */
-.settings-toggle.open { background: none; color: #fff; box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.6); }
+.settings-toggle.open { background: none; color: var(--header-text-hover); box-shadow: inset 0 0 0 2px var(--header-chip-border-hover); }
 .settings-dropdown {
   position: absolute;
   top: calc(100% + 12px);
@@ -1104,23 +1120,23 @@ section[id] { scroll-margin-top: 76px; }
   .site-header .settings-row:last-child { right: 14px; }
   .site-header .settings-row > span:first-child { display: none; }
 
-  /* Controls restyled for the always-dark header. */
+  /* Header controls follow the header's theme colours. */
   .site-header .theme-toggle {
     width: 38px;
     height: 38px;
     border-radius: 50%;
-    border-color: rgba(255, 255, 255, 0.18);
-    background: rgba(255, 255, 255, 0.1);
-    color: #fff;
+    border-color: var(--header-chip-border);
+    background: var(--header-chip-bg);
+    color: var(--header-text-hover);
   }
   .site-header .lang-switch {
-    border-color: rgba(255, 255, 255, 0.18);
+    border-color: var(--header-chip-border);
     border-radius: 999px;
   }
   .site-header .lang-switch button {
     padding: 7px 11px;
-    background: rgba(255, 255, 255, 0.06);
-    color: rgba(255, 255, 255, 0.7);
+    background: var(--header-chip-bg);
+    color: var(--header-text);
   }
   .site-header .lang-switch button.active { background: var(--color-primary); color: #fff; }
 }
@@ -1294,13 +1310,13 @@ section[id] { scroll-margin-top: 76px; }
     height: 38px;
     padding: 0;
     overflow: hidden;
-    border: 2px solid rgba(255, 255, 255, 0.35);
+    border: 2px solid var(--header-chip-border);
     border-radius: 50%;
     background: none;
     cursor: pointer;
     transition: transform 0.2s, border-color 0.2s;
   }
-  .site-header .lang-flag:hover { border-color: rgba(255, 255, 255, 0.7); }
+  .site-header .lang-flag:hover { border-color: var(--header-chip-border-hover); }
   .site-header .lang-flag:active { transform: scale(0.9); }
   .lang-flag .flag,
   .lang-flag svg { display: block; width: 100%; height: 100%; }
