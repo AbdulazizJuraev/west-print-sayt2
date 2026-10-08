@@ -76,9 +76,9 @@
         </div>
         <div class="svc-track">
           ${g.items.map((it) => `
-            <a class="svc-tile" href="https://t.me/wpmaxuz" target="_blank" rel="noopener" data-search="${it.join(' ').toLowerCase()}" title="${order}: ${itemName(it)}">
+            <a class="svc-tile" href="https://t.me/wpmaxuz" target="_blank" rel="noopener" data-search="${it.slice(0, 3).join(' ').toLowerCase()}" title="${order}: ${itemName(it)}">
+              <img class="svc-tile-img" src="https://images.unsplash.com/photo-${it[3]}?w=360&h=440&fit=crop&q=70&auto=format" alt="${itemName(it)}" loading="lazy">
               <span class="svc-tile-icon">${Icons.get(g.icon)}</span>
-              <span class="svc-tile-bg">${Icons.get(g.icon)}</span>
               <span class="svc-tile-name">${itemName(it)}</span>
             </a>`).join('')}
         </div>
