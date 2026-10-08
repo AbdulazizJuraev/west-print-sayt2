@@ -67,7 +67,6 @@ const SERVICE_GROUPS = [
       ['Press-devor', 'Пресс-волл', 'Press walls', '1770274484406-09405c9c01df'],
       ['Pop-up stend', 'Поп-ап стенд', 'Pop-up stands', '1765872525902-7370d9a5a5f3'],
       ['Holstga bosma', 'Печать на холсте', 'Canvas prints', '1638430323177-8cb2d1febb0c'],
-      ['Fotoboy', 'Фотообои', 'Photo wallpaper', '1642369073424-a98bf968b5d3'],
       ['Interyer bosmasi', 'Интерьерная печать', 'Interior prints', '1716703433523-4f11cc8a12dc'],
       ['Pol stikerlari', 'Напольные стикеры', 'Floor graphics', '1609361529160-e253ee7da67d']
     ]
@@ -85,7 +84,7 @@ const SERVICE_GROUPS = [
       ['Yo\'l ko\'rsatkichlari', 'Навигационные указатели', 'Wayfinding signs', '1660129499804-5aa4fdbe2541'],
       ['Vitrina bezagi', 'Оформление витрин', 'Shop window graphics', '1528698827591-e19ccd7bc23d'],
       ['Avtomobil brendlash', 'Брендирование авто', 'Vehicle branding', '1641199788912-9a7385a35c82'],
-      ['Ko\'cha bannerlari', 'Уличные растяжки', 'Street banners', '1754055533962-1aa9edc37bdd']
+      ['Ko\'cha bannerlari', 'Уличные растяжки', 'Street banners', '1757871110726-bf80a3fb4d3b']
     ]
   },
   {
