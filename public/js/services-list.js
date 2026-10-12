@@ -155,17 +155,6 @@ const SERVICE_GROUPS = [
     ]
   },
   {
-    id: 'stamps', icon: 'stamp', hue: '#475569',
-    uz: 'Muhr va shtamplar', ru: 'Печати и штампы', en: 'Stamps and seals',
-    items: [
-      ['Muhr', 'Печати', 'Company seals', '1619418602850-35ad20aa1700'],
-      ['Shtamp', 'Штампы', 'Rubber stamps', '1790949242560-44106f36b0f1'],
-      ['Faksimile', 'Факсимиле', 'Signature stamps', '1774891937497-96df6a794bd9'],
-      ['Sanali shtamp (dater)', 'Датеры', 'Date stamps', '1562330094-4a3730591558'],
-      ['Cho\'ntak muhri', 'Карманные печати', 'Pocket stamps', '1774891937400-b5e32f719fae']
-    ]
-  },
-  {
     id: 'design', icon: 'penTool', hue: '#9333ea', noLogo: true,
     uz: 'Dizayn xizmatlari', ru: 'Дизайн-услуги', en: 'Design services',
     items: [

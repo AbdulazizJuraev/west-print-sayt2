@@ -116,13 +116,6 @@ const SERVICE_INFO = {
   'Workwear': ["Ish kiyimlariga logotip va yozuv tushirish — kompaniya formasi uchun.", 'Нанесение логотипа на спецодежду — для формы компании.', 'Logo printing on workwear for company uniforms.'],
   'Jackets and vests': ["Kurtka va jiletlarga logotip — jamoa va xodimlar uchun.", 'Логотип на куртках и жилетах — для команды и сотрудников.', 'Your logo on jackets and vests for teams and staff.'],
 
-  // Muhr va shtamplar
-  'Company seals': ["Kompaniya muhrlari — avtomatik (osnastka bilan) yoki oddiy dastali.", 'Печати организаций — на автоматической оснастке или с ручкой.', 'Company seals on self-inking or classic handle mounts.'],
-  'Rubber stamps': ["Matnli va logotipli shtamplar — har qanday shakl va o'lchamda.", 'Штампы с текстом и логотипом — любой формы и размера.', 'Rubber stamps with text or logo in any shape and size.'],
-  'Signature stamps': ["Imzo faksimilesi — hujjatlarni tez imzolash uchun.", 'Факсимиле подписи — для быстрого подписания документов.', 'Signature stamps for signing documents quickly.'],
-  'Date stamps': ["Sana qo'yiladigan shtamplar (daterlar) — ofis va omborlar uchun.", 'Датеры — штампы с датой для офиса и склада.', 'Date stamps for offices and warehouses.'],
-  'Pocket stamps': ["Cho'ntakbop ixcham muhrlar — doim yoningizda.", 'Карманные печати — компактные и всегда под рукой.', 'Compact pocket stamps that are always at hand.'],
-
   // Dizayn xizmatlari
   'Logo design': ["Kompaniyangiz uchun noyob logotip — bir necha variant va tuzatishlar bilan.", 'Уникальный логотип для вашей компании — несколько вариантов и правки.', 'A unique logo for your company, with several options and revisions.'],
   'Corporate identity': ["Firma uslubi: logotip, ranglar, vizitka, blank va boshqa elementlar yagona uslubda.", 'Фирменный стиль: логотип, цвета, визитки, бланки и другие элементы в едином стиле.', 'Corporate identity: logo, colours, business cards, letterheads and more in one style.'],
