@@ -17,7 +17,7 @@ const PORTFOLIO = [
   { src: 'images/portfolio/offset-pechat.jpg', featured: true, titleUz: 'Ofset pechat', titleRu: 'Офсетная печать', titleEn: 'Offset printing' },
   { src: 'images/portfolio/paket-pont.jpg', featured: true, titleUz: 'Brendli paket — Pont', titleRu: 'Брендированный пакет — Pont', titleEn: 'Branded bag — Pont' },
   { src: 'images/portfolio/qadoq-vitrina.jpg', featured: true, titleUz: 'Qadoq va poligrafiya mahsulotlari', titleRu: 'Упаковка и полиграфия', titleEn: 'Packaging and print products' },
-  { src: 'images/portfolio/paket-airlab.jpg', featured: true, titleUz: 'Brendli paket — Airlab', titleRu: 'Брендированный пакет — Airlab', titleEn: 'Branded bag — Airlab' },
+  { src: 'images/portfolio/paket-tumor.jpg', featured: true, titleUz: 'Brendli paket — Tumor', titleRu: 'Брендированный пакет — Tumor', titleEn: 'Branded bag — Tumor' },
   { src: 'images/portfolio/paket-madam-muzi.jpg', featured: true, titleUz: 'Brendli paket — Madam Muzi', titleRu: 'Брендированный пакет — Madam Muzi', titleEn: 'Branded bag — Madam Muzi' },
   { src: 'images/portfolio/tashqi-reklama.jpg', featured: true, titleUz: 'Tashqi reklama', titleRu: 'Наружная реклама', titleEn: 'Outdoor advertising' },
   { src: 'images/portfolio/yorliq-1.jpg', titleUz: "Mahsulot yorlig'i", titleRu: 'Этикетка продукции', titleEn: 'Product label' },
