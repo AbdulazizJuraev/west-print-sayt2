@@ -208,7 +208,13 @@
       const d = dataFor(card);
       if (!d) return;
       lastFocused = card;
+      // Drop the previous product's photo first: otherwise it stays on
+      // screen until the new one has downloaded. A shimmer shows meanwhile.
       const img = document.getElementById('productModalImage');
+      img.removeAttribute('src');
+      img.alt = '';
+      img.classList.add('is-loading');
+      img.onload = img.onerror = () => img.classList.remove('is-loading');
       img.src = d.img;
       img.alt = d.title;
       document.getElementById('productModalBadge').textContent = d.badge;
