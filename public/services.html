@@ -118,6 +118,23 @@
 
 </main>
 
+<div class="modal-backdrop" id="productModal" hidden>
+  <div class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="productModalTitle">
+    <button type="button" class="modal-close" id="productModalClose" aria-label="Yopish">
+      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M6 6 18 18M18 6 6 18"></path></svg>
+    </button>
+    <img class="modal-image modal-image-tall" id="productModalImage" alt="">
+    <span class="product-modal-badge" id="productModalBadge"></span>
+    <h3 class="modal-title" id="productModalTitle"></h3>
+    <p class="modal-text" id="productModalText"></p>
+    <p class="product-modal-logo" id="productModalLogo" data-i18n="svc_with_logo" hidden>Sizning logo bilan</p>
+    <div class="product-modal-actions">
+      <a class="btn btn-primary" href="https://t.me/wpmaxuz" target="_blank" rel="noopener" data-i18n="hero_cta">Buyurtma berish</a>
+      <a class="btn product-modal-call" href="tel:+998974343037" data-i18n="modal_call">Qo'ng'iroq qilish</a>
+    </div>
+  </div>
+</div>
+
 <footer class="site-footer">
   <div class="container">
     <span>West Print &copy; <span id="year"></span> — <span data-i18n="footer_rights">Barcha huquqlar himoyalangan.</span></span>
@@ -127,6 +144,7 @@
 <script src="js/icons.js"></script>
 <script src="js/catalog.js"></script>
 <script src="js/services-list.js"></script>
+<script src="js/services-info.js"></script>
 <script src="js/i18n.js"></script>
 <script src="js/theme.js"></script>
 <script src="js/main.js"></script>

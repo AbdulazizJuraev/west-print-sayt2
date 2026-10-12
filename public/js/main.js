@@ -40,31 +40,37 @@
     if (!servicesGrid) return;
     const products = ProductCatalog.listProducts();
     servicesGrid.innerHTML = products.map((p) => `
-      <div class="service-card">
-        <div class="service-image">
+      <button type="button" class="service-card" data-id="${p.id}" aria-haspopup="dialog">
+        <span class="service-image">
           <img src="${productImages[p.id] || ''}" alt="${productName(p)}" loading="lazy">
           <span class="service-icon">${Icons.get(productIcons[p.id] || 'printer')}</span>
           ${productBadge(p) ? `<span class="service-badge">${productBadge(p)}</span>` : ''}
-        </div>
-        <h3>${productName(p)}</h3>
-      </div>
+        </span>
+        <span class="service-name">${productName(p)}</span>
+      </button>
     `).join('');
   }
 
   /* Xizmatlar sahifasi: har bir yo'nalish (js/services-list.js) alohida
-     gorizontal karusel. Plitka bosilsa — Telegramda buyurtma. */
+     gorizontal karusel. Plitka bosilsa — tavsifi bilan oyna ochiladi. */
   const svcGroupsEl = document.getElementById('svcGroups');
   function groupName(g) {
     return g[I18n.getLang()] || g.uz;
   }
+  function langIndex() {
+    return { uz: 0, ru: 1, en: 2 }[I18n.getLang()] || 0;
+  }
   function itemName(item) {
-    return item[{ uz: 0, ru: 1, en: 2 }[I18n.getLang()] || 0];
+    return item[langIndex()];
+  }
+  function itemDesc(item) {
+    const info = typeof SERVICE_INFO !== 'undefined' && SERVICE_INFO[item[2]];
+    return info ? info[langIndex()] : '';
   }
   function renderServiceGroups() {
     if (!svcGroupsEl || typeof SERVICE_GROUPS === 'undefined') return;
-    const order = I18n.t('svc_order');
     const withLogo = I18n.t('svc_with_logo');
-    svcGroupsEl.innerHTML = SERVICE_GROUPS.map((g) => `
+    svcGroupsEl.innerHTML = SERVICE_GROUPS.map((g, gi) => `
       <div class="svc-row" data-row="${g.id}" style="--hue: ${g.hue}">
         <div class="svc-row-head">
           <span class="svc-row-icon">${Icons.get(g.icon)}</span>
@@ -76,15 +82,15 @@
           </div>
         </div>
         <div class="svc-track">
-          ${g.items.map((it) => `
-            <a class="svc-tile" href="https://t.me/wpmaxuz" target="_blank" rel="noopener" data-search="${it.slice(0, 3).join(' ').toLowerCase()}" title="${order}: ${itemName(it)}">
+          ${g.items.map((it, i) => `
+            <button type="button" class="svc-tile" data-g="${gi}" data-i="${i}" aria-haspopup="dialog" data-search="${it.slice(0, 3).join(' ').toLowerCase()}">
               <img class="svc-tile-img" src="https://images.unsplash.com/photo-${it[3]}?w=360&h=440&fit=crop&q=70&auto=format" alt="${itemName(it)}" loading="lazy">
               <span class="svc-tile-icon">${Icons.get(g.icon)}</span>
               <span class="svc-tile-text">
                 <span class="svc-tile-name">${itemName(it)}</span>
                 ${g.noLogo ? '' : `<span class="svc-tile-note">${withLogo}</span>`}
               </span>
-            </a>`).join('')}
+            </button>`).join('')}
         </div>
       </div>`).join('');
     filterServices();
@@ -161,11 +167,11 @@
     `).join('');
   }
 
-  /* Mahsulot kartochkasi bosilsa — katta surat, tavsif va buyurtma tugmasi. */
+  /* Mahsulot kartochkasi yoki xizmat plitkasi bosilsa — katta surat,
+     tavsif, buyurtma va qo'ng'iroq tugmalari bilan oyna ochiladi. */
   function initProductModal() {
-    const track = document.getElementById('productTrack');
     const modal = document.getElementById('productModal');
-    if (!track || !modal) return;
+    if (!modal) return;
 
     const closeBtn = document.getElementById('productModalClose');
     let lastFocused = null;
@@ -180,17 +186,36 @@
       }, 220);
     }
 
-    // Delegated: the track is re-rendered whenever the language changes.
-    track.addEventListener('click', (e) => {
-      const card = e.target.closest('.product-card');
-      if (!card) return;
+    function dataFor(card) {
+      if (card.classList.contains('svc-tile')) {
+        const g = SERVICE_GROUPS[Number(card.dataset.g)];
+        const it = g && g.items[Number(card.dataset.i)];
+        if (!it) return null;
+        return {
+          img: `https://images.unsplash.com/photo-${it[3]}?w=900&h=600&fit=crop&q=75&auto=format`,
+          badge: groupName(g), title: itemName(it), text: itemDesc(it), logo: !g.noLogo
+        };
+      }
       const p = ProductCatalog.getProduct(card.getAttribute('data-id'));
-      if (!p) return;
+      if (!p) return null;
+      return { img: productImages[p.id] || '', badge: productBadge(p), title: productName(p), text: productDesc(p), logo: false };
+    }
+
+    // Delegated: the cards are re-rendered whenever the language changes.
+    document.addEventListener('click', (e) => {
+      const card = e.target.closest('.product-card, .service-card[data-id], .svc-tile');
+      if (!card) return;
+      const d = dataFor(card);
+      if (!d) return;
       lastFocused = card;
-      document.getElementById('productModalImage').src = productImages[p.id] || '';
-      document.getElementById('productModalBadge').textContent = productBadge(p);
-      document.getElementById('productModalTitle').textContent = productName(p);
-      document.getElementById('productModalText').textContent = productDesc(p);
+      const img = document.getElementById('productModalImage');
+      img.src = d.img;
+      img.alt = d.title;
+      document.getElementById('productModalBadge').textContent = d.badge;
+      document.getElementById('productModalTitle').textContent = d.title;
+      document.getElementById('productModalText').textContent = d.text;
+      const logo = document.getElementById('productModalLogo');
+      if (logo) logo.hidden = !d.logo;
       closeBtn.setAttribute('aria-label', I18n.t('modal_close'));
       modal.hidden = false;
       void modal.offsetHeight;

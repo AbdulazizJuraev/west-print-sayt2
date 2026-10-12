@@ -140,6 +140,7 @@ const I18N = {
     map_route: 'Manzilga kelish',
     contact_tg_channel: 'Telegram kanal',
     modal_close: 'Yopish',
+    modal_call: "Qo'ng'iroq qilish",
     footer_rights: 'Barcha huquqlar himoyalangan.'
   },
   ru: {
@@ -281,6 +282,7 @@ const I18N = {
     map_route: 'Построить маршрут',
     contact_tg_channel: 'Telegram-канал',
     modal_close: 'Закрыть',
+    modal_call: 'Позвонить',
     footer_rights: 'Все права защищены.'
   },
   en: {
@@ -422,6 +424,7 @@ const I18N = {
     map_route: 'Get directions',
     contact_tg_channel: 'Telegram channel',
     modal_close: 'Close',
+    modal_call: 'Call us',
     footer_rights: 'All rights reserved.'
   }
 };
