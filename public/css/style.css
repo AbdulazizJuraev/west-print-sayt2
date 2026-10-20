@@ -1287,24 +1287,17 @@ body.modal-open .tg-fab { display: none; }
   .bottom-nav-item svg { display: block; width: 20px; height: 20px; }
   .bottom-nav-item.active { background: none; color: var(--color-tint-ink); }
   .bottom-nav-item.active > span:first-child { background: var(--color-tint); }
-  .nav-order { display: flex; }
+  /* Order: Telegram icon on a blue key, labelled like the other tabs. */
+  .nav-order { display: flex; color: var(--color-tint-ink); font-weight: 700; }
   .nav-order > span:first-child {
-    width: 56px;
-    height: 56px;
-    border-radius: 20px;
+    width: 48px;
+    height: 36px;
+    border-radius: 13px;
     background: var(--color-primary);
     color: #fff;
-    box-shadow: 0 6px 16px rgba(37, 99, 235, 0.35);
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.35);
   }
-  .nav-order svg { width: 24px; height: 24px; }
-  .nav-order > span:last-child {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    overflow: hidden;
-    clip: rect(0 0 0 0);
-    white-space: nowrap;
-  }
+  .nav-order svg { width: 20px; height: 20px; margin: 1px 1px 0 0; }
 
   /* Settings leave the dock (main.js moves them into the header): language
      flag and theme button sit at the header's right edge. */
