@@ -37,6 +37,7 @@ const Icons = (function () {
     penTool: `<svg viewBox="0 0 24 24" ${STROKE}><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg>`,
     scissors: `<svg viewBox="0 0 24 24" ${STROKE}><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><line x1="20" y1="4" x2="8.12" y2="15.88"/><line x1="14.47" y1="14.48" x2="20" y2="20"/><line x1="8.12" y1="8.12" x2="12" y2="12"/></svg>`,
     star: `<svg viewBox="0 0 24 24" ${STROKE}><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>`,
+    plus: `<svg viewBox="0 0 24 24" ${STROKE}><path d="M12 5v14M5 12h14"/></svg>`,
     search: `<svg viewBox="0 0 24 24" ${STROKE}><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>`,
     chevronLeft: `<svg viewBox="0 0 24 24" ${STROKE}><polyline points="15 18 9 12 15 6"/></svg>`,
     chevronRight: `<svg viewBox="0 0 24 24" ${STROKE}><polyline points="9 18 15 12 9 6"/></svg>`,

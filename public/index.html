@@ -6,7 +6,7 @@
 <title>West Print — Poligrafiya xizmatlari</title>
 <meta name="description" content="West Print — Toshkentdagi poligrafiya va reklama agentligi: vizitka, flayer, buklet, banner, brendli paket va tashqi reklama. Dizayndan tayyor mahsulotgacha.">
 <link rel="canonical" href="https://abdulazizjuraev.github.io/west-print-sayt2/">
-<meta name="theme-color" content="#1d4ed8">
+<meta name="theme-color" content="#eef1f5">
 <link rel="icon" type="image/png" href="images/favicon.png">
 <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
 <meta property="og:type" content="website">
@@ -70,275 +70,208 @@
     <a href="index.html" class="brand">
       <img src="images/logo.png" alt="West Print" class="brand-logo">
     </a>
+    <nav class="bottom-nav" id="bottomNav">
+      <a href="index.html" class="bottom-nav-item" data-page="index">
+        <span data-icon="home"></span>
+        <span data-i18n="nav_home">Bosh sahifa</span>
+      </a>
+      <a href="services.html" class="bottom-nav-item" data-page="services">
+        <span data-icon="printer"></span>
+        <span data-i18n="nav_services">Xizmatlar</span>
+      </a>
+      <a href="https://t.me/wpmaxuz" class="bottom-nav-item nav-order" target="_blank" rel="noopener">
+        <span data-icon="plus"></span>
+        <span data-i18n="nav_order">Buyurtma</span>
+      </a>
+      <a href="advantages.html" class="bottom-nav-item" data-page="advantages">
+        <span data-icon="shieldCheck"></span>
+        <span data-i18n="nav_advantages">Afzalliklar</span>
+      </a>
+      <a href="contact.html" class="bottom-nav-item" data-page="contact">
+        <span data-icon="phone"></span>
+        <span data-i18n="nav_contact">Aloqa</span>
+      </a>
+      <div class="nav-settings">
+        <button type="button" class="bottom-nav-item settings-toggle" id="settingsToggle">
+          <span data-icon="settings"></span>
+          <span data-i18n="nav_settings">Sozlamalar</span>
+        </button>
+        <div class="settings-dropdown" id="settingsDropdown">
+          <div class="settings-row">
+            <span data-i18n="settings_theme">Mavzu</span>
+            <button type="button" class="theme-toggle" id="themeToggle" aria-label="Mavzuni almashtirish" title="Mavzuni almashtirish"></button>
+          </div>
+          <div class="settings-row">
+            <span data-i18n="settings_language">Til</span>
+            <div class="lang-switch" id="langSwitch">
+              <button type="button" data-lang-btn="uz">UZ</button>
+              <button type="button" data-lang-btn="ru">RU</button>
+              <button type="button" data-lang-btn="en">EN</button>
+            </div>
+            <button type="button" class="lang-flag" id="langFlag" aria-label="Tilni o'zgartirish">
+              <span class="flag flag-uz" data-icon="flagUz"></span>
+              <span class="flag flag-ru" data-icon="flagRu"></span>
+              <span class="flag flag-en" data-icon="flagEn"></span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <div class="header-actions">
+      <a class="header-phone" href="tel:+998974343037"><span data-icon="phone"></span>97 434 30 37</a>
+      <a class="btn btn-primary header-order" href="https://t.me/wpmaxuz" target="_blank" rel="noopener" data-i18n="hero_cta">Buyurtma berish</a>
+    </div>
   </div>
 </header>
 
-<nav class="bottom-nav" id="bottomNav">
-  <a href="index.html" class="bottom-nav-item" data-page="index">
-    <span data-icon="home"></span>
-    <span data-i18n="nav_home">Bosh sahifa</span>
-  </a>
-  <a href="services.html" class="bottom-nav-item" data-page="services">
-    <span data-icon="printer"></span>
-    <span data-i18n="nav_services">Xizmatlar</span>
-  </a>
-  <a href="advantages.html" class="bottom-nav-item" data-page="advantages">
-    <span data-icon="shieldCheck"></span>
-    <span data-i18n="nav_advantages">Afzalliklar</span>
-  </a>
-  <a href="contact.html" class="bottom-nav-item" data-page="contact">
-    <span data-icon="phone"></span>
-    <span data-i18n="nav_contact">Aloqa</span>
-  </a>
-  <div class="nav-settings">
-    <button type="button" class="bottom-nav-item settings-toggle" id="settingsToggle">
-      <span data-icon="settings"></span>
-      <span data-i18n="nav_settings">Sozlamalar</span>
-    </button>
-    <div class="settings-dropdown" id="settingsDropdown">
-      <div class="settings-row">
-        <span data-i18n="settings_theme">Mavzu</span>
-        <button type="button" class="theme-toggle" id="themeToggle" aria-label="Mavzuni almashtirish" title="Mavzuni almashtirish"></button>
+<main>
+  <div class="container bento">
+
+    <section class="b-card b-hero" id="top">
+      <span class="b-badge" data-i18n="intro_tagline">Poligrafiya va reklama agentligi</span>
+      <h1 class="b-hero-title" data-i18n="hero_title">Hamma bosma ishlari — bir joyda.</h1>
+      <p class="b-hero-desc" data-i18n="intro_desc">Vizitkadan katta formatli bannergacha — dizayn, bosma va tayyor mahsulot bir joyda. West Print bilan brendingiz ko'zga tashlanadi.</p>
+      <div class="b-hero-find">
+        <form class="b-search" id="heroSearch" action="services.html" role="search">
+          <span data-icon="search"></span>
+          <label class="sr-only" for="heroSearchInput" data-i18n="hero_search">115 ta mahsulot ichidan qidiring…</label>
+          <input type="search" id="heroSearchInput" name="q" data-i18n-placeholder="hero_search" placeholder="115 ta mahsulot ichidan qidiring…" autocomplete="off">
+          <button type="submit" class="b-search-btn" data-i18n="hero_search_btn">Qidirish</button>
+        </form>
+        <div class="b-chips">
+          <span class="b-chips-label" data-i18n="hero_popular">Ko'p so'raladi:</span>
+          <a class="b-chip" href="services.html" data-chip data-i18n="chip_card">Vizitka</a>
+          <a class="b-chip" href="services.html" data-chip data-i18n="chip_bag">Qog'oz paket</a>
+          <a class="b-chip" href="services.html" data-chip data-i18n="chip_banner">Banner</a>
+          <a class="b-chip" href="services.html" data-chip data-i18n="chip_sticker">Stiker</a>
+          <a class="b-chip" href="services.html" data-chip data-i18n="chip_tshirt">Futbolka</a>
+        </div>
       </div>
-      <div class="settings-row">
+    </section>
+
+    <section class="b-works" aria-roledescription="carousel">
+      <div class="b-works-slides" id="introMosaic"></div>
+      <span class="b-tag" data-i18n="intro_card_title">Bizning ishlarimiz</span>
+      <div class="b-works-bar">
+        <span class="b-works-info"><strong id="introTitle"></strong><span id="introCount"></span></span>
+        <span class="b-works-nav">
+          <button type="button" class="b-works-btn" id="introPrev" data-icon="chevronLeft"></button>
+          <button type="button" class="b-works-btn b-works-btn-next" id="introNext" data-icon="chevronRight"></button>
+        </span>
+      </div>
+    </section>
+
+    <div class="b-card b-stat b-stat-yellow">
+      <strong>115+</strong>
+      <span data-i18n="stat_products">Mahsulot/Xizmat</span>
+    </div>
+    <div class="b-card b-stat b-stat-inv">
+      <span><strong>50&nbsp;000+</strong><span class="b-stat-sub" data-i18n="stat_clients">Mijozlar</span></span>
+      <span class="b-stat-row"><span>10+ <span data-i18n="stat_staff">Xodimlar</span></span><span>5+ <span data-i18n="stat_years">yillik tajriba</span></span></span>
+    </div>
+
+    <section class="b-card b-services">
+      <div class="b-head">
+        <div>
+          <h2 data-i18n="services_title">Xizmatlarimiz</h2>
+          <p data-i18n="home_svc_sub">10 yo'nalish · 115 mahsulot · hammasi logotipingiz bilan</p>
+        </div>
+        <a class="b-pill" href="services.html" data-i18n="products_all">Barcha mahsulotlar →</a>
+      </div>
+      <div class="b-cats" id="homeCats"></div>
+    </section>
+
+    <section class="b-card b-tg">
+      <span class="b-tg-icon" data-icon="telegram"></span>
+      <h2 data-i18n="tg_title">Maketni Telegramga yuboring</h2>
+      <div class="b-tg-chips">
+        <span data-i18n="tg_chip1">PDF yoki AI</span>
+        <span>CMYK</span>
+        <span>300 dpi</span>
+        <span data-i18n="tg_chip4">3 mm zapas</span>
+        <span data-i18n="tg_chip5">Shriftlar krivoyda</span>
+      </div>
+      <p data-i18n="specs_note">Maketingiz tayyor emasmi? Dizaynerlarimiz tayyorlab beradi.</p>
+      <a class="b-tg-btn" href="https://t.me/wpmaxuz" target="_blank" rel="noopener" data-i18n="tg_write">@wpmaxuz ga yozish</a>
+    </section>
+
+    <section class="b-card b-steps">
+      <h2 data-i18n="how_title">Bu qanday ishlaydi</h2>
+      <ol class="b-step-list">
+        <li><span class="b-step-num">1</span><span><strong data-i18n="how_step1_title">Murojaat</strong><span data-i18n="how_step1_text">Telefon yoki Telegram orqali bog'laning, kerakli mahsulotni ayting</span></span></li>
+        <li><span class="b-step-num">2</span><span><strong data-i18n="how_step2_title">Kelishuv</strong><span data-i18n="how_step2_text">Narx va muddatni birga kelishamiz</span></span></li>
+        <li><span class="b-step-num">3</span><span><strong data-i18n="how_step3_title">Bosib chiqarish</strong><span data-i18n="how_step3_text">Buyurtmangiz ishlab chiqarishga yuboriladi</span></span></li>
+        <li><span class="b-step-num b-step-num-last">4</span><span><strong data-i18n="how_step4_title">Yetkazib berish</strong><span data-i18n="how_step4_text">Tayyor mahsulotni oling yoki yetkazib beramiz</span></span></li>
+      </ol>
+    </section>
+
+    <section class="b-card b-clients">
+      <h2 data-i18n="clients_title">Kimlar uchun ishlaymiz</h2>
+      <div class="b-client-grid">
+        <span class="b-client"><span data-icon="bookOpen"></span><span data-i18n="client1_title">Kafe va restoranlar</span></span>
+        <span class="b-client"><span data-icon="tag"></span><span data-i18n="client2_title">Do'kon va marketlar</span></span>
+        <span class="b-client"><span data-icon="palette"></span><span data-i18n="client3_title">Go'zallik salonlari</span></span>
+        <span class="b-client"><span data-icon="image"></span><span data-i18n="client4_title">Tadbir va to'ylar</span></span>
+        <span class="b-client"><span data-icon="fileText"></span><span data-i18n="client5_title">O'quv markazlari</span></span>
+        <span class="b-client"><span data-icon="printer"></span><span data-i18n="client6_title">Ishlab chiqaruvchilar</span></span>
+      </div>
+    </section>
+
+    <section class="b-card b-brands">
+      <div class="b-head">
+        <h2 data-i18n="partners_title">Bizga ishongan brendlar</h2>
+        <a class="b-link" href="portfolio.html" data-i18n="partners_all">Barcha ishlarimiz →</a>
+      </div>
+      <div class="b-brand-grid">
+        <a class="b-brand" href="portfolio.html"><img src="images/portfolio/thumbs/yorliq-1.jpg" alt="Lafier" loading="lazy"><span>LAFIER</span></a>
+        <a class="b-brand" href="portfolio.html"><img src="images/portfolio/thumbs/yorliq-4.jpg" alt="Zimax" loading="lazy"><span>ZIMAX</span></a>
+        <a class="b-brand" href="portfolio.html"><img src="images/portfolio/thumbs/paket-tumor.jpg" alt="Tumor" loading="lazy"><span>TUMOR</span></a>
+        <a class="b-brand" href="portfolio.html"><img src="images/portfolio/thumbs/paket-pont.jpg" alt="Pont" loading="lazy"><span>PONT</span></a>
+      </div>
+    </section>
+
+    <section class="b-card b-visit">
+      <div class="b-map" aria-hidden="true"><span class="b-map-pin"></span></div>
+      <div class="b-visit-text">
+        <strong data-i18n="contact_address">Toshkent sh., Muqimiy ko'chasi, 100-uy</strong>
+        <span data-i18n="visit_hours">Ish vaqti: 09:00 — 19:00</span>
+      </div>
+      <a class="b-pill b-pill-wide" href="https://yandex.uz/maps/?rtext=~41.286535%2C69.233009&amp;rtt=auto" target="_blank" rel="noopener"><span data-i18n="map_route">Manzilga kelish</span> →</a>
+    </section>
+
+    <section class="b-card b-prefs">
+      <h2 data-i18n="nav_settings">Sozlamalar</h2>
+      <div class="b-pref">
         <span data-i18n="settings_language">Til</span>
-        <div class="lang-switch" id="langSwitch">
+        <div class="b-seg b-seg-3">
           <button type="button" data-lang-btn="uz">UZ</button>
           <button type="button" data-lang-btn="ru">RU</button>
           <button type="button" data-lang-btn="en">EN</button>
         </div>
-        <button type="button" class="lang-flag" id="langFlag" aria-label="Tilni o'zgartirish">
-          <span class="flag flag-uz" data-icon="flagUz"></span>
-          <span class="flag flag-ru" data-icon="flagRu"></span>
-          <span class="flag flag-en" data-icon="flagEn"></span>
-        </button>
       </div>
-    </div>
+      <div class="b-pref">
+        <span data-i18n="settings_theme">Mavzu</span>
+        <div class="b-seg">
+          <button type="button" data-theme-btn="light" data-i18n="theme_light">Kunduzgi</button>
+          <button type="button" data-theme-btn="dark" data-i18n="theme_dark">Tungi</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="b-card b-cta">
+      <div>
+        <h2 data-i18n="cta_title">Savolingiz bormi? Qo'ng'iroq qiling</h2>
+        <p data-i18n="cta_sub">Narx va muddatni darrov aytamiz</p>
+      </div>
+      <div class="b-cta-actions">
+        <a class="b-cta-btn b-cta-btn-light" href="tel:+998974343037">+998 97 434 30 37</a>
+        <a class="b-cta-btn b-cta-btn-ghost" href="tel:+998959803037">+998 95 980 30 37</a>
+        <a class="b-cta-btn b-cta-btn-accent" href="https://t.me/wpmaxuz" target="_blank" rel="noopener">Telegram</a>
+      </div>
+    </section>
+
   </div>
-</nav>
-
-<main>
-
-  <section class="intro" id="top">
-    <!-- Fon: CMYK ranglaridagi suzuvchi dog'lar, rastr nuqtalar va
-         aylanuvchi shakllar — sekin harakatlanadi. -->
-    <div class="intro-bg" aria-hidden="true">
-      <span class="ib-blob ib-c"></span>
-      <span class="ib-blob ib-m"></span>
-      <span class="ib-blob ib-y"></span>
-      <span class="ib-dots"></span>
-      <span class="ib-ring"></span>
-      <span class="ib-square"></span>
-    </div>
-    <div class="container intro-grid">
-      <div class="intro-text">
-        <h1 class="intro-title">West Print</h1>
-        <p class="intro-tagline" data-i18n="intro_tagline">Poligrafiya va reklama agentligi</p>
-        <p class="intro-desc" data-i18n="intro_desc">Vizitkadan katta formatli bannergacha — dizayn, bosma va tayyor mahsulot bir joyda. West Print bilan brendingiz ko'zga tashlanadi.</p>
-        <div class="intro-stats">
-          <div class="intro-stat"><strong>10+</strong><span data-i18n="stat_staff">Xodimlar</span></div>
-          <div class="intro-stat"><strong>50&nbsp;000+</strong><span data-i18n="stat_clients">Mijozlar</span></div>
-          <div class="intro-stat"><strong>115+</strong><span data-i18n="stat_products">Mahsulot/Xizmat</span></div>
-          <div class="intro-stat"><strong>5+</strong><span data-i18n="stat_years">yillik tajriba</span></div>
-        </div>
-      </div>
-      <div class="intro-card">
-        <div class="intro-card-head">
-          <span data-i18n="intro_card_title">Bizning ishlarimiz</span>
-        </div>
-        <div class="mosaic" id="introMosaic"></div>
-        <div class="mosaic-dots" id="introDots"></div>
-      </div>
-    </div>
-  </section>
-
-  <section class="poster-banner">
-    <div class="poster-track" id="posterTrack">
-      <div class="poster-slide"><img src="images/posterlar/slide-1.jpg" alt=""></div>
-      <div class="poster-slide"><img src="images/posterlar/slide-2.jpg" alt=""></div>
-      <div class="poster-slide"><img src="images/posterlar/slide-3.jpg" alt=""></div>
-      <div class="poster-slide"><img src="images/posterlar/slide-4.jpg" alt=""></div>
-      <div class="poster-slide"><img src="images/posterlar/slide-5.jpg" alt=""></div>
-    </div>
-    <div class="poster-dots" id="posterDots"></div>
-  </section>
-
-
-  <section class="products" id="products">
-    <div class="container">
-      <span class="section-eyebrow" data-i18n="products_eyebrow">Biz nima qilamiz</span>
-      <h2 data-i18n="products_title">Mahsulotlarimiz</h2>
-      <p class="section-subtitle" data-i18n="products_subtitle">Mahsulotni bosing — batafsil ko'ring va buyurtma bering</p>
-    </div>
-    <div class="product-track" id="productTrack"></div>
-    <div class="container section-cta">
-      <a href="services.html" class="btn btn-primary" data-i18n="products_all">Barcha mahsulotlar →</a>
-    </div>
-  </section>
-
-  <section class="partners">
-    <div class="container">
-      <span class="section-eyebrow" data-i18n="partners_eyebrow">Mijozlarimiz</span>
-      <h2 data-i18n="partners_title">Bizga ishongan brendlar</h2>
-      <p class="section-subtitle" data-i18n="partners_subtitle">Ular uchun tayyorlagan ishlarimizdan namunalar</p>
-      <div class="partners-grid">
-        <a class="partner-card" href="portfolio.html">
-          <img src="images/portfolio/yorliq-1.jpg" alt="Lafier" loading="lazy">
-          <span class="partner-info"><strong>LAFIER</strong><span data-i18n="partner_lafier">Mahsulot yorliqlari va poster</span></span>
-        </a>
-        <a class="partner-card" href="portfolio.html">
-          <img src="images/portfolio/yorliq-4.jpg" alt="Zimax" loading="lazy">
-          <span class="partner-info"><strong>ZIMAX</strong><span data-i18n="partner_zimax">Antifriz yorlig'i</span></span>
-        </a>
-        <a class="partner-card" href="portfolio.html">
-          <img src="images/portfolio/katalog-1.jpg" alt="Sifat Agro" loading="lazy">
-          <span class="partner-info"><strong>SIFAT AGRO</strong><span data-i18n="partner_sifat">Mahsulotlar katalogi</span></span>
-        </a>
-        <a class="partner-card" href="portfolio.html">
-          <img src="images/portfolio/vizitka-3.jpg" alt="Billur" loading="lazy">
-          <span class="partner-info"><strong>BILLUR</strong><span data-i18n="partner_billur">Vizitka</span></span>
-        </a>
-      </div>
-      <div class="section-cta">
-        <a href="portfolio.html" class="btn btn-primary" data-i18n="partners_all">Barcha ishlarimiz →</a>
-      </div>
-    </div>
-  </section>
-
-  <section class="clients">
-    <div class="container">
-      <h2 data-i18n="clients_title">Kimlar uchun ishlaymiz</h2>
-      <p class="section-subtitle" data-i18n="clients_subtitle">Mahsulotlarimiz eng ko'p shu sohalarda kerak bo'ladi</p>
-      <div class="clients-grid">
-        <div class="client-tile">
-          <span class="client-icon" data-icon="bookOpen"></span>
-          <h3 data-i18n="client1_title">Kafe va restoranlar</h3>
-          <p data-i18n="client1_text">menyu, flayer, stiker</p>
-        </div>
-        <div class="client-tile">
-          <span class="client-icon" data-icon="tag"></span>
-          <h3 data-i18n="client2_title">Do'kon va marketlar</h3>
-          <p data-i18n="client2_text">narx yorliqlari, banner</p>
-        </div>
-        <div class="client-tile">
-          <span class="client-icon" data-icon="palette"></span>
-          <h3 data-i18n="client3_title">Go'zallik salonlari</h3>
-          <p data-i18n="client3_text">vizitka, sertifikat</p>
-        </div>
-        <div class="client-tile">
-          <span class="client-icon" data-icon="image"></span>
-          <h3 data-i18n="client4_title">Tadbir va to'ylar</h3>
-          <p data-i18n="client4_text">taklifnoma, banner</p>
-        </div>
-        <div class="client-tile">
-          <span class="client-icon" data-icon="fileText"></span>
-          <h3 data-i18n="client5_title">O'quv markazlari</h3>
-          <p data-i18n="client5_text">buklet, sertifikat</p>
-        </div>
-        <div class="client-tile">
-          <span class="client-icon" data-icon="printer"></span>
-          <h3 data-i18n="client6_title">Ishlab chiqaruvchilar</h3>
-          <p data-i18n="client6_text">yorliq, quti, stiker</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="how-it-works" id="how">
-    <div class="container">
-      <h2 data-i18n="how_title">Bu qanday ishlaydi</h2>
-      <p class="section-subtitle" data-i18n="how_subtitle">Murojaatdan tayyor mahsulotgacha — 4 bosqich</p>
-      <div class="steps">
-        <div class="step">
-          <span class="step-num">1</span>
-          <h3 data-i18n="how_step1_title">Murojaat</h3>
-          <p data-i18n="how_step1_text">Telefon yoki Telegram orqali bog'laning, kerakli mahsulotni ayting</p>
-        </div>
-        <div class="step">
-          <span class="step-num">2</span>
-          <h3 data-i18n="how_step2_title">Kelishuv</h3>
-          <p data-i18n="how_step2_text">Narx va muddatni birga kelishamiz</p>
-        </div>
-        <div class="step">
-          <span class="step-num">3</span>
-          <h3 data-i18n="how_step3_title">Bosib chiqarish</h3>
-          <p data-i18n="how_step3_text">Buyurtmangiz ishlab chiqarishga yuboriladi</p>
-        </div>
-        <div class="step">
-          <span class="step-num">4</span>
-          <h3 data-i18n="how_step4_title">Yetkazib berish</h3>
-          <p data-i18n="how_step4_text">Tayyor mahsulotni oling yoki yetkazib beramiz</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="specs">
-    <div class="container">
-      <h2 data-i18n="specs_title">Maketni qanday tayyorlash kerak</h2>
-      <p class="section-subtitle" data-i18n="specs_subtitle">Tayyor faylni yuborishdan oldin shularga e'tibor bering</p>
-      <div class="specs-grid">
-        <div class="spec-card">
-          <span class="spec-icon" data-icon="fileText"></span>
-          <div>
-            <h3 data-i18n="spec1_title">Format</h3>
-            <p data-i18n="spec1_text">PDF yoki AI faylida yuboring</p>
-          </div>
-        </div>
-        <div class="spec-card">
-          <span class="spec-icon" data-icon="palette"></span>
-          <div>
-            <h3 data-i18n="spec2_title">Ranglar</h3>
-            <p data-i18n="spec2_text">CMYK rejimida bo'lsin, RGB emas</p>
-          </div>
-        </div>
-        <div class="spec-card">
-          <span class="spec-icon" data-icon="target"></span>
-          <div>
-            <h3 data-i18n="spec3_title">Aniqlik</h3>
-            <p data-i18n="spec3_text">Rasm sifati kamida 300 dpi</p>
-          </div>
-        </div>
-        <div class="spec-card">
-          <span class="spec-icon" data-icon="image"></span>
-          <div>
-            <h3 data-i18n="spec4_title">Chetki zapas</h3>
-            <p data-i18n="spec4_text">Har tomondan 3 mm zapas qoldiring</p>
-          </div>
-        </div>
-        <div class="spec-card">
-          <span class="spec-icon" data-icon="businessCard"></span>
-          <div>
-            <h3 data-i18n="spec5_title">Shriftlar</h3>
-            <p data-i18n="spec5_text">Shriftlarni krivayga o'giring</p>
-          </div>
-        </div>
-      </div>
-      <div class="specs-note">
-        <span data-i18n="specs_note">Maketingiz tayyor emasmi? Dizaynerlarimiz tayyorlab beradi.</span>
-        <a href="https://t.me/wpmaxuz" target="_blank" rel="noopener" class="btn btn-primary" data-i18n="specs_note_cta">Dizayn uchun yozish</a>
-      </div>
-    </div>
-  </section>
-
 </main>
-
-<div class="modal-backdrop" id="productModal" hidden>
-  <div class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="productModalTitle">
-    <button type="button" class="modal-close" id="productModalClose" aria-label="Yopish">
-      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M6 6 18 18M18 6 6 18"></path></svg>
-    </button>
-    <img class="modal-image modal-image-tall" id="productModalImage" alt="">
-    <span class="product-modal-badge" id="productModalBadge"></span>
-    <h3 class="modal-title" id="productModalTitle"></h3>
-    <p class="modal-text" id="productModalText"></p>
-    <div class="product-modal-actions">
-      <a class="btn btn-primary" href="https://t.me/wpmaxuz" target="_blank" rel="noopener" data-i18n="hero_cta">Buyurtma berish</a>
-      <a class="btn product-modal-call" href="tel:+998974343037" data-i18n="modal_call">Qo'ng'iroq qilish</a>
-    </div>
-  </div>
-</div>
-
 
 <footer class="site-footer">
   <div class="container">
@@ -347,8 +280,8 @@
 </footer>
 
 <script src="js/icons.js"></script>
-<script src="js/catalog.js"></script>
 <script src="js/portfolio.js"></script>
+<script src="js/services-list.js"></script>
 <script src="js/i18n.js"></script>
 <script src="js/theme.js"></script>
 <script src="js/main.js"></script>

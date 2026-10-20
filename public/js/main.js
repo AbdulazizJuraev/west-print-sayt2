@@ -71,10 +71,10 @@
     if (!svcGroupsEl || typeof SERVICE_GROUPS === 'undefined') return;
     const withLogo = I18n.t('svc_with_logo');
     svcGroupsEl.innerHTML = SERVICE_GROUPS.map((g, gi) => `
-      <div class="svc-row" data-row="${g.id}" style="--hue: ${g.hue}">
+      <div class="svc-row" id="g-${g.id}" data-row="${g.id}" style="--hue: ${g.hue}">
         <div class="svc-row-head">
           <span class="svc-row-icon">${Icons.get(g.icon)}</span>
-          <h3>${groupName(g)}</h3>
+          <h2>${groupName(g)}</h2>
           <span class="svc-row-count">${g.items.length}</span>
           <div class="svc-arrows">
             <button type="button" class="svc-arrow" data-dir="-1" aria-label="‹">${Icons.get('chevronLeft')}</button>
@@ -96,12 +96,30 @@
     filterServices();
   }
 
+  /* Yo'nalish tugmalari: "Hammasi" yoki bitta yo'nalish. Qidiruv bilan
+     birga ishlaydi — tanlangan yo'nalish ichidan qidiradi. */
+  let activeGroup = 'all';
+  function renderServiceChips() {
+    const wrap = document.getElementById('svcChips');
+    if (!wrap || typeof SERVICE_GROUPS === 'undefined') return;
+    const total = SERVICE_GROUPS.reduce((n, g) => n + g.items.length, 0);
+    const chip = (id, label, count) =>
+      `<button type="button" class="svc-chip${id === activeGroup ? ' active' : ''}" data-group="${id}" aria-pressed="${id === activeGroup}">${label} <span>${count}</span></button>`;
+    wrap.innerHTML = chip('all', I18n.t('svc_all'), total) +
+      SERVICE_GROUPS.map((g) => chip(g.id, groupName(g), g.items.length)).join('');
+  }
+
   function filterServices() {
     const input = document.getElementById('svcSearch');
     if (!input) return;
     const q = input.value.trim().toLowerCase();
     let any = false;
     document.querySelectorAll('.svc-row').forEach((row) => {
+      // Bitta yo'nalish tanlansa, qolganlari (va "Ommabop") yashiriladi.
+      if (activeGroup !== 'all' && row.dataset.row !== activeGroup) {
+        row.hidden = true;
+        return;
+      }
       let shown = 0;
       row.querySelectorAll('.svc-tile, .service-card').forEach((el) => {
         const hay = el.dataset.search || el.textContent.toLowerCase();
@@ -125,11 +143,32 @@
     input.addEventListener('input', filterServices);
     // Delegated: rows are re-rendered when the language changes.
     page.addEventListener('click', (e) => {
+      const chip = e.target.closest('.svc-chip');
+      if (chip) {
+        activeGroup = chip.dataset.group;
+        renderServiceChips();
+        filterServices();
+        return;
+      }
       const btn = e.target.closest('.svc-arrow');
       if (!btn) return;
       const track = btn.closest('.svc-row').querySelector('.svc-track');
       track.scrollBy({ left: Number(btn.dataset.dir) * track.clientWidth * 0.8, behavior: 'smooth' });
     });
+
+    // Bosh sahifadan kelganda: ?q=... qidiruvni to'ldiradi, #g-... esa
+    // o'sha yo'nalishni ochadi.
+    const q = new URLSearchParams(location.search).get('q');
+    if (q) {
+      input.value = q;
+      filterServices();
+    }
+    const hashGroup = location.hash.startsWith('#g-') && location.hash.slice(3);
+    if (hashGroup && SERVICE_GROUPS.some((g) => g.id === hashGroup)) {
+      activeGroup = hashGroup;
+      renderServiceChips();
+      filterServices();
+    }
 
     // "Ommabop" qatori o'zi aylanadi; sichqoncha yoki barmoq tegsa to'xtaydi.
     const featured = document.getElementById('servicesGrid');
@@ -152,19 +191,59 @@
     return pick(product, 'desc');
   }
 
-  /* Bosh sahifadagi mahsulotlar karuseli (print.uz uslubida). */
-  function renderProductTrack() {
-    const track = document.getElementById('productTrack');
-    if (!track) return;
-    track.innerHTML = ProductCatalog.listProducts().map((p) => `
-      <button type="button" class="product-card" data-id="${p.id}" aria-haspopup="dialog">
-        <span class="product-image">
-          <img src="${productImages[p.id] || ''}" alt="" loading="lazy">
-          <span class="product-badge">${productBadge(p)}</span>
+  /* Bosh sahifadagi 10 ta yo'nalish plitkasi — har biri Xizmatlar
+     sahifasidagi o'z qatoriga olib boradi. */
+  const groupCovers = {
+    office: 'vizitka', adprint: 'flayer', large: 'banner', outdoor: 'vyveska', pack: 'qogozpaket',
+    events: 'parus', gifts: 'krujka', apparel: 'futbolka', design: 'logotip', finish: 'folga'
+  };
+  function renderHomeCats() {
+    const wrap = document.getElementById('homeCats');
+    if (!wrap || typeof SERVICE_GROUPS === 'undefined') return;
+    wrap.innerHTML = SERVICE_GROUPS.map((g) => `
+      <a class="b-cat" href="services.html#g-${g.id}">
+        <img src="images/dizayn/${groupCovers[g.id]}.jpg" alt="" loading="lazy">
+        <span class="b-cat-text">
+          <strong>${groupName(g)}</strong>
+          <span>${g.items.length} ${I18n.t(g.noLogo ? 'unit_services' : 'unit_products')}</span>
         </span>
-        <span class="product-name">${productName(p)}</span>
-      </button>
-    `).join('');
+      </a>`).join('');
+  }
+
+  /* Bosh sahifadagi qidiruv va "Ko'p so'raladi" tugmalari Xizmatlar
+     sahifasini shu so'z bilan qidirilgan holda ochadi. */
+  function syncHeroChips() {
+    document.querySelectorAll('[data-chip]').forEach((a) => {
+      a.href = 'services.html?q=' + encodeURIComponent(a.textContent.trim());
+    });
+  }
+  function initHeroSearch() {
+    const form = document.getElementById('heroSearch');
+    if (!form) return;
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const q = form.elements.q.value.trim();
+      location.href = 'services.html' + (q ? '?q=' + encodeURIComponent(q) : '');
+    });
+    syncHeroChips();
+  }
+
+  /* "Sozlamalar" kartochkasidagi Kunduzgi/Tungi tugmalari — mavzu boshqa
+     joydan (sarlavhadagi tugma) o'zgarsa ham holati mos turadi. */
+  function initThemeButtons() {
+    const btns = document.querySelectorAll('[data-theme-btn]');
+    if (!btns.length) return;
+    const sync = () => {
+      const theme = ThemeManager.getTheme();
+      btns.forEach((b) => {
+        const on = b.dataset.themeBtn === theme;
+        b.classList.toggle('active', on);
+        b.setAttribute('aria-pressed', on);
+      });
+    };
+    btns.forEach((b) => b.addEventListener('click', () => ThemeManager.setTheme(b.dataset.themeBtn)));
+    new MutationObserver(sync).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+    sync();
   }
 
   /* Mahsulot kartochkasi yoki xizmat plitkasi bosilsa — katta surat,
@@ -203,7 +282,7 @@
 
     // Delegated: the cards are re-rendered whenever the language changes.
     document.addEventListener('click', (e) => {
-      const card = e.target.closest('.product-card, .service-card[data-id], .svc-tile');
+      const card = e.target.closest('.service-card[data-id], .svc-tile');
       if (!card) return;
       const d = dataFor(card);
       if (!d) return;
@@ -354,103 +433,65 @@
     });
   }
 
-  function initPosterCarousel() {
-    const track = document.getElementById('posterTrack');
-    const dotsWrap = document.getElementById('posterDots');
-    if (!track || !dotsWrap) return;
-    const slides = track.querySelectorAll('.poster-slide');
-    if (slides.length < 2) return;
-
-    dotsWrap.innerHTML = Array.from(slides).map((_, i) =>
-      `<button type="button" class="poster-dot${i === 0 ? ' active' : ''}" aria-label="${i + 1}"></button>`
-    ).join('');
-    const dots = dotsWrap.querySelectorAll('.poster-dot');
-
-    let current = 0;
-    let syncFromScroll = true;
-
-    function setActiveDot(index) {
-      dots.forEach((d, i) => d.classList.toggle('active', i === index));
-    }
-
-    function goTo(index) {
-      current = (index + slides.length) % slides.length;
-      syncFromScroll = false;
-      const slide = slides[current];
-      track.scrollTo({ left: slide.offsetLeft - (track.clientWidth - slide.clientWidth) / 2, behavior: 'smooth' });
-      setActiveDot(current);
-      setTimeout(() => { syncFromScroll = true; }, 500);
-    }
-
-    dots.forEach((dot, i) => dot.addEventListener('click', () => goTo(i)));
-
-    setInterval(() => goTo(current + 1), 5000);
-
-    let scrollTimer;
-    track.addEventListener('scroll', () => {
-      if (!syncFromScroll) return;
-      clearTimeout(scrollTimer);
-      scrollTimer = setTimeout(() => {
-        let closest = 0;
-        let minDist = Infinity;
-        slides.forEach((s, i) => {
-          const dist = Math.abs(s.offsetLeft - track.scrollLeft);
-          if (dist < minDist) { minDist = dist; closest = i; }
-        });
-        current = closest;
-        setActiveDot(current);
-      }, 120);
-    });
-  }
-
   /* Portfolio rasmining kichik nusxasi (images/portfolio/thumbs/) —
      kartochka va mozaikalarda shu, to'liq rasm faqat kattalashtirilganda. */
   function thumbOf(src) {
     return src.replace('images/portfolio/', 'images/portfolio/thumbs/');
   }
 
-  /* Bosh sahifadagi ishlar slayderi: bittadan katta surat, avtomatik
-     almashadi, pastidagi nuqtalar bilan boshqariladi. portfolio.js da
-     `featured: true` belgilangan ishlar ko'rsatiladi (bo'lmasa hammasi). */
+  /* Bosh sahifadagi "Bizning ishlarimiz" plitkasi: bittadan katta surat,
+     o'zi almashadi (sichqoncha ustida turganda to'xtaydi), pastki
+     paneldagi tugmalar va barmoq bilan surish orqali boshqariladi.
+     portfolio.js da `featured: true` belgilangan ishlar ko'rsatiladi. */
+  let refreshWorksCaption = () => {};
   function initIntroMosaic() {
     const wrap = document.getElementById('introMosaic');
-    const dotsWrap = document.getElementById('introDots');
-    if (!wrap || !dotsWrap || typeof PORTFOLIO === 'undefined' || !PORTFOLIO.length) return;
-
+    if (!wrap || typeof PORTFOLIO === 'undefined' || !PORTFOLIO.length) return;
     const featured = PORTFOLIO.filter((it) => it.featured);
-    const pages = (featured.length ? featured : PORTFOLIO).map((it) => [it]);
-    const pageCount = pages.length;
+    const items = featured.length ? featured : PORTFOLIO;
+    const titleEl = document.getElementById('introTitle');
+    const countEl = document.getElementById('introCount');
+    const prev = document.getElementById('introPrev');
+    const next = document.getElementById('introNext');
 
-    // Full-size image: a 360px thumbnail would look soft at card size.
-    wrap.innerHTML = `<div class="mosaic-track">${pages.map((items, p) => `
-      <div class="mosaic-page${p === 0 ? ' active' : ''}">
-        ${items.map((it) => `<a href="portfolio.html" tabindex="${p === 0 ? 0 : -1}"><img src="${it.src}" alt="${pick(it, 'title')}" ${p === 0 ? '' : 'loading="lazy"'}></a>`).join('')}
-      </div>
-    `).join('')}</div>`;
-    if (pageCount < 2) return;
-
-    dotsWrap.innerHTML = pages.map((_, p) =>
-      `<button type="button" class="mosaic-dot${p === 0 ? ' active' : ''}" aria-label="${p + 1}"></button>`
-    ).join('');
-
-    const pageEls = wrap.querySelectorAll('.mosaic-page');
-    const dots = dotsWrap.querySelectorAll('.mosaic-dot');
+    // Full-size image: a 360px thumbnail would look soft at tile size.
+    wrap.innerHTML = items.map((it, i) => `
+      <a class="b-slide${i === 0 ? ' active' : ''}" href="portfolio.html" tabindex="${i === 0 ? 0 : -1}">
+        <img src="${it.src}" alt="${pick(it, 'title')}" ${i === 0 ? '' : 'loading="lazy"'}>
+      </a>`).join('');
+    const slides = wrap.querySelectorAll('.b-slide');
     let current = 0;
 
+    refreshWorksCaption = () => {
+      titleEl.textContent = pick(items[current], 'title');
+      countEl.textContent = `${current + 1} / ${items.length}`;
+      slides.forEach((s, i) => { s.querySelector('img').alt = pick(items[i], 'title'); });
+      prev.setAttribute('aria-label', I18n.t('works_prev'));
+      next.setAttribute('aria-label', I18n.t('works_next'));
+    };
     function goTo(index) {
-      current = (index + pageCount) % pageCount;
-      pageEls.forEach((el, i) => {
-        el.classList.toggle('active', i === current);
-        el.querySelectorAll('a').forEach((a) => { a.tabIndex = i === current ? 0 : -1; });
+      current = (index + items.length) % items.length;
+      slides.forEach((s, i) => {
+        s.classList.toggle('active', i === current);
+        s.tabIndex = i === current ? 0 : -1;
       });
-      dots.forEach((d, i) => d.classList.toggle('active', i === current));
+      refreshWorksCaption();
     }
-    // Auto-advance: the active dot's progress-bar animation (CSS) ending
-    // moves to the next photo, so pausing it on hover pauses the slider.
-    dotsWrap.addEventListener('animationend', (e) => {
-      if (e.target.classList.contains('active')) goTo(current + 1);
-    });
-    dots.forEach((dot, i) => dot.addEventListener('click', () => goTo(i)));
+    refreshWorksCaption();
+    if (items.length < 2) return;
+
+    prev.addEventListener('click', () => goTo(current - 1));
+    next.addEventListener('click', () => goTo(current + 1));
+
+    const tile = wrap.closest('.b-works');
+    let paused = false;
+    tile.addEventListener('mouseenter', () => { paused = true; });
+    tile.addEventListener('mouseleave', () => { paused = false; });
+    tile.addEventListener('focusin', () => { paused = true; });
+    tile.addEventListener('focusout', () => { paused = false; });
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      setInterval(() => { if (!paused && !document.hidden) goTo(current + 1); }, 5000);
+    }
 
     // Barmoq bilan surish (telefonda).
     let startX = null;
@@ -564,14 +605,16 @@
     renderStaticIcons();
     renderServiceCards();
     renderServiceGroups();
+    renderServiceChips();
     initServiceRows();
-    renderProductTrack();
+    renderHomeCats();
+    initHeroSearch();
+    initThemeButtons();
     renderPortfolio();
     renderFaq();
     updateNavTooltips();
     markActiveNav();
     initTelegramFab();
-    initPosterCarousel();
     initIntroMosaic();
     initWhyCards();
     initLightbox();
@@ -602,7 +645,10 @@
     document.addEventListener('languagechange', () => {
       renderServiceCards();
       renderServiceGroups();
-      renderProductTrack();
+      renderServiceChips();
+      renderHomeCats();
+      syncHeroChips();
+      refreshWorksCaption();
       renderPortfolio();
       renderFaq();
       updateNavTooltips();
