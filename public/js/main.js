@@ -12,12 +12,12 @@
 
   // O'zimizning ishlarimiz (images/portfolio/) — stok suratlar o'rniga.
   const productImages = {
-    business_card: '/images/portfolio/vizitka-2.jpg',
-    flyer: '/images/portfolio/menyu-2.jpg',
-    booklet: '/images/portfolio/katalog-3.jpg',
-    banner: '/images/portfolio/poster-1.jpg',
-    signboard: '/images/portfolio/tashqi-reklama.jpg',
-    brand_tag: '/images/portfolio/yorliq-7.jpg'
+    business_card: '/images/portfolio/vizitka-2.webp',
+    flyer: '/images/portfolio/menyu-2.webp',
+    booklet: '/images/portfolio/katalog-3.webp',
+    banner: '/images/portfolio/poster-1.webp',
+    signboard: '/images/portfolio/tashqi-reklama.webp',
+    brand_tag: '/images/portfolio/yorliq-7.webp'
   };
 
   const servicesGrid = document.getElementById('servicesGrid');
@@ -202,7 +202,7 @@
     if (!wrap || typeof SERVICE_GROUPS === 'undefined') return;
     wrap.innerHTML = SERVICE_GROUPS.map((g) => `
       <a class="b-cat" href="services.html#g-${g.id}">
-        <img src="/images/dizayn/${groupCovers[g.id]}.jpg" alt="" loading="lazy">
+        <img src="/images/dizayn/${groupCovers[g.id]}.webp" alt="" loading="lazy">
         <span class="b-cat-text">
           <strong>${groupName(g)}</strong>
           <span>${g.items.length} ${I18n.t(g.noLogo ? 'unit_services' : 'unit_products')}</span>
