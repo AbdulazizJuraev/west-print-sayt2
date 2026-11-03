@@ -50,4 +50,44 @@
     <xhtml:link rel="alternate" hreflang="uz" href="https://westprint.uz/contact.html"/>
     <xhtml:link rel="alternate" hreflang="ru" href="https://westprint.uz/ru/contact.html"/>
   </url>
+  <url>
+    <loc>https://westprint.uz/vizitka.html</loc>
+    <xhtml:link rel="alternate" hreflang="uz" href="https://westprint.uz/vizitka.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://westprint.uz/ru/vizitka.html"/>
+  </url>
+  <url>
+    <loc>https://westprint.uz/ru/vizitka.html</loc>
+    <xhtml:link rel="alternate" hreflang="uz" href="https://westprint.uz/vizitka.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://westprint.uz/ru/vizitka.html"/>
+  </url>
+  <url>
+    <loc>https://westprint.uz/flayer.html</loc>
+    <xhtml:link rel="alternate" hreflang="uz" href="https://westprint.uz/flayer.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://westprint.uz/ru/flayer.html"/>
+  </url>
+  <url>
+    <loc>https://westprint.uz/ru/flayer.html</loc>
+    <xhtml:link rel="alternate" hreflang="uz" href="https://westprint.uz/flayer.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://westprint.uz/ru/flayer.html"/>
+  </url>
+  <url>
+    <loc>https://westprint.uz/buklet.html</loc>
+    <xhtml:link rel="alternate" hreflang="uz" href="https://westprint.uz/buklet.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://westprint.uz/ru/buklet.html"/>
+  </url>
+  <url>
+    <loc>https://westprint.uz/ru/buklet.html</loc>
+    <xhtml:link rel="alternate" hreflang="uz" href="https://westprint.uz/buklet.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://westprint.uz/ru/buklet.html"/>
+  </url>
+  <url>
+    <loc>https://westprint.uz/qogoz-paket.html</loc>
+    <xhtml:link rel="alternate" hreflang="uz" href="https://westprint.uz/qogoz-paket.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://westprint.uz/ru/qogoz-paket.html"/>
+  </url>
+  <url>
+    <loc>https://westprint.uz/ru/qogoz-paket.html</loc>
+    <xhtml:link rel="alternate" hreflang="uz" href="https://westprint.uz/qogoz-paket.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://westprint.uz/ru/qogoz-paket.html"/>
+  </url>
 </urlset>
