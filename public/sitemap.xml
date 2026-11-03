@@ -1,8 +1,53 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://westprint.uz/</loc></url>
-  <url><loc>https://westprint.uz/services.html</loc></url>
-  <url><loc>https://westprint.uz/advantages.html</loc></url>
-  <url><loc>https://westprint.uz/portfolio.html</loc></url>
-  <url><loc>https://westprint.uz/contact.html</loc></url>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://westprint.uz/</loc>
+    <xhtml:link rel="alternate" hreflang="uz" href="https://westprint.uz/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://westprint.uz/ru/"/>
+  </url>
+  <url>
+    <loc>https://westprint.uz/ru/</loc>
+    <xhtml:link rel="alternate" hreflang="uz" href="https://westprint.uz/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://westprint.uz/ru/"/>
+  </url>
+  <url>
+    <loc>https://westprint.uz/services.html</loc>
+    <xhtml:link rel="alternate" hreflang="uz" href="https://westprint.uz/services.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://westprint.uz/ru/services.html"/>
+  </url>
+  <url>
+    <loc>https://westprint.uz/ru/services.html</loc>
+    <xhtml:link rel="alternate" hreflang="uz" href="https://westprint.uz/services.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://westprint.uz/ru/services.html"/>
+  </url>
+  <url>
+    <loc>https://westprint.uz/advantages.html</loc>
+    <xhtml:link rel="alternate" hreflang="uz" href="https://westprint.uz/advantages.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://westprint.uz/ru/advantages.html"/>
+  </url>
+  <url>
+    <loc>https://westprint.uz/ru/advantages.html</loc>
+    <xhtml:link rel="alternate" hreflang="uz" href="https://westprint.uz/advantages.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://westprint.uz/ru/advantages.html"/>
+  </url>
+  <url>
+    <loc>https://westprint.uz/portfolio.html</loc>
+    <xhtml:link rel="alternate" hreflang="uz" href="https://westprint.uz/portfolio.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://westprint.uz/ru/portfolio.html"/>
+  </url>
+  <url>
+    <loc>https://westprint.uz/ru/portfolio.html</loc>
+    <xhtml:link rel="alternate" hreflang="uz" href="https://westprint.uz/portfolio.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://westprint.uz/ru/portfolio.html"/>
+  </url>
+  <url>
+    <loc>https://westprint.uz/contact.html</loc>
+    <xhtml:link rel="alternate" hreflang="uz" href="https://westprint.uz/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://westprint.uz/ru/contact.html"/>
+  </url>
+  <url>
+    <loc>https://westprint.uz/ru/contact.html</loc>
+    <xhtml:link rel="alternate" hreflang="uz" href="https://westprint.uz/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://westprint.uz/ru/contact.html"/>
+  </url>
 </urlset>

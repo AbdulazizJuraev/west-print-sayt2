@@ -346,7 +346,21 @@ const I18N = {
 };
 
 const I18n = (function () {
-  let currentLang = localStorage.getItem('wp_lang') || 'uz';
+  // /ru/ sahifalari alohida (Google ruscha matnni ko'rishi uchun): ularda til
+  // <html data-page-lang="ru"> dan olinadi. Bosh sahifalarda — uz yoki en.
+  const pageLang = document.documentElement.getAttribute('data-page-lang');
+  const stored = localStorage.getItem('wp_lang');
+  let currentLang = pageLang || (stored && stored !== 'ru' ? stored : 'uz');
+  if (pageLang) localStorage.setItem('wp_lang', pageLang);
+
+  // Til o'zgarganda boshqa manzilga o'tish kerakmi: ruscha /ru/ da yashaydi.
+  function urlFor(lang) {
+    const page = location.pathname.split('/').pop();
+    const rest = location.search + location.hash;
+    if (lang === 'ru' && !pageLang) return '/ru/' + page + rest;
+    if (lang !== 'ru' && pageLang === 'ru') return '/' + page + rest;
+    return null;
+  }
 
   function t(key) {
     return (I18N[currentLang] && I18N[currentLang][key]) || key;
@@ -373,8 +387,13 @@ const I18n = (function () {
 
   function setLanguage(lang) {
     if (!I18N[lang]) return;
-    currentLang = lang;
     localStorage.setItem('wp_lang', lang);
+    const url = urlFor(lang);
+    if (url) {
+      location.href = url;
+      return;
+    }
+    currentLang = lang;
     applyStaticText();
     document.dispatchEvent(new CustomEvent('languagechange', { detail: { lang } }));
   }
