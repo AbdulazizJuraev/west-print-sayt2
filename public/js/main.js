@@ -192,17 +192,18 @@
   }
 
   /* Bosh sahifadagi 10 ta yo'nalish plitkasi — har biri Xizmatlar
-     sahifasidagi o'z qatoriga olib boradi. */
+     sahifasidagi o'z qatoriga olib boradi. Muqova — o'sha
+     yo'nalishdagi mahsulot rasmi (images/products/thumbs). */
   const groupCovers = {
-    office: 'vizitka', adprint: 'flayer', large: 'banner', outdoor: 'vyveska', pack: 'qogozpaket',
-    events: 'parus', gifts: 'krujka', apparel: 'futbolka', design: 'logotip', finish: 'folga'
+    office: 'vizitka', adprint: 'yevrobuklet', large: 'banner', outdoor: 'peshtaxta-vyveska', pack: 'qogoz-paket',
+    events: 'parus-bayroq', gifts: 'sovga-toplami', apparel: 'futbolka', design: 'firma-uslubi', finish: 'folga-bilan-bosish'
   };
   function renderHomeCats() {
     const wrap = document.getElementById('homeCats');
     if (!wrap || typeof SERVICE_GROUPS === 'undefined') return;
     wrap.innerHTML = SERVICE_GROUPS.map((g) => `
       <a class="b-cat" href="services.html#g-${g.id}">
-        <img src="/images/dizayn/${groupCovers[g.id]}.webp" alt="" loading="lazy">
+        <img src="/images/products/thumbs/${groupCovers[g.id]}.webp" alt="" loading="lazy">
         <span class="b-cat-text">
           <strong>${groupName(g)}</strong>
           <span>${g.items.length} ${I18n.t(g.noLogo ? 'unit_services' : 'unit_products')}</span>

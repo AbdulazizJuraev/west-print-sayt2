@@ -28,7 +28,7 @@ const SERVICE_GROUPS = [
       ['Sertifikat', 'Сертификаты', 'Certificates', 'sertifikat'],
       ['Diplom va faxriy yorliq', 'Дипломы и грамоты', 'Diplomas and awards', 'diplom-va-faxriy-yorliq'],
       ['Beyjik', 'Бейджи', 'Name badges', 'beyjik'],
-      ['Yopishqoq qog\'ozchalar', 'Стикеры для заметок', 'Sticky notes', 'yopishqoq-qog-ozchalar']
+      ['Yopishqoq qog\'ozchalar', 'Стикеры для заметок', 'Sticky notes', 'yopishqoq-qogozchalar']
     ]
   },
   {
@@ -47,9 +47,9 @@ const SERVICE_GROUPS = [
       ['Prays-list', 'Прайс-листы', 'Price lists', 'prays-list'],
       ['Otkritka', 'Открытки', 'Postcards', 'otkritka'],
       ['Taklifnoma', 'Пригласительные', 'Invitations', 'taklifnoma'],
-      ['Sovg\'a sertifikati', 'Подарочные сертификаты', 'Gift vouchers', 'sovg-a-sertifikati'],
+      ['Sovg\'a sertifikati', 'Подарочные сертификаты', 'Gift vouchers', 'sovga-sertifikati'],
       ['Chegirma kartasi', 'Дисконтные карты', 'Discount cards', 'chegirma-kartasi'],
-      ['Xatcho\'p (zakladka)', 'Закладки', 'Bookmarks', 'xatcho-p-zakladka'],
+      ['Xatcho\'p (zakladka)', 'Закладки', 'Bookmarks', 'xatchop-zakladka'],
       ['Eshik ilgichi (dorxenger)', 'Дорхенгеры', 'Door hangers', 'eshik-ilgichi-dorxenger'],
       ['Stol tentkartochkasi', 'Тейбл-тенты', 'Table tents', 'stol-tentkartochkasi']
     ]
@@ -81,10 +81,10 @@ const SERVICE_GROUPS = [
       ['Shtender', 'Штендеры', 'A-frame signs', 'shtender'],
       ['Bilbord', 'Билборды', 'Billboards', 'bilbord'],
       ['Tablichka', 'Таблички', 'Plaques and signs', 'tablichka'],
-      ['Yo\'l ko\'rsatkichlari', 'Навигационные указатели', 'Wayfinding signs', 'yo-l-ko-rsatkichlari'],
+      ['Yo\'l ko\'rsatkichlari', 'Навигационные указатели', 'Wayfinding signs', 'yol-korsatkichlari'],
       ['Vitrina bezagi', 'Оформление витрин', 'Shop window graphics', 'vitrina-bezagi'],
       ['Avtomobil brendlash', 'Брендирование авто', 'Vehicle branding', 'avtomobil-brendlash'],
-      ['Ko\'cha bannerlari', 'Уличные растяжки', 'Street banners', 'ko-cha-bannerlari']
+      ['Ko\'cha bannerlari', 'Уличные растяжки', 'Street banners', 'kocha-bannerlari']
     ]
   },
   {
@@ -94,14 +94,14 @@ const SERVICE_GROUPS = [
       ['Yorliq (etiketka)', 'Этикетки', 'Product labels', 'yorliq-etiketka'],
       ['Stiker', 'Стикеры', 'Stickers', 'stiker'],
       ['Rulonli yorliq', 'Рулонные этикетки', 'Roll labels', 'rulonli-yorliq'],
-      ['Qog\'oz paket', 'Бумажные пакеты', 'Paper bags', 'qog-oz-paket'],
+      ['Qog\'oz paket', 'Бумажные пакеты', 'Paper bags', 'qogoz-paket'],
       ['Kraft paket', 'Крафт-пакеты', 'Kraft bags', 'kraft-paket'],
       ['Brendli quti', 'Брендированные коробки', 'Branded boxes', 'brendli-quti'],
       ['Karton qadoq', 'Картонная упаковка', 'Cardboard packaging', 'karton-qadoq'],
       ['Shopper (mato sumka)', 'Шопперы', 'Tote bags', 'shopper-mato-sumka'],
       ['Kiyim birkasi', 'Бирки для одежды', 'Clothing tags', 'kiyim-birkasi'],
       ['Logotipli skotch', 'Скотч с логотипом', 'Branded tape', 'logotipli-skotch'],
-      ['Qog\'oz stakan', 'Бумажные стаканы', 'Paper cups', 'qog-oz-stakan'],
+      ['Qog\'oz stakan', 'Бумажные стаканы', 'Paper cups', 'qogoz-stakan'],
       ['Pochta konverti', 'Почтовые конверты', 'Mailer envelopes', 'pochta-konverti']
     ]
   },
@@ -109,10 +109,10 @@ const SERVICE_GROUPS = [
     id: 'events', icon: 'flag', hue: '#dc2626',
     uz: 'Bayroq va tadbirlar', ru: 'Флаги и мероприятия', en: 'Flags and events',
     items: [
-      ['Stol bayrog\'i', 'Настольные флажки', 'Desk flags', 'stol-bayrog-i'],
+      ['Stol bayrog\'i', 'Настольные флажки', 'Desk flags', 'stol-bayrogi'],
       ['Parus bayroq', 'Флаг-парус', 'Feather flags', 'parus-bayroq'],
       ['Konus bayroq', 'Флаг-конус', 'Teardrop flags', 'konus-bayroq'],
-      ['Ko\'cha bayrog\'i', 'Уличные флаги', 'Outdoor flags', 'ko-cha-bayrog-i'],
+      ['Ko\'cha bayrog\'i', 'Уличные флаги', 'Outdoor flags', 'kocha-bayrogi'],
       ['Vimpel', 'Вымпелы', 'Pennants', 'vimpel'],
       ['Logotipli lenta', 'Лента с логотипом', 'Branded ribbon', 'logotipli-lenta'],
       ['Beyjik lentasi (lanyard)', 'Ланъярды', 'Lanyards', 'beyjik-lentasi-lanyard'],
@@ -135,7 +135,7 @@ const SERVICE_GROUPS = [
       ['Soyabon', 'Зонты', 'Umbrellas', 'soyabon'],
       ['Sichqoncha gilamchasi', 'Коврики для мыши', 'Mouse pads', 'sichqoncha-gilamchasi'],
       ['Devoriy soat', 'Настенные часы', 'Wall clocks', 'devoriy-soat'],
-      ['Sovg\'a to\'plami', 'Подарочные наборы', 'Gift sets', 'sovg-a-to-plami'],
+      ['Sovg\'a to\'plami', 'Подарочные наборы', 'Gift sets', 'sovga-toplami'],
       ['Penal', 'Пеналы', 'Pencil cases', 'penal'],
       ['Pazl', 'Пазлы', 'Jigsaw puzzles', 'pazl']
     ]
@@ -176,7 +176,7 @@ const SERVICE_GROUPS = [
       ['Laminatsiya', 'Ламинирование', 'Lamination', 'laminatsiya'],
       ['UV-lak', 'УФ-лак', 'UV varnish', 'uv-lak'],
       ['Folga bilan bosish', 'Тиснение фольгой', 'Foil stamping', 'folga-bilan-bosish'],
-      ['Bo\'rtma bosma (kongrev)', 'Конгрев', 'Embossing', 'bo-rtma-bosma-kongrev'],
+      ['Bo\'rtma bosma (kongrev)', 'Конгрев', 'Embossing', 'bortma-bosma-kongrev'],
       ['Konturli kesish', 'Плоттерная резка', 'Contour cutting', 'konturli-kesish'],
       ['Lazerli kesish', 'Лазерная резка', 'Laser cutting', 'lazerli-kesish'],
       ['Shtans bilan kesish', 'Вырубка', 'Die cutting', 'shtans-bilan-kesish'],
