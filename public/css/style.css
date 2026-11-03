@@ -529,6 +529,45 @@ html { scroll-behavior: smooth; }
 .b-price-note { margin: 0; font-size: 0.8rem; color: var(--color-text-muted); }
 .b-price-foot { margin: 16px 0 0; font-size: 0.85rem; color: var(--color-text-muted); }
 
+/* Client reviews */
+.b-reviews { grid-column: 1 / -1; }
+.b-reviews h2 { font-size: 1.9rem; }
+.b-reviews .b-head { margin-bottom: 0; }
+.b-review-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-top: 20px; }
+.b-review-grid:empty { display: none; }
+.b-review {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 18px;
+  margin: 0;
+  padding: 24px;
+  border-radius: var(--radius);
+  background: var(--color-soft);
+}
+.b-review blockquote { margin: 0; font-size: 0.95rem; line-height: 1.55; }
+.b-review figcaption { display: flex; align-items: center; gap: 12px; font-size: 0.875rem; }
+.b-review figcaption small { display: block; font-size: 0.78rem; color: var(--color-text-muted); }
+.b-review-avatar {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: var(--color-tint);
+  color: var(--color-tint-ink);
+  font-weight: 800;
+}
+.b-reviews-empty {
+  margin: 16px 0 0;
+  padding: 16px 20px;
+  border-radius: var(--radius);
+  background: var(--color-soft);
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+}
+
 /* Send your artwork */
 .b-tg {
   grid-column: span 4;
@@ -732,6 +771,7 @@ html { scroll-behavior: smooth; }
   .b-stat-yellow, .b-stat-inv { grid-column: span 6; grid-row: auto; }
   .b-cats { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .b-price-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .b-review-grid { grid-template-columns: 1fr; }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -1391,7 +1431,7 @@ body.modal-open .tg-fab { display: none; }
   .b-stat { min-height: 116px; padding: 16px; border-radius: 22px; }
   .b-stat strong { font-size: 1.75rem; }
   .b-stat-row { display: none; }
-  .b-services h2, .b-prices h2 { font-size: 1.4rem; }
+  .b-services h2, .b-prices h2, .b-reviews h2 { font-size: 1.4rem; }
   .b-price-grid { gap: 8px; }
   .b-price { padding: 16px; }
   .b-price-value { font-size: 1.2rem; }

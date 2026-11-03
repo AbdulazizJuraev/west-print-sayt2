@@ -394,6 +394,25 @@
     });
   }
 
+  /* Mijozlar fikri (js/reviews.js). Ro'yxat bo'sh bo'lsa — faqat taklif matni. */
+  function renderReviews() {
+    const list = document.getElementById('reviewList');
+    if (!list || typeof REVIEWS === 'undefined' || !REVIEWS.length) return;
+    const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+    const initials = (name) => name.split(/\s+/).map((w) => w[0]).join('').slice(0, 2).toUpperCase();
+    list.innerHTML = REVIEWS.map((r) => `
+      <figure class="b-review">
+        <blockquote>${esc(r.text)}</blockquote>
+        <figcaption>
+          <span class="b-review-avatar" aria-hidden="true">${esc(initials(r.name))}</span>
+          <span><strong>${esc(r.name)}</strong>${r.company ? `<small>${esc(r.company)}</small>` : ''}</span>
+        </figcaption>
+      </figure>
+    `).join('');
+    const empty = document.getElementById('reviewEmpty');
+    if (empty) empty.hidden = true;
+  }
+
   function renderStaticIcons() {
     document.querySelectorAll('[data-icon]').forEach((el) => {
       el.innerHTML = Icons.get(el.getAttribute('data-icon'));
@@ -612,6 +631,7 @@
     initThemeButtons();
     renderPortfolio();
     renderFaq();
+    renderReviews();
     updateNavTooltips();
     markActiveNav();
     initTelegramFab();
