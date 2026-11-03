@@ -512,6 +512,23 @@ html { scroll-behavior: smooth; }
 .b-cat-text strong { display: block; font-size: 0.875rem; line-height: 1.3; }
 .b-cat-text span { font-size: 0.75rem; color: var(--color-text-muted); }
 
+/* Prices */
+.b-prices { grid-column: 1 / -1; }
+.b-prices h2 { font-size: 1.9rem; }
+.b-price-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+.b-price {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 22px;
+  border-radius: var(--radius);
+  background: var(--color-soft);
+}
+.b-price h3 { margin: 0 0 6px; font-size: 1rem; }
+.b-price-value { margin: 0; font-size: 1.7rem; font-weight: 800; line-height: 1.15; letter-spacing: -0.03em; color: var(--color-text); }
+.b-price-note { margin: 0; font-size: 0.8rem; color: var(--color-text-muted); }
+.b-price-foot { margin: 16px 0 0; font-size: 0.85rem; color: var(--color-text-muted); }
+
 /* Send your artwork */
 .b-tg {
   grid-column: span 4;
@@ -714,6 +731,7 @@ html { scroll-behavior: smooth; }
   .b-hero, .b-works { grid-column: 1 / -1; grid-row: auto; }
   .b-stat-yellow, .b-stat-inv { grid-column: span 6; grid-row: auto; }
   .b-cats { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .b-price-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -1373,7 +1391,11 @@ body.modal-open .tg-fab { display: none; }
   .b-stat { min-height: 116px; padding: 16px; border-radius: 22px; }
   .b-stat strong { font-size: 1.75rem; }
   .b-stat-row { display: none; }
-  .b-services h2 { font-size: 1.4rem; }
+  .b-services h2, .b-prices h2 { font-size: 1.4rem; }
+  .b-price-grid { gap: 8px; }
+  .b-price { padding: 16px; }
+  .b-price-value { font-size: 1.2rem; }
+  .b-price-note { font-size: 0.75rem; }
   .b-head { margin-bottom: 14px; }
   .b-head .b-pill { height: 40px; padding: 0 14px; font-size: 0.8rem; }
   .b-cats { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
