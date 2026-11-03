@@ -84,7 +84,7 @@
         <div class="svc-track">
           ${g.items.map((it, i) => `
             <button type="button" class="svc-tile" data-g="${gi}" data-i="${i}" aria-haspopup="dialog" data-search="${it.slice(0, 3).join(' ').toLowerCase()}">
-              <img class="svc-tile-img" src="https://images.unsplash.com/photo-${it[3]}?w=360&h=440&fit=crop&q=70&auto=format" alt="${itemName(it)}" loading="lazy">
+              <img class="svc-tile-img" src="/images/products/thumbs/${it[3]}.webp" width="400" height="400" alt="${itemName(it)}" loading="lazy">
               <span class="svc-tile-icon">${Icons.get(g.icon)}</span>
               <span class="svc-tile-text">
                 <span class="svc-tile-name">${itemName(it)}</span>
@@ -271,7 +271,7 @@
         const it = g && g.items[Number(card.dataset.i)];
         if (!it) return null;
         return {
-          img: `https://images.unsplash.com/photo-${it[3]}?w=900&h=600&fit=crop&q=75&auto=format`,
+          img: `/images/products/${it[3]}.webp`,
           badge: groupName(g), title: itemName(it), text: itemDesc(it), logo: !g.noLogo
         };
       }
